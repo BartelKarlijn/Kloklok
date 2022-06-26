@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\Wiebelrobot"
+		},
+		{
+			"name": "Kloklok",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"random": "cpp",
+			"array": "cpp",
+			"deque": "cpp",
+			"string": "cpp",
+			"unordered_map": "cpp",
+			"unordered_set": "cpp",
+			"vector": "cpp",
+			"initializer_list": "cpp",
+			"regex": "cpp",
+			"functional": "cpp",
+			"*.tcc": "cpp",
+			"system_error": "cpp"
+		}
+	}
+}
