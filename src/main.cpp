@@ -27,7 +27,6 @@
 //#define TFT_DC   16 // Data Command control pin
 //#define TFT_RST  4  // Reset pin (could connect to Arduino RESET pin)
 //#define TFT_BL   32 // LED back-light
-// 34 35 32 23?25 26
 
 #define TFT0_CS       22    //Chip Select pin tftx
 #define TFT1_CS       17    //Chip Select pin tftx
