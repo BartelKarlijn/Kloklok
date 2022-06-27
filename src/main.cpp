@@ -43,9 +43,9 @@ uint8_t tft_cs[6] = {TFT0_CS, TFT1_CS, TFT2_CS, TFT3_CS, TFT4_CS, TFT5_CS };
 #define NEEDLE_LENGTH DIAL_CENTRE - NEEDLE_RADIUS // Visible length without rounded corners
 #define DIAL_WIDTH    DIAL_CENTRE * 2
 
-#define COLOR_BITS_PER_PIXEL 1
-#define COLOR_BACKGROUND TFT_BLACK
-#define COLOR_NEEDLE     TFT_WHITE
+#define COLOR_BITS_PER_PIXEL 16
+#define COLOR_BACKGROUND TFT_BLUE
+#define COLOR_NEEDLE     TFT_YELLOW
 #define COLOR_TRANSP     TFT_PINK
 
 
@@ -59,6 +59,10 @@ TFT_eSprite needleBack  = TFT_eSprite(&tft); // Sprite object for needle
 //uint16_t  spr_width = 0;
 //uint16_t  bg_color =0;
 
+// Angles
+int16_t angleBack;  // random speed in range 0 to 360
+int16_t angleFront; // random speed in range 0 to 360
+
 // timing
 unsigned long myTime;
 int cnt;
@@ -69,27 +73,27 @@ int cnt;
 // =======================================================================================
 void createNeedleBack(void)
 {
-  needleBack.setColorDepth(4);
+  needleBack.setColorDepth(COLOR_BITS_PER_PIXEL);
   needleBack.createSprite(DIAL_WIDTH , DIAL_WIDTH );  // create the needle Sprite
 
-  needleBack.fillSprite(TFT_BLACK); // Fill with black
+  needleBack.fillSprite(COLOR_BACKGROUND); // Fill with black
 
   // Define needle pivot point relative to top left corner of Sprite
   needleBack.setPivot(DIAL_CENTRE, DIAL_CENTRE);     // Set pivot point in this Sprite
 
   // Draw the red needle in the Sprite
-  needleBack.fillRect(DIAL_CENTRE - NEEDLE_RADIUS, DIAL_CENTRE, NEEDLE_WIDTH, NEEDLE_LENGTH, TFT_WHITE);
-  needleBack.fillCircle( DIAL_CENTRE, DIAL_WIDTH - NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE);
+  needleBack.fillRect(DIAL_CENTRE - NEEDLE_RADIUS, DIAL_CENTRE, NEEDLE_WIDTH, NEEDLE_LENGTH, COLOR_NEEDLE);
+  needleBack.fillCircle( DIAL_CENTRE, DIAL_WIDTH - NEEDLE_RADIUS, NEEDLE_RADIUS, COLOR_NEEDLE);
 
   // Bounding box parameters to be populated
-  int16_t min_x;
-  int16_t min_y;
-  int16_t max_x;
-  int16_t max_y;
+  //int16_t min_x;
+  //int16_t min_y;
+  //int16_t max_x;
+  //int16_t max_y;
 
   // Work out the worst case area that must be grabbed from the TFT,
   // this is at a 45 degree rotation
-  needleBack.getRotatedBounds(45, &min_x, &min_y, &max_x, &max_y);
+  //needleBack.getRotatedBounds(45, &min_x, &min_y, &max_x, &max_y);
 
   // Calculate the size and allocate the buffer for the grabbed TFT area
   // tft_buffer =  (uint16_t*) malloc( ((max_x - min_x) + 2) * ((max_y - min_y) + 2) * 2 );
@@ -97,28 +101,29 @@ void createNeedleBack(void)
 
 void createNeedleFront(void)
 {
-  needleFront.setColorDepth(1);
+  needleFront.setColorDepth(COLOR_BITS_PER_PIXEL);
   needleFront.createSprite(NEEDLE_WIDTH, NEEDLE_LENGTH + NEEDLE_WIDTH );  // create the needle Sprite
 
-  needleFront.fillSprite(TFT_BLACK); // Fill with black
+  needleFront.fillSprite(COLOR_TRANSP); // Fill with black
 
   // Define needle pivot point relative to top left corner of Sprite
   needleFront.setPivot(NEEDLE_RADIUS, NEEDLE_RADIUS);     // Set pivot point in this Sprite
 
   // Draw the red needle in the Sprite
-  needleFront.fillRect(0, NEEDLE_RADIUS, NEEDLE_WIDTH, NEEDLE_LENGTH, TFT_WHITE);
-  needleFront.fillCircle( NEEDLE_RADIUS, NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE);                //centre
-  needleFront.fillCircle( NEEDLE_RADIUS, NEEDLE_LENGTH + NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE); //end
+  needleFront.fillRect(0, NEEDLE_RADIUS, NEEDLE_WIDTH, NEEDLE_LENGTH, COLOR_NEEDLE);
+  needleFront.fillCircle( NEEDLE_RADIUS, NEEDLE_RADIUS, NEEDLE_RADIUS, COLOR_NEEDLE);                //centre
+  needleFront.fillCircle( NEEDLE_RADIUS, NEEDLE_LENGTH + NEEDLE_RADIUS, NEEDLE_RADIUS, COLOR_NEEDLE); //end
+
 
   // Bounding box parameters to be populated
-  int16_t min_x;
-  int16_t min_y;
-  int16_t max_x;
-  int16_t max_y;
+//  int16_t min_x;
+//  int16_t min_y;
+//  int16_t max_x;
+//  int16_t max_y;
 
   // Work out the worst case area that must be grabbed from the TFT,
   // this is at a 45 degree rotation
-  needleFront.getRotatedBounds(45, &min_x, &min_y, &max_x, &max_y);
+  //needleFront.getRotatedBounds(45, &min_x, &min_y, &max_x, &max_y);
 
   // Calculate the size and allocate the buffer for the grabbed TFT area
   //tft_buffer =  (uint16_t*) malloc( ((max_x - min_x) + 2) * ((max_y - min_y) + 2) * 2 );
@@ -128,8 +133,8 @@ void plotNeedle(int16_t angleBack, int16_t angleFront, uint8_t cs_pin) {
   // Pull cs_pin low to write to screen
   digitalWrite( cs_pin, LOW);
   // Plot needle at random angle in range 0 to 240, speed 40ms per increment
-  needleBack.pushRotated(angleBack, TFT_PINK);  //Pink because black is default backgroundcolor
-  needleFront.pushRotated(angleFront, TFT_BLACK);
+  needleBack.pushRotated(angleBack, COLOR_TRANSP);  //Pink because black is default backgroundcolor
+  needleFront.pushRotated(angleFront, COLOR_TRANSP);
   // Pull cs_pin low to end write to screen
   //delay(1000);
   digitalWrite( cs_pin, HIGH);
@@ -207,13 +212,10 @@ void setup()   {
   createNeedleBack();
   createNeedleFront();
 
-  // Reset needle position to 0
-  for (int i = 0; i <= 5; i++ ) {
-  pinMode( tft_cs[0], OUTPUT);
-  // Chip Select is active low.  So HIGH switches screen off
-  digitalWrite( tft_cs[0], HIGH);
-  }
+  angleBack  = random(359); // random speed in range 0 to 360
+  angleFront = random(359); // random speed in range 0 to 360
 
+  // Reset needle position to 0
   for (int i = 0; i <= 5; i++ ) {
     pinMode( tft_cs[0], OUTPUT);
     // Chip Select is active low.  So HIGH switches screen off
@@ -229,15 +231,11 @@ void setup()   {
 // Loop
 // =======================================================================================
 void loop() {
-  int16_t angleBack  = random(359); // random speed in range 0 to 240
-  int16_t angleFront = random(359); // random speed in range 0 to 240
 
   unsigned long myTimeRef;
   
   // Plot needle at random angle 
   for (int i = 0; i <= 5; i++ ) {
-    pinMode( tft_cs[0], OUTPUT);
-    // Chip Select is active low.  So HIGH switches screen off
     plotNeedle(angleBack - 15 * i, angleFront + 15 * i,  tft_cs[i]);
   }
 
@@ -247,7 +245,7 @@ void loop() {
   // timing
   cnt++;
   //Serial.println(cnt);
-  if ( cnt >= 10 ) {
+  if ( cnt >= 20 ) {
     myTimeRef = millis() - myTime;
     Serial.print(cnt);
     Serial.print(" screens in ");
@@ -255,6 +253,12 @@ void loop() {
     Serial.println(" ms:");
     myTime = millis();
     cnt = 0;
+    angleBack  = random(359); // random speed in range 0 to 360
+    angleFront = random(359); // random speed in range 0 to 360
+  }
+  else {
+    angleBack  = angleBack + 14;
+    angleFront = angleFront - 14;
   }
 
 }
