@@ -20,12 +20,21 @@
 // Created by Bodmer 17/3/20 as an example to the TFT_eSPI library:
 // https://github.com/Bodmer/TFT_eSPI
 
+//Pins
+// already used in user_setup.h:
+//#define TFT_MOSI 23 // In some display driver board, it might be written as "SDA" and so on.
+//#define TFT_SCLK 18
+//#define TFT_DC   16 // Data Command control pin
+//#define TFT_RST  4  // Reset pin (could connect to Arduino RESET pin)
+//#define TFT_BL   32 // LED back-light
+// 34 35 32 23?25 26
+
 #define TFT0_CS       22    //Chip Select pin tftx
-#define TFT1_CS       22    //Chip Select pin tftx
-#define TFT2_CS       22    //Chip Select pin tftx
-#define TFT3_CS       22    //Chip Select pin tftx
-#define TFT4_CS       22    //Chip Select pin tftx
-#define TFT5_CS       22    //Chip Select pin tftx
+#define TFT1_CS       17    //Chip Select pin tftx
+#define TFT2_CS       19    //Chip Select pin tftx
+#define TFT3_CS       21    //Chip Select pin tftx
+#define TFT4_CS       25    //Chip Select pin tftx
+#define TFT5_CS       26    //Chip Select pin tftx
 uint8_t tft_cs[6] = {TFT0_CS, TFT1_CS, TFT2_CS, TFT3_CS, TFT4_CS, TFT5_CS };
 
 #define DIAL_CENTRE   120
@@ -34,18 +43,25 @@ uint8_t tft_cs[6] = {TFT0_CS, TFT1_CS, TFT2_CS, TFT3_CS, TFT4_CS, TFT5_CS };
 #define NEEDLE_LENGTH DIAL_CENTRE - NEEDLE_RADIUS // Visible length without rounded corners
 #define DIAL_WIDTH    DIAL_CENTRE * 2
 
-#define NEEDLE_COLOR1 TFT_MAROON  // Needle periphery colour
-#define NEEDLE_COLOR2 TFT_RED     // Needle centre colour
+#define COLOR_BITS_PER_PIXEL 1
+#define COLOR_BACKGROUND TFT_BLACK
+#define COLOR_NEEDLE     TFT_WHITE
+#define COLOR_TRANSP     TFT_PINK
+
 
 #include <TFT_eSPI.h>
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite needleFront = TFT_eSprite(&tft); // Sprite object for needle
 TFT_eSprite needleBack  = TFT_eSprite(&tft); // Sprite object for needle
 
-uint16_t* tft_buffer;
-bool      buffer_loaded = false;
-uint16_t  spr_width = 0;
-uint16_t  bg_color =0;
+//uint16_t* tft_buffer;
+//bool      buffer_loaded = false;
+//uint16_t  spr_width = 0;
+//uint16_t  bg_color =0;
+
+// timing
+unsigned long myTime;
+int cnt;
 
 
 // =======================================================================================
@@ -76,12 +92,12 @@ void createNeedleBack(void)
   needleBack.getRotatedBounds(45, &min_x, &min_y, &max_x, &max_y);
 
   // Calculate the size and allocate the buffer for the grabbed TFT area
-  tft_buffer =  (uint16_t*) malloc( ((max_x - min_x) + 2) * ((max_y - min_y) + 2) * 2 );
+  // tft_buffer =  (uint16_t*) malloc( ((max_x - min_x) + 2) * ((max_y - min_y) + 2) * 2 );
 }
 
-void createNeedle(void)
+void createNeedleFront(void)
 {
-  needleFront.setColorDepth(4);
+  needleFront.setColorDepth(1);
   needleFront.createSprite(NEEDLE_WIDTH, NEEDLE_LENGTH + NEEDLE_WIDTH );  // create the needle Sprite
 
   needleFront.fillSprite(TFT_BLACK); // Fill with black
@@ -105,7 +121,7 @@ void createNeedle(void)
   needleFront.getRotatedBounds(45, &min_x, &min_y, &max_x, &max_y);
 
   // Calculate the size and allocate the buffer for the grabbed TFT area
-  tft_buffer =  (uint16_t*) malloc( ((max_x - min_x) + 2) * ((max_y - min_y) + 2) * 2 );
+  //tft_buffer =  (uint16_t*) malloc( ((max_x - min_x) + 2) * ((max_y - min_y) + 2) * 2 );
 }
 
 void plotNeedle(int16_t angleBack, int16_t angleFront, uint8_t cs_pin) {
@@ -115,6 +131,7 @@ void plotNeedle(int16_t angleBack, int16_t angleFront, uint8_t cs_pin) {
   needleBack.pushRotated(angleBack, TFT_PINK);  //Pink because black is default backgroundcolor
   needleFront.pushRotated(angleFront, TFT_BLACK);
   // Pull cs_pin low to end write to screen
+  //delay(1000);
   digitalWrite( cs_pin, HIGH);
 }
 
@@ -176,6 +193,7 @@ void plotNeedle(int16_t angleBack, int16_t angleFront, uint8_t cs_pin) {
 // =======================================================================================
 void setup()   {
   Serial.begin(115200); // Debug only
+  Serial.println("Setup begonnen");
 
   tft.begin();
   tft.setRotation(0);
@@ -187,7 +205,7 @@ void setup()   {
 
   // Create the needle Sprite
   createNeedleBack();
-  createNeedle();
+  createNeedleFront();
 
   // Reset needle position to 0
   for (int i = 0; i <= 5; i++ ) {
@@ -199,10 +217,12 @@ void setup()   {
   for (int i = 0; i <= 5; i++ ) {
     pinMode( tft_cs[0], OUTPUT);
     // Chip Select is active low.  So HIGH switches screen off
-    plotNeedle(0, 90,  tft_cs[0]);
+    plotNeedle(0, 30 + 15 * i,  tft_cs[0]);
   }
 
-  delay(2000);
+  myTime = millis();
+  Serial.println("Setup gedaan");
+
 }
 
 // =======================================================================================
@@ -212,13 +232,29 @@ void loop() {
   int16_t angleBack  = random(359); // random speed in range 0 to 240
   int16_t angleFront = random(359); // random speed in range 0 to 240
 
+  unsigned long myTimeRef;
+  
   // Plot needle at random angle 
   for (int i = 0; i <= 5; i++ ) {
     pinMode( tft_cs[0], OUTPUT);
     // Chip Select is active low.  So HIGH switches screen off
-    plotNeedle(angleBack, angleFront,  tft_cs[0]);
+    plotNeedle(angleBack - 15 * i, angleFront + 15 * i,  tft_cs[i]);
   }
 
   // Pause at new position
-  delay(2000);
+  //delay(1000);
+
+  // timing
+  cnt++;
+  //Serial.println(cnt);
+  if ( cnt >= 10 ) {
+    myTimeRef = millis() - myTime;
+    Serial.print(cnt);
+    Serial.print(" screens in ");
+    Serial.print(myTimeRef);
+    Serial.println(" ms:");
+    myTime = millis();
+    cnt = 0;
+  }
+
 }
