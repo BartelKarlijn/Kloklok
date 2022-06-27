@@ -20,6 +20,14 @@
 // Created by Bodmer 17/3/20 as an example to the TFT_eSPI library:
 // https://github.com/Bodmer/TFT_eSPI
 
+#define TFT0_CS       22    //Chip Select pin tftx
+#define TFT1_CS       22    //Chip Select pin tftx
+#define TFT2_CS       22    //Chip Select pin tftx
+#define TFT3_CS       22    //Chip Select pin tftx
+#define TFT4_CS       22    //Chip Select pin tftx
+#define TFT5_CS       22    //Chip Select pin tftx
+uint8_t tft_cs[6] = {TFT0_CS, TFT1_CS, TFT2_CS, TFT3_CS, TFT4_CS, TFT5_CS };
+
 #define DIAL_CENTRE   120
 #define NEEDLE_RADIUS  16                // diameter of needle
 #define NEEDLE_WIDTH  NEEDLE_RADIUS * 2   // Width of needle
@@ -31,8 +39,8 @@
 
 #include <TFT_eSPI.h>
 TFT_eSPI tft = TFT_eSPI();
-TFT_eSprite needle = TFT_eSprite(&tft); // Sprite object for needle
-TFT_eSprite needleBack = TFT_eSprite(&tft); // Sprite object for needle
+TFT_eSprite needleFront = TFT_eSprite(&tft); // Sprite object for needle
+TFT_eSprite needleBack  = TFT_eSprite(&tft); // Sprite object for needle
 
 uint16_t* tft_buffer;
 bool      buffer_loaded = false;
@@ -55,7 +63,6 @@ void createNeedleBack(void)
 
   // Draw the red needle in the Sprite
   needleBack.fillRect(DIAL_CENTRE - NEEDLE_RADIUS, DIAL_CENTRE, NEEDLE_WIDTH, NEEDLE_LENGTH, TFT_WHITE);
-  //needle.fillRect(1, 1, NEEDLE_WIDTH-2, NEEDLE_LENGTH-2, TFT_RED);
   needleBack.fillCircle( DIAL_CENTRE, DIAL_WIDTH - NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE);
 
   // Bounding box parameters to be populated
@@ -74,18 +81,18 @@ void createNeedleBack(void)
 
 void createNeedle(void)
 {
-  needle.setColorDepth(4);
-  needle.createSprite(NEEDLE_WIDTH, NEEDLE_LENGTH + NEEDLE_WIDTH );  // create the needle Sprite
+  needleFront.setColorDepth(4);
+  needleFront.createSprite(NEEDLE_WIDTH, NEEDLE_LENGTH + NEEDLE_WIDTH );  // create the needle Sprite
 
-  needle.fillSprite(TFT_BLACK); // Fill with black
+  needleFront.fillSprite(TFT_BLACK); // Fill with black
 
   // Define needle pivot point relative to top left corner of Sprite
-  needle.setPivot(NEEDLE_RADIUS, NEEDLE_RADIUS);     // Set pivot point in this Sprite
+  needleFront.setPivot(NEEDLE_RADIUS, NEEDLE_RADIUS);     // Set pivot point in this Sprite
 
   // Draw the red needle in the Sprite
-  needle.fillRect(0, NEEDLE_RADIUS, NEEDLE_WIDTH, NEEDLE_LENGTH, TFT_WHITE);
-  needle.fillCircle( NEEDLE_RADIUS, NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE);                //centre
-  needle.fillCircle( NEEDLE_RADIUS, NEEDLE_LENGTH + NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE); //end
+  needleFront.fillRect(0, NEEDLE_RADIUS, NEEDLE_WIDTH, NEEDLE_LENGTH, TFT_WHITE);
+  needleFront.fillCircle( NEEDLE_RADIUS, NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE);                //centre
+  needleFront.fillCircle( NEEDLE_RADIUS, NEEDLE_LENGTH + NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE); //end
 
   // Bounding box parameters to be populated
   int16_t min_x;
@@ -95,10 +102,20 @@ void createNeedle(void)
 
   // Work out the worst case area that must be grabbed from the TFT,
   // this is at a 45 degree rotation
-  needle.getRotatedBounds(45, &min_x, &min_y, &max_x, &max_y);
+  needleFront.getRotatedBounds(45, &min_x, &min_y, &max_x, &max_y);
 
   // Calculate the size and allocate the buffer for the grabbed TFT area
   tft_buffer =  (uint16_t*) malloc( ((max_x - min_x) + 2) * ((max_y - min_y) + 2) * 2 );
+}
+
+void plotNeedle(int16_t angleBack, int16_t angleFront, uint8_t cs_pin) {
+  // Pull cs_pin low to write to screen
+  digitalWrite( cs_pin, LOW);
+  // Plot needle at random angle in range 0 to 240, speed 40ms per increment
+  needleBack.pushRotated(angleBack, TFT_PINK);  //Pink because black is default backgroundcolor
+  needleFront.pushRotated(angleFront, TFT_BLACK);
+  // Pull cs_pin low to end write to screen
+  digitalWrite( cs_pin, HIGH);
 }
 
 // =======================================================================================
@@ -153,13 +170,12 @@ void createNeedle(void)
 }
 */
 
+
 // =======================================================================================
 // Setup
 // =======================================================================================
 void setup()   {
   Serial.begin(115200); // Debug only
-  int16_t angleBack  = 0; 
-  int16_t angleFront = 90; 
 
   tft.begin();
   tft.setRotation(0);
@@ -174,8 +190,17 @@ void setup()   {
   createNeedle();
 
   // Reset needle position to 0
-  needleBack.pushRotated(angleBack, TFT_BLACK);
-  needle.pushRotated(angleFront, TFT_BLACK);
+  for (int i = 0; i <= 5; i++ ) {
+  pinMode( tft_cs[0], OUTPUT);
+  // Chip Select is active low.  So HIGH switches screen off
+  digitalWrite( tft_cs[0], HIGH);
+  }
+
+  for (int i = 0; i <= 5; i++ ) {
+    pinMode( tft_cs[0], OUTPUT);
+    // Chip Select is active low.  So HIGH switches screen off
+    plotNeedle(0, 90,  tft_cs[0]);
+  }
 
   delay(2000);
 }
@@ -187,9 +212,12 @@ void loop() {
   int16_t angleBack  = random(359); // random speed in range 0 to 240
   int16_t angleFront = random(359); // random speed in range 0 to 240
 
-  // Plot needle at random angle in range 0 to 240, speed 40ms per increment
-  needleBack.pushRotated(angleBack, TFT_PINK);  //Pink because black is default backgroundcolor
-  needle.pushRotated(angleFront, TFT_BLACK);
+  // Plot needle at random angle 
+  for (int i = 0; i <= 5; i++ ) {
+    pinMode( tft_cs[0], OUTPUT);
+    // Chip Select is active low.  So HIGH switches screen off
+    plotNeedle(angleBack, angleFront,  tft_cs[0]);
+  }
 
   // Pause at new position
   delay(2000);
