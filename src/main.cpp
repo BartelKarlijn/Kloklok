@@ -21,7 +21,7 @@
 // https://github.com/Bodmer/TFT_eSPI
 
 #define DIAL_CENTRE   120
-#define NEEDLE_RADIUS   15                // diameter of needle
+#define NEEDLE_RADIUS  16                // diameter of needle
 #define NEEDLE_WIDTH  NEEDLE_RADIUS * 2   // Width of needle
 #define NEEDLE_LENGTH DIAL_CENTRE - NEEDLE_RADIUS // Visible length without rounded corners
 #define DIAL_WIDTH    DIAL_CENTRE * 2
@@ -75,7 +75,7 @@ void createNeedleBack(void)
 void createNeedle(void)
 {
   needle.setColorDepth(4);
-  needle.createSprite(NEEDLE_WIDTH, NEEDLE_LENGTH + NEEDLE_RADIUS );  // create the needle Sprite
+  needle.createSprite(NEEDLE_WIDTH, NEEDLE_LENGTH + NEEDLE_WIDTH );  // create the needle Sprite
 
   needle.fillSprite(TFT_BLACK); // Fill with black
 
@@ -83,9 +83,8 @@ void createNeedle(void)
   needle.setPivot(NEEDLE_RADIUS, NEEDLE_RADIUS);     // Set pivot point in this Sprite
 
   // Draw the red needle in the Sprite
-  //needle.fillRect(0, NEEDLE_RADIUS, NEEDLE_WIDTH, NEEDLE_LENGTH, TFT_WHITE);
-  needle.fillRect(1, 1, NEEDLE_WIDTH-2, NEEDLE_LENGTH-2, TFT_RED);
-  needle.fillCircle( NEEDLE_RADIUS, NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE);                 //centre
+  needle.fillRect(0, NEEDLE_RADIUS, NEEDLE_WIDTH, NEEDLE_LENGTH, TFT_WHITE);
+  needle.fillCircle( NEEDLE_RADIUS, NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE);                //centre
   needle.fillCircle( NEEDLE_RADIUS, NEEDLE_LENGTH + NEEDLE_RADIUS, NEEDLE_RADIUS, TFT_WHITE); //end
 
   // Bounding box parameters to be populated
@@ -159,8 +158,8 @@ void createNeedle(void)
 // =======================================================================================
 void setup()   {
   Serial.begin(115200); // Debug only
-  int16_t angleBack  = 0; // random speed in range 0 to 240
-  int16_t angleFront = 0; // random speed in range 0 to 240
+  int16_t angleBack  = 0; 
+  int16_t angleFront = 90; 
 
   tft.begin();
   tft.setRotation(0);
@@ -178,7 +177,7 @@ void setup()   {
   needleBack.pushRotated(angleBack, TFT_BLACK);
   needle.pushRotated(angleFront, TFT_BLACK);
 
-  delay(5000);
+  delay(2000);
 }
 
 // =======================================================================================
