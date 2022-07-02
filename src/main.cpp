@@ -42,32 +42,33 @@ uint8_t tft_cs[6] = {TFT0_CS, TFT1_CS, TFT2_CS, TFT3_CS, TFT4_CS, TFT5_CS };
 #define NEEDLE_LENGTH DIAL_CENTRE // Visible length without rounded corners
 #define DIAL_WIDTH    DIAL_CENTRE * 2
 // Extra margin for the sprite width to cover the rotation from previous position
-// calculation = sin( max rotation / time / fps ) * DIAL_WIDTH
-//    max rotation      = 360 deg
-//    time for rotation = 5   sec
-//    fps               = 20 
-//    rotation/frame = 3.6deg
-// this works out to 0.62 * 120px = 8.3
-#define NEEDLE_CLEAR 4   // area of needle to clear
+// rotation/frame = 1-4 deg
+// sin(rotation/frame) * DIAL_CENTER
+#define NEEDLE_CLEAR1 2   // area of needle to clear
+#define NEEDLE_CLEAR2 4   // area of needle to clear
+#define NEEDLE_CLEAR3 6   // area of needle to clear
+#define NEEDLE_CLEAR4 8   // area of needle to clear
+#define NEEDLE_EXTRA 2   // Exra area to clear out
 
 #define COLOR_BITS_PER_PIXEL 16
-#define COLOR_BACKGROUND TFT_BLUE
-#define COLOR_NEEDLE     TFT_YELLOW
+#define COLOR_BACKGROUND TFT_BLACK
+#define COLOR_NEEDLE     TFT_WHITE
 #define COLOR_TRANSP     TFT_PINK
-
+#define COLOR_TEST       TFT_RED
 
 #include <TFT_eSPI.h>
 TFT_eSPI tft = TFT_eSPI();
-TFT_eSprite needleFront = TFT_eSprite(&tft); // Sprite object for needle
-TFT_eSprite needle      = TFT_eSprite(&tft); // Sprite object for needle
-TFT_eSprite needleLeft  = TFT_eSprite(&tft); // Sprite object for clearing left side of needle
-TFT_eSprite needleRight = TFT_eSprite(&tft); // Sprite object for clearing right side of needle
+TFT_eSprite needle       = TFT_eSprite(&tft); // Sprite object for needle
+TFT_eSprite needleAxis   = TFT_eSprite(&tft); // Sprite object for centre Axis
+TFT_eSprite needleClear1 = TFT_eSprite(&tft); // Sprite object for clearing left side of needle
+TFT_eSprite needleClear2 = TFT_eSprite(&tft); // Sprite object for clearing right side of needle
+TFT_eSprite needleClear3 = TFT_eSprite(&tft); // Sprite object for clearing right side of needle
+TFT_eSprite needleClear4 = TFT_eSprite(&tft); // Sprite object for clearing right side of needle
+TFT_eSprite needleExtra  = TFT_eSprite(&tft); // Sprite object for clearing right side of needle
 
 // Angles
 int16_t angleBack[6];      // Angle of back needle
-int16_t angleBackPrev[6];  // previous
 int16_t angleFront[6];     
-int16_t angleFrontPrev[6]; 
 
 // timing
 unsigned long myTime;
@@ -77,37 +78,171 @@ int cnt;
 // =======================================================================================
 // Create the needle Sprite
 // =======================================================================================
-void createNeedleFront(void){
-
-
-}
-
-void createNeedleFront(void)
-{
-  needleFront.setColorDepth(COLOR_BITS_PER_PIXEL);
-  needleFront.createSprite(NEEDLE_WIDTH + (2 * SPRITE_MARGIN), NEEDLE_LENGTH + NEEDLE_WIDTH );  // create the needle Sprite
+void createNeedle(void) {
+  needle.setColorDepth(COLOR_BITS_PER_PIXEL);
+  needle.createSprite(NEEDLE_WIDTH , NEEDLE_LENGTH );  // create the needle Sprite
 
   // Define needle pivot point relative to top left corner of Sprite
-  needleFront.setPivot(NEEDLE_RADIUS + SPRITE_MARGIN, NEEDLE_RADIUS);     // Set pivot point in this Sprite
+  needle.setPivot(NEEDLE_RADIUS, 0);     // Set pivot point in this Sprite
 
-  needleFront.fillSprite(COLOR_BACKGROUND); 
+  needle.fillSprite(COLOR_NEEDLE); 
 
-  // Draw the needle in the Sprite
-  needleFront.fillRect(SPRITE_MARGIN, NEEDLE_RADIUS, NEEDLE_WIDTH, NEEDLE_LENGTH, COLOR_NEEDLE);
-  needleFront.fillCircle( NEEDLE_RADIUS + SPRITE_MARGIN, NEEDLE_RADIUS, NEEDLE_RADIUS, COLOR_NEEDLE);                //centre
-  needleFront.fillCircle( NEEDLE_RADIUS + SPRITE_MARGIN, NEEDLE_LENGTH + NEEDLE_RADIUS, NEEDLE_RADIUS, COLOR_NEEDLE); //end
+  // Punch circle hole
+  needle.fillCircle( NEEDLE_RADIUS, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
 }
 
-void plotNeedle(int16_t angleBack, int16_t angleBackPrev, int16_t angleFront, int16_t angleFrontPrev, uint8_t cs_pin) {
+void createAxis() {
+  needleAxis.setColorDepth(COLOR_BITS_PER_PIXEL);
+  needleAxis.createSprite( NEEDLE_WIDTH , NEEDLE_WIDTH );  // create the Axis Sprite
+
+  // Define needle pivot point relative to top left corner of Sprite
+  needleAxis.setPivot(NEEDLE_RADIUS, NEEDLE_RADIUS);     // Set pivot point in this Sprite
+
+  needleAxis.fillSprite(COLOR_BACKGROUND); 
+
+  // Draw the Axis in the Sprite
+  needleAxis.fillCircle(NEEDLE_RADIUS, NEEDLE_RADIUS, NEEDLE_RADIUS, COLOR_NEEDLE);
+
+}
+
+void createClear1() {
+  needleClear1.setColorDepth(COLOR_BITS_PER_PIXEL);
+  needleClear1.createSprite( NEEDLE_CLEAR1 , NEEDLE_LENGTH );  // create the Clearing Sprite
+
+  // Define needle pivot point relative to top left corner of Sprite
+  needleClear1.setPivot( NEEDLE_CLEAR1 - NEEDLE_RADIUS, 0);     // Set pivot point in this Sprite
+
+  needleClear1.fillSprite(COLOR_NEEDLE);
+
+  // Draw part to be deleted
+  //needleClear1.drawLine(0, 0, NEEDLE_CLEAR1, NEEDLE_LENGTH, COLOR_NEEDLE);
+  needleClear1.fillTriangle( NEEDLE_CLEAR1, 0, 0, NEEDLE_LENGTH, NEEDLE_CLEAR1, NEEDLE_LENGTH, COLOR_BACKGROUND);
+  // Punch circle hole
+  needleClear1.fillCircle( 0, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
+}
+
+void createClear2() {
+  needleClear2.setColorDepth(COLOR_BITS_PER_PIXEL);
+  needleClear2.createSprite( NEEDLE_CLEAR2 , NEEDLE_LENGTH );  // create the Clearing Sprite
+
+  // Define needle pivot point relative to top left corner of Sprite
+  needleClear2.setPivot( NEEDLE_CLEAR2 - NEEDLE_RADIUS, 0);     // Set pivot point in this Sprite
+
+  needleClear2.fillSprite(COLOR_NEEDLE);
+
+  // Draw part to be deleted
+  //needleClear2.drawLine(0, 0, NEEDLE_CLEAR2, NEEDLE_LENGTH, COLOR_NEEDLE);
+  needleClear2.fillTriangle( NEEDLE_CLEAR2, 0, 0, NEEDLE_LENGTH, NEEDLE_CLEAR2, NEEDLE_LENGTH, COLOR_BACKGROUND);
+  // Punch circle hole
+  needleClear2.fillCircle( 0, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
+}
+
+void createClear3() {
+  needleClear3.setColorDepth(COLOR_BITS_PER_PIXEL);
+  needleClear3.createSprite( NEEDLE_CLEAR3 , NEEDLE_LENGTH );  // create the Clearing Sprite
+
+  // Define needle pivot point relative to top left corner of Sprite
+  needleClear3.setPivot( NEEDLE_CLEAR3 - NEEDLE_RADIUS, 0);     // Set pivot point in this Sprite
+
+  needleClear3.fillSprite(COLOR_NEEDLE);
+
+  // Draw part to be deleted
+  //needleClear3.drawLine(0, 0, NEEDLE_CLEAR3, NEEDLE_LENGTH, COLOR_NEEDLE);
+  needleClear3.fillTriangle( NEEDLE_CLEAR3, 0, 0, NEEDLE_LENGTH, NEEDLE_CLEAR3, NEEDLE_LENGTH, COLOR_BACKGROUND);
+  // Punch circle hole
+  needleClear3.fillCircle( 0, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
+}
+
+void createClear4() {
+  needleClear4.setColorDepth(COLOR_BITS_PER_PIXEL);
+  needleClear4.createSprite( NEEDLE_CLEAR4 , NEEDLE_LENGTH );  // create the Clearing Sprite
+
+  // Define needle pivot point relative to top left corner of Sprite
+  needleClear4.setPivot( NEEDLE_CLEAR4 - NEEDLE_RADIUS, 0);     // Set pivot point in this Sprite
+
+  needleClear4.fillSprite(COLOR_NEEDLE);
+
+  // Draw part to be deleted
+  //needleClear4.drawLine(0, 0, NEEDLE_CLEAR4, NEEDLE_LENGTH, COLOR_NEEDLE);
+  needleClear4.fillTriangle( NEEDLE_CLEAR4, 0, 0, NEEDLE_LENGTH, NEEDLE_CLEAR4, NEEDLE_LENGTH, COLOR_BACKGROUND);
+  // Punch circle hole
+  needleClear4.fillCircle( 0, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
+}
+
+void createExtra() {
+  needleExtra.setColorDepth(COLOR_BITS_PER_PIXEL);
+  needleExtra.createSprite( NEEDLE_EXTRA , NEEDLE_LENGTH );  // create the Clearing Sprite
+
+  // Define needle pivot point relative to top left corner of Sprite
+  needleExtra.setPivot( - NEEDLE_RADIUS, 0);     // Set pivot point in this Sprite
+
+  needleExtra.fillSprite(COLOR_BACKGROUND);
+}
+
+void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int16_t MovementFront, uint8_t cs_pin) {
+  int16_t angle;
   // Pull cs_pin low to write to screen
   digitalWrite( cs_pin, LOW);
-  needleFront.pushRotated( angleBack, COLOR_TRANSP);       //nothing transparant
-  needleFront.pushRotated( angleFront, COLOR_BACKGROUND);  //background transparant
+
+  //clear trail back
+  switch (movementBack)
+  {
+  case 1:
+    needleClear1.pushRotated( angleBack, COLOR_TRANSP);
+    break;
+  case 2:
+    needleClear2.pushRotated( angleBack, COLOR_TRANSP);
+    break;
+  case 3:
+    needleClear3.pushRotated( angleBack, COLOR_TRANSP);
+    break;
+  case 4:
+    needleClear4.pushRotated( angleBack, COLOR_TRANSP);
+    break;
+ 
+  default:
+    break;
+  }
+  needleExtra.pushRotated(angleBack, COLOR_TRANSP);
+  angle = angleBack + movementBack;
+
+  needle.pushRotated( angle, COLOR_TRANSP);       //nothing transparant
+
+  //clear trail front
+  switch (MovementFront)
+  {
+  case 1:
+    needleClear1.pushRotated( angleFront, COLOR_TRANSP);
+    break;
+  case 2:
+    needleClear2.pushRotated( angleFront, COLOR_TRANSP);
+    break;
+  case 3:
+    needleClear3.pushRotated( angleFront, COLOR_TRANSP);
+    break;
+  case 4:
+    needleClear4.pushRotated( angleFront, COLOR_TRANSP);
+    break;
+ 
+  default:
+    break;
+  }
+  needleExtra.pushRotated(angleFront, COLOR_TRANSP);
+  angle = angleFront + MovementFront;
+
+  needle.pushRotated( angle, COLOR_BACKGROUND);       //background transparant
   // Pull cs_pin low to end write to screen
-  //delay(1000);
   digitalWrite( cs_pin, HIGH);
 }
 
+void plotTest(int16_t angle, uint8_t cs_pin){
+  digitalWrite( cs_pin, LOW);
+  needleExtra.pushRotated( angle, TFT_TRANSPARENT);
+  delay(1000);
+  needleClear4.pushRotated( angle, TFT_TRANSPARENT);
+  digitalWrite( cs_pin, HIGH);
+  delay(1000);
+}
 
 // =======================================================================================
 // Setup
@@ -116,24 +251,32 @@ void setup()   {
   Serial.begin(115200); // Debug only
   Serial.println("Setup begonnen");
   tft.begin();
-  tft.setRotation(1);       // 0 1 2 3 : rotate 90°
-  tft.fillScreen(TFT_RED);
+  tft.setRotation(3);       // 0 1 2 3 : rotate 90°
+  tft.fillScreen(COLOR_TEST);
 
   // Define where the needle pivot point is on the TFT before
   // creating the needle so boundary calculation is correct
   tft.setPivot(DIAL_CENTRE, DIAL_CENTRE);
 
   // Create the needle Sprite
-  createNeedleFront();
-
+  createNeedle();
+  createAxis();
+  createClear1();
+  createClear2();
+  createClear3();
+  createClear4();
+  createExtra();
 
   // Reset needle position to 0
   for (int i = 0; i <= 5; i++ ) {
     pinMode( tft_cs[i], OUTPUT);   // Chip Select is active low.
+    
+    digitalWrite( tft_cs[i], LOW);
+    needleAxis.pushRotated( 90, COLOR_TRANSP);
+    digitalWrite( tft_cs[i], HIGH);
+
     angleBack[i]  = random(359); // random speed in range 0 to 360
     angleFront[i] = random(359); // random speed in range 0 to 360
-    angleFrontPrev[i] = angleFront[i];
-    angleBackPrev[i]  = angleBack[i];
   }
 
   myTime = millis();
@@ -150,11 +293,10 @@ void loop() {
   
   // Plot needle at random angle 
   for (int i = 0; i <= 5; i++ ) {
-//    plotNeedle(angleBack[i], angleFront[i], angleBackPrev[i], angleFrontPrev[i], tft_cs[i]);
-    plotNeedle(angleBack[i], angleBackPrev[i], angleFront[i], angleFrontPrev[i], tft_cs[i]);
-    angleBackPrev[i] = angleBack[i];
-    angleFrontPrev[i] = angleFront[i];
-//    angleBack[i] = angleBack[i] + 2;
+//    plotTest(0, tft_cs[i]);
+//  plotTest(90, tft_cs[i]);
+    plotNeedle(angleBack[i], 3, angleBack[i], 3, tft_cs[i]);
+    angleBack[i] = angleBack[i] + 4;
     angleFront[i] = angleFront[i] + 2;
 
   }
@@ -171,10 +313,6 @@ void loop() {
     Serial.print(cnt * 1000/ myTimeRef);
     Serial.println("fps");
     tft.fillScreen(COLOR_BACKGROUND);
-    for (int i = 0; i <= 5; i++ ) {
-      angleBackPrev[i] = angleBack[i];
-      angleFrontPrev[i] = angleFront[i];
-  }
 
     myTime = millis();
     cnt = 0;
