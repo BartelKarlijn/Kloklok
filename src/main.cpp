@@ -28,13 +28,18 @@
 //#define TFT_RST  4  // Reset pin (could connect to Arduino RESET pin)
 //#define TFT_BL   32 // LED back-light
 
-#define TFT0_CS       22    //Chip Select pin tftx
 #define TFT1_CS       17    //Chip Select pin tftx
 #define TFT2_CS       19    //Chip Select pin tftx
 #define TFT3_CS       21    //Chip Select pin tftx
+#define TFT0_CS       22    //Chip Select pin tftx
 #define TFT4_CS       25    //Chip Select pin tftx
 #define TFT5_CS       26    //Chip Select pin tftx
+#define TFT__BL       27    //Backlight
 uint8_t tft_cs[6] = {TFT0_CS, TFT1_CS, TFT2_CS, TFT3_CS, TFT4_CS, TFT5_CS };
+
+#define PWMFreq 5000
+#define PWMChannel 0
+#define PWMResolution 8
 
 #define DIAL_CENTRE   120
 #define NEEDLE_RADIUS  16                // diameter of needle
@@ -73,6 +78,7 @@ unsigned long myTime;
 int cnt;
 int16_t moveFront;
 int16_t moveBack;
+int backlight;
 
 
 // =======================================================================================
@@ -234,6 +240,12 @@ void setup()   {
     angleFront[i] = random(359); // random speed in range 0 to 360
   }
 
+  // Backlight
+  backlight = 50;
+  ledcSetup(PWMChannel, PWMFreq, PWMResolution);
+  ledcAttachPin(TFT__BL, PWMChannel);
+  ledcWrite(PWMChannel, backlight);
+
   myTime = millis();
   Serial.println("Setup gedaan");
 
@@ -256,7 +268,7 @@ void loop() {
   // timing
   cnt++;
   //Serial.println(cnt);
-  if ( cnt >= 360 ) {
+  if ( cnt >= 90 ) {
     myTimeRef = millis() - myTime;
     Serial.print(cnt);
     Serial.print(" screens in ");
@@ -266,6 +278,14 @@ void loop() {
     Serial.println("fps");
     tft.fillScreen(COLOR_BACKGROUND);
     moveFront++;
+    backlight = backlight + 50;
+    if (backlight > 250) {
+      backlight = 0;
+      ledcWrite(PWMChannel, backlight);
+      }
+    Serial.print("Backlight ");
+    Serial.println(backlight);
+
     if (moveFront >= 5) { 
       moveFront = 1; 
       moveBack++;
