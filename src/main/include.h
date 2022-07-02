@@ -11,5 +11,8 @@
 // Own subroutines
 #include <main/setupSerial.h>
 #include <main/setupIntled.h>
-#include <sprites/createClear.h>
-#include <sprites/plotneedle.h>
+#include <tft/setupTft.h>
+#include <tft/createClear.h>
+#include <tft/createNeelde.h>
+#include <tft/createAxis.h>
+#include <tft/plotneedle.h>

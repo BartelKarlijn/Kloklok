@@ -3,62 +3,15 @@
 // Created by Bodmer 17/3/20 as an example to the TFT_eSPI library:
 // https://github.com/Bodmer/TFT_eSPI
 
-
-// =======================================================================================
-// Create the needle Sprite
-// =======================================================================================
-void createNeedle(void) {
-  needle.setColorDepth(COLOR_BITS_PER_PIXEL);
-  needle.createSprite(NEEDLE_WIDTH , NEEDLE_LENGTH );  // create the needle Sprite
-
-  // Define needle pivot point relative to top left corner of Sprite
-  needle.setPivot(NEEDLE_RADIUS, 0);     // Set pivot point in this Sprite
-
-  needle.fillSprite(COLOR_NEEDLE); 
-
-  // Punch circle hole
-  needle.fillCircle( NEEDLE_RADIUS, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
-}
-
-void createAxis() {
-  needleAxis.setColorDepth(COLOR_BITS_PER_PIXEL);
-  needleAxis.createSprite( NEEDLE_WIDTH , NEEDLE_WIDTH );  // create the Axis Sprite
-
-  // Define needle pivot point relative to top left corner of Sprite
-  needleAxis.setPivot(NEEDLE_RADIUS, NEEDLE_RADIUS);     // Set pivot point in this Sprite
-
-  needleAxis.fillSprite(COLOR_BACKGROUND); 
-
-  // Draw the Axis in the Sprite
-  needleAxis.fillCircle(NEEDLE_RADIUS, NEEDLE_RADIUS, NEEDLE_RADIUS, COLOR_NEEDLE);
-
-}
-
-
-
-
-void plotTest(int16_t angle, uint8_t cs_pin){
-  digitalWrite( cs_pin, LOW);
-  delay(1000);
-  digitalWrite( cs_pin, HIGH);
-  delay(1000);
-}
-
 // =======================================================================================
 // Setup
 // =======================================================================================
 void setup()   {
-  Serial.begin(115200); // Debug only
-  Serial.println("Setup begonnen");
-  tft.begin();
-  tft.setRotation(3);       // 0 1 2 3 : rotate 90°
-  tft.fillScreen(COLOR_TEST);
+  setupSerial();
+  setupIntledStart();
+  setupTft();
 
-  // Define where the needle pivot point is on the TFT before
-  // creating the needle so boundary calculation is correct
-  tft.setPivot(SCREEN_CENTER, SCREEN_CENTER);
-
-  // Create the needle Sprite
+  // Create the Sprites
   createNeedle();
   createAxis();
   createClear1();
