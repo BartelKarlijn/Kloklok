@@ -40,6 +40,13 @@
 #define NEEDLE_CLEAR3 7   // area of needle to clear
 #define NEEDLE_CLEAR4 9   // area of needle to clear
 
+///////////////// Screen Orientation  //////////////////////////////
+#define UP    0
+#define DOWN  2
+#define LEFT  3
+#define RIGHT 4
+#define TFT_ORIENTATION UP  // the same for all 6 screens as we're using only 1 tft object
+
 ///////////////// Colors  //////////////////////////////
 #define COLOR_BITS_PER_PIXEL 16     //16 appeared to be the most performant
 #define COLOR_BACKGROUND TFT_BLACK
