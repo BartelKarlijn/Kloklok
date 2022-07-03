@@ -21,7 +21,7 @@
 #define TFT4_CS       25    //Chip Select pin tftx
 #define TFT5_CS       26    //Chip Select pin tftx
 #define TFT__BL       27    //Backlight
-#define LED_PIN        2    //Internal LED
+#define LED_PIN        2    //Internal LED and backlight
 
 ///////////////// TFT backlight  //////////////////////////////
 #define PWMFreq 5000

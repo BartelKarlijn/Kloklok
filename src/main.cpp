@@ -3,6 +3,13 @@
 // Created by Bodmer 17/3/20 as an example to the TFT_eSPI library:
 // https://github.com/Bodmer/TFT_eSPI
 
+void plottest() {
+  for (int i = 0; i <= 5; i++ ) {
+    digitalWrite( tft_cs[i], LOW);
+    needle.pushRotated( 90, COLOR_BACKGROUND);       //background transparant
+  }
+}
+
 // =======================================================================================
 // Setup
 // =======================================================================================
@@ -25,13 +32,13 @@ void setup()   {
 
   // Backlight
   backlight = 50;
+//  digitalWrite(TFT__BL, HIGH);
   ledcSetup(PWMChannel, PWMFreq, PWMResolution);
   ledcAttachPin(TFT__BL, PWMChannel);
   ledcWrite(PWMChannel, backlight);
 
   myTime = millis();
-  Serial.println("Setup gedaan");
-
+  setupIntledAllOK();
 }
 
 // =======================================================================================
@@ -42,9 +49,12 @@ void loop() {
   
   // Plot needle at random angle 
   for (int i = 0; i <= 5; i++ ) {
-    plotNeedle(angleBack[i], moveBack, angleFront[i], moveFront, tft_cs[i]);
+    plottest();
+    //plotNeedle(angleBack[i], moveBack, angleFront[i], moveFront, tft_cs[i]);
     angleBack[i] = angleBack[i] + moveBack;
+    if (angleBack[i] >= 360) {angleBack[i] = 0; }
     angleFront[i] = angleFront[i] + moveFront;
+    if (angleFront[i] >= 360) {angleFront[i] = 0; }
   }
 
   // timing
@@ -61,9 +71,9 @@ void loop() {
     tft.fillScreen(COLOR_BACKGROUND);
     moveFront++;
     backlight = backlight + 50;
-    if (backlight > 250) {
+    if (backlight > 255) {
       backlight = 0;
-      ledcWrite(PWMChannel, backlight);
+//      ledcWrite(PWMChannel, backlight);
       }
     Serial.print("Backlight ");
     Serial.println(backlight);
