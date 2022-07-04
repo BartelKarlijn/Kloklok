@@ -6,8 +6,9 @@
 void plottest() {
   for (int i = 0; i <= 5; i++ ) {
     digitalWrite( tft_cs[i], LOW);
-    needle.pushRotated( 90, COLOR_BACKGROUND);       //background transparant
-  }
+    needle.pushRotated( 90, COLOR_TRANSP);
+    digitalWrite( tft_cs[i], HIGH);
+}
 }
 
 // =======================================================================================
@@ -32,10 +33,11 @@ void setup()   {
 
   // Backlight
   backlight = 50;
-//  digitalWrite(TFT__BL, HIGH);
-  ledcSetup(PWMChannel, PWMFreq, PWMResolution);
-  ledcAttachPin(TFT__BL, PWMChannel);
-  ledcWrite(PWMChannel, backlight);
+  pinMode(TFT__BL, OUTPUT);
+  digitalWrite(TFT__BL, HIGH);
+  //ledcSetup(PWMChannel, PWMFreq, PWMResolution);
+  //ledcAttachPin(TFT__BL, PWMChannel);
+  //ledcWrite(PWMChannel, backlight);
 
   myTime = millis();
   setupIntledAllOK();
