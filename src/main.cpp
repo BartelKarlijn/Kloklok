@@ -16,7 +16,6 @@ void plottest() {
 // =======================================================================================
 void setup()   {
   setupSerial();
-  setupIntledStart();
 
   // Create the Sprites
   createNeedle();
@@ -40,7 +39,7 @@ void setup()   {
   //ledcWrite(PWMChannel, backlight);
 
   myTime = millis();
-  setupIntledAllOK();
+  SetupFinished();
 }
 
 // =======================================================================================

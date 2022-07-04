@@ -10,7 +10,6 @@
 
 // Own subroutines
 #include <main/setupSerial.h>
-#include <main/setupIntled.h>
 #include <tft/setupTft.h>
 #include <tft/createClear.h>
 #include <tft/createNeelde.h>
