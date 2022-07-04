@@ -8,20 +8,27 @@
 
 ///////////////// Pins  //////////////////////////////
 // already used in user_setup.h:
-//#define TFT_MOSI 23 // In some display driver board, it might be written as "SDA" and so on.
-//#define TFT_SCLK 18
-//#define TFT_DC   16 // Data Command control pin
-//#define TFT_RST  4  // Reset pin (could connect to Arduino RESET pin)
-//#define TFT_BL   32 // LED back-light
+// Default pinmapping for SPI = MOSI gpio23, MISO gpio19, CLK gpio18, CS gpio5 (but this we're doing ourselves)
 
-#define TFT1_CS       17    //Chip Select pin tftx
-#define TFT2_CS       19    //Chip Select pin tftx
-#define TFT3_CS       21    //Chip Select pin tftx
-#define TFT0_CS       22    //Chip Select pin tftx
-#define TFT4_CS       25    //Chip Select pin tftx
-#define TFT5_CS       26    //Chip Select pin tftx
-#define TFT__BL       27    //Backlight
-#define LED_PIN        2    //Internal LED and backlight
+/*   part below is copied from User_Setup.h
+#define GC9A01_DRIVER
+#define TFT_SDA_READ
+#define TFT_MOSI 23 // In some display driver board, it might be written as "SDA" and so on.
+//#define TFT_MISO 19  // On our module, there is no MISO or "SDI"
+#define TFT_SCLK 18
+//#define TFT_CS   5 // Chip select control pin
+#define TFT_DC   21 // Data Command control pin
+#define TFT_RST  22 // Reset pin (could connect to Arduino RESET pin)
+#define SPI_FREQUENCY  40000000
+*/
+#define TFT__BL       19    //Backlight
+
+#define TFT0_CS       32    //Chip Select pin tftx
+#define TFT1_CS       33    //Chip Select pin tftx
+#define TFT2_CS       25    //Chip Select pin tftx
+#define TFT3_CS       26    //Chip Select pin tftx
+#define TFT4_CS       27    //Chip Select pin tftx
+#define TFT5_CS       16    //Chip Select pin tftx
 
 ///////////////// TFT backlight  //////////////////////////////
 #define PWMFreq 5000

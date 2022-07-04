@@ -5,3 +5,7 @@ void setupSerial () {
   Serial.print("Setup running on core: ");
   Serial.println(xPortGetCoreID());
 }
+
+void SetupFinished() {
+  Serial.println("All started up correctly");
+}
