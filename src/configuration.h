@@ -13,28 +13,29 @@
 /*   part below is copied from User_Setup.h
 #define GC9A01_DRIVER
 #define TFT_SDA_READ
-#define TFT_MOSI 23 // In some display driver board, it might be written as "SDA" and so on.
-//#define TFT_MISO 19  // On our module, there is no MISO or "SDI"
-#define TFT_SCLK 18
-//#define TFT_CS   5 // Chip select control pin
-#define TFT_DC   21 // Data Command control pin
-#define TFT_RST  22 // Reset pin (could connect to Arduino RESET pin)
+#define TFT_MOSI   23 // In some display driver board, it might be written as "SDA" and so on.
+//#define TFT_MISO 19 // On our module, there is no MISO or "SDI"
+#define TFT_SCLK   18
+//#define TFT_CS    5 // Chip select control pin
+#define TFT_DC     21 // Data Command control pin
+#define TFT_RST    22 // Reset pin (could connect to Arduino RESET pin)
 #define SPI_FREQUENCY  40000000
 */
-#define TFT__BL       19    //Backlight
+#define TFT__BL    19    //Backlight
 
-#define TFT0_CS       32    //Chip Select pin tftx
-#define TFT1_CS       33    //Chip Select pin tftx
-#define TFT2_CS       25    //Chip Select pin tftx
-#define TFT3_CS       26    //Chip Select pin tftx
-#define TFT4_CS       27    //Chip Select pin tftx
-#define TFT5_CS       16    //Chip Select pin tftx
+#define TFT0_CS    32    //Chip Select pin tftx
+#define TFT1_CS    33    //Chip Select pin tftx
+#define TFT2_CS    25    //Chip Select pin tftx
+#define TFT3_CS    26    //Chip Select pin tftx
+#define TFT4_CS    27    //Chip Select pin tftx
+#define TFT5_CS    13    //Chip Select pin tftx
 
 ///////////////// TFT backlight  //////////////////////////////
-#define PWMFreq 5000
-#define PWMChannel 0
-#define PWMResolution 8
-#define LEDSTARTBLINK 4  // How many blinks at start?
+#define PWMFreq    5000
+#define PWMChannel    0
+#define PWMResolution 8  // 8bit = 25
+#define BACKLIGHT   255  // brightness 0-255
+#define BACKL_BLINK   5  // nr of times the BL blinks at startup
 
 ///////////////// TFT objects  //////////////////////////////
 #define SCREEN_CENTER 120                // center of screen
