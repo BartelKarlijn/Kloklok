@@ -67,59 +67,51 @@ void setup_AsyncWebserver(){
     switch (IDknop) {
     //Kp
     case id_Kpdo:
-      Kp = buttonChangeUp(Kp, -Kp_change, "Kp");
+//      Kp = buttonChangeUp(Kp, -Kp_change, "Kp");
       break;
     case id_Kpup:
-      Kp = buttonChangeUp(Kp, +Kp_change, "Kp");
+//      Kp = buttonChangeUp(Kp, +Kp_change, "Kp");
       break;
     case id_Kpra:
-      Kp_change = buttonChangeStep(Kp_change, "Kp step");
+//      Kp_change = buttonChangeStep(Kp_change, "Kp step");
       break;
     //Ki
     case id_Kido:
-      Ki = buttonChangeUp(Ki, -Ki_change, "Ki");
+//      Ki = buttonChangeUp(Ki, -Ki_change, "Ki");
       break;
     case id_Kiup:
-      Ki = buttonChangeUp(Ki, +Ki_change, "Ki");
+//      Ki = buttonChangeUp(Ki, +Ki_change, "Ki");
       break;
     case id_Kira:
-      Ki_change = buttonChangeStep(Ki_change, "Ki step");
+//      Ki_change = buttonChangeStep(Ki_change, "Ki step");
       break;
     //Kd
     case id_Kddo:
-      Kd = buttonChangeUp(Kd, -Kd_change, "Kd");
+//      Kd = buttonChangeUp(Kd, -Kd_change, "Kd");
       break;
     case id_Kdup:
-      Kd = buttonChangeUp(Kd, +Kd_change, "Kd");
+//      Kd = buttonChangeUp(Kd, +Kd_change, "Kd");
       break;
     case id_Kdra:
-      Kd_change = buttonChangeStep(Kd_change, "Kd step");
+//      Kd_change = buttonChangeStep(Kd_change, "Kd step");
       break;
     //An
     case id_Ando:
-      selfBalanceAngleSetpoint = buttonChangeUp(selfBalanceAngleSetpoint, -An_change, "Angle");
+//      selfBalanceAngleSetpoint = buttonChangeUp(selfBalanceAngleSetpoint, -An_change, "Angle");
       break;
     case id_Anup:
-      selfBalanceAngleSetpoint = buttonChangeUp(selfBalanceAngleSetpoint, +An_change, "Angle");
+//      selfBalanceAngleSetpoint = buttonChangeUp(selfBalanceAngleSetpoint, +An_change, "Angle");
       break;
     case id_Anra:
-      An_change = buttonChangeStep(An_change, "Angle step");
-      break;
-    //Gemeten hoek
-    case id_ShowAngle:
-      buttonChangeAngle();
-      break;
-    //Motor aan of uit zetten
-    case id_MotorENA:
-      buttonChangeMotorENA();
+//      An_change = buttonChangeStep(An_change, "Angle step");
       break;
     //Save PID
     case id_SaveConfig:
-      buttonChangeSavePID();
+//      buttonChangeSavePID();
       break;
     //Restart
     case id_Restart:
-      buttonChangeRestart();
+//      buttonChangeRestart();
       break;
 
     default:

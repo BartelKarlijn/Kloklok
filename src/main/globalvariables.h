@@ -30,6 +30,9 @@ int cnt;
 //////////////// LED ///////////////////////
 boolean startupError;
 
+//////// Preferences //////////
+Preferences pref_eeprom;
+
 //////// Wifi //////////
 // Create AsyncWebServer object on port 80
 AsyncWebServer webserver(80);
@@ -39,6 +42,7 @@ String wifi_pwd  ;
 String wifi_scan;         //Lijst met scan van wifi netwerken
 const char* PARAM_ssid   = "ssid";     // voor de asyncwebserver
 const char* PARAM_pwd    = "pwd" ;     // voor de asyncwebserver
+const char* PARAM_output = "output";   // voor de asyncwebserver
 
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
