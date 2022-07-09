@@ -40,34 +40,13 @@ void setup_AsyncWebserver(){
 
 
   // Route for root / web page (controller)
-  webserver.on(hdlController, HTTP_GET, [](AsyncWebServerRequest *request) {
+  webserver.on(hdlRoot, HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send_P(200, "text/html", config_html, html_processorController);
   });
 
   // Route for configuration
   webserver.on(hdlConfig, HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send_P(200, "text/html", config_html, html_processorConfig);
-  });
-
-// Verwerk joystick
-  webserver.on(hdlJoystick, HTTP_PUT, [](AsyncWebServerRequest *request) {
-    // PUT request binnen gelezen
-    String IDknopString;
-    if (request->hasParam(PARAM_joyX)) {
-      IDknopString = request->getParam(PARAM_joyX)->value();
-      joystickX = IDknopString.toInt();
-    }
-    else {
-      joystickX = 0;
-    }
-    if (request->hasParam(PARAM_joyY)) {
-      IDknopString = request->getParam(PARAM_joyY)->value();
-      joystickY = IDknopString.toInt();
-    }
-    else {
-      joystickY = 0;
-    }
-    request->send(200, "text/plain", "OK");
   });
 
   // Verwerk als er op een knop wordt gedrukt
