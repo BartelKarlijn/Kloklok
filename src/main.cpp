@@ -65,12 +65,12 @@ void loop() {
   //Serial.println(cnt);
   if ( cnt >= 90 ) {
     myTimeRef = millis() - myTime;
-    Serial.print(cnt);
-    Serial.print(" screens in ");
-    Serial.print(myTimeRef);
-    Serial.print(" ms = ");
-    Serial.print(cnt * 1000/ myTimeRef);
-    Serial.println("fps");
+    Print(String(cnt));
+    Print(" screens in ");
+    Print(String(myTimeRef));
+    Print(" ms = ");
+    Print(String( cnt * 1000/ myTimeRef));
+    Println("fps");
     //tft.fillScreen(COLOR_BACKGROUND);
     moveFront++;
     backlight = backlight + 50;
@@ -78,8 +78,8 @@ void loop() {
       backlight = 0;
 //      ledcWrite(PWMChannel, backlight);
       }
-    Serial.print("Backlight ");
-    Serial.println(backlight);
+    Print("Backlight ");
+    Println(String(backlight));
 
     if (moveFront >= 5) { 
       moveFront = 1; 
