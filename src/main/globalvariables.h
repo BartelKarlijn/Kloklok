@@ -30,3 +30,8 @@ int cnt;
 //////////////// LED ///////////////////////
 boolean startupError;
 
+//MovementModes
+#define MOVEMENTMODEMIN 1   // as little movement as possible
+#define MOVEMENTMODEMAX 2   // as much movement as possible
+#define MOVEMENTMODEFUN 3   // balanced
+int8_t movementMode = MOVEMENTMODEFUN;
