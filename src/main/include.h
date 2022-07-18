@@ -7,6 +7,7 @@
 // variables
 #include <configuration.h>
 #include <main/globalvariables.h>
+#include <main/digit.h>
 
 // Own subroutines
 #include <main/setupSerial.h>
