@@ -26,7 +26,6 @@
 #include <main/save_eprom.h>
 //   tft
 #include <tft/setupTft.h>
-#include <tft/createClear.h>
 #include <tft/createNeelde.h>
 #include <tft/createAxis.h>
 #include <tft/plotneedle.h>
