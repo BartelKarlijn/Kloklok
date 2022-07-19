@@ -13,7 +13,7 @@ void createNeedle1(void) {
 
   needle1.fillSprite(COLOR_BACKGROUND); 
   // Keep needle tip 1 pixel inside dial circle to avoid leaving stray pixels
-  needle1.fillRect(0, NEEDLE_CLEAR1, NEEDLE_WIDTH + NEEDLE_CLEAR1, NEEDLE_LENGTH - 1, COLOR_NEEDLE ); 
+  needle1.fillRect(0, NEEDLE_CLEAR1, NEEDLE_LENGTH - 1, NEEDLE_WIDTH + NEEDLE_CLEAR1, COLOR_NEEDLE ); 
 
   // Punch circle hole
   //needle1.fillCircle( NEEDLE_RADIUS, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
@@ -29,7 +29,7 @@ void createNeedle2(void) {
 
   needle2.fillSprite(COLOR_BACKGROUND); 
   // Keep needle tip 1 pixel inside dial circle to avoid leaving stray pixels
-  needle2.fillRect(0, NEEDLE_CLEAR2, NEEDLE_WIDTH + NEEDLE_CLEAR2, NEEDLE_LENGTH - 1, COLOR_NEEDLE ); 
+  needle2.fillRect(0, NEEDLE_CLEAR2, NEEDLE_LENGTH - 1, NEEDLE_WIDTH + NEEDLE_CLEAR2, COLOR_NEEDLE ); 
 
   // Punch circle hole
   //needle2.fillCircle( NEEDLE_RADIUS, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
@@ -45,7 +45,7 @@ void createNeedle3(void) {
 
   needle3.fillSprite(COLOR_BACKGROUND); 
   // Keep needle tip 1 pixel inside dial circle to avoid leaving stray pixels
-  needle3.fillRect(0, NEEDLE_CLEAR3, NEEDLE_WIDTH + NEEDLE_CLEAR3, NEEDLE_LENGTH - 1, COLOR_NEEDLE ); 
+  needle3.fillRect(0, NEEDLE_CLEAR3, NEEDLE_LENGTH - 1, NEEDLE_WIDTH + NEEDLE_CLEAR3, COLOR_NEEDLE ); 
 
   // Punch circle hole
   //needle3.fillCircle( NEEDLE_RADIUS, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
@@ -61,7 +61,7 @@ void createNeedle4(void) {
 
   needle4.fillSprite(COLOR_BACKGROUND); 
   // Keep needle tip 1 pixel inside dial circle to avoid leaving stray pixels
-  needle4.fillRect(0, NEEDLE_CLEAR4, NEEDLE_WIDTH + NEEDLE_CLEAR4, NEEDLE_LENGTH - 1, COLOR_NEEDLE ); 
+  needle4.fillRect(0, NEEDLE_CLEAR4, NEEDLE_LENGTH - 1, NEEDLE_WIDTH + NEEDLE_CLEAR4, COLOR_NEEDLE ); 
 
   // Punch circle hole
   //needle4.fillCircle( NEEDLE_RADIUS, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
