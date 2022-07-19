@@ -46,6 +46,7 @@ void loop() {
     angleFront[i] = angleFront[i] + moveFront;
     if (angleFront[i] >= 360) {angleFront[i] = 0; }
   }
+  delay(1);
 
   // timing
   cnt++;
