@@ -17,6 +17,10 @@ void setup()   {
   setup_CreateAccessPoint(); // Toch eigen AccessPoint opzetten als gekende wifi niet gelukt.
 
   // Create the Sprites
+//  needle1 = createNeedle( NEEDLE_CLEAR1 );
+//  needle2 = createNeedle( NEEDLE_CLEAR2 );
+//  needle3 = createNeedle( NEEDLE_CLEAR3 );
+//  needle4 = createNeedle( NEEDLE_CLEAR4 );
   createNeedle1();
   createNeedle2();
   createNeedle3();
@@ -25,8 +29,8 @@ void setup()   {
   // tft
   setupTft();
 
-  moveFront = 4;
-  moveBack  = 2;
+  moveFront = 1;
+  moveBack  = 1;
 
   myTime = millis();
   SetupFinished();
