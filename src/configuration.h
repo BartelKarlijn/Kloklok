@@ -61,3 +61,6 @@
 #define COLOR_NEEDLE     TFT_WHITE
 #define COLOR_TRANSP     TFT_PINK
 #define COLOR_TEST       TFT_RED
+
+///////////////// wifi  //////////////////////////////
+#define autoConnectAP "KlokKlok"    //ssid access point voor als je niet aan wifi geraakt
