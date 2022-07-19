@@ -16,7 +16,6 @@ void setup()   {
   setup_AsyncWebserver();    // webserver om html te tonen 
   setup_CreateAccessPoint(); // Toch eigen AccessPoint opzetten als gekende wifi niet gelukt.
 
-
   // Create the Sprites
   createNeedle1();
   createNeedle2();
@@ -59,15 +58,15 @@ void loop() {
     Print(" ms = ");
     Print(String( cnt * 1000/ myTimeRef));
     Println("fps");
-    //tft.fillScreen(COLOR_BACKGROUND);
+    delay(100);
     moveFront++;
-    backlight = backlight + 50;
-    if (backlight > 255) {
-      backlight = 0;
+//    backlight = backlight + 50;
+//    if (backlight > 255) {
+//      backlight = 0;
 //      ledcWrite(PWMChannel, backlight);
-      }
-    Print("Backlight ");
-    Println(String(backlight));
+//      }
+//    Print("Backlight ");
+//    Println(String(backlight));
 
     if (moveFront >= 5) { 
       moveFront = 1; 

@@ -44,4 +44,5 @@ void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int
 
   // Pull cs_pin low to end write to screen
   digitalWrite( cs_pin, HIGH);
+  delay(1);
 }
