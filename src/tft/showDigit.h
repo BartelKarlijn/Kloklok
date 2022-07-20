@@ -3,6 +3,7 @@ void showDigit(int nr ){
   // nr should be 0-9
   for (int i = 0; i <= 5; i++) {
     //Movement is 0
+    needleAxis.pushRotated(90, COLOR_TRANSP);
     plotNeedle( digit[nr][i].angleBack, 0, digit[nr][i].angleFront, 0, tft_cs[i]);
   }
 }
