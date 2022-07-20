@@ -72,4 +72,4 @@ int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
 #define MODE_CLOCKDEMO 2       // 'Demo' clock by rapidly browsing nrs
 #define MODE_DIGITSHOW 3       // Test digits one by one (no movement in between)
 #define MODE_DIGITTEST 4       // Do movement betwen digits
-int8_t ModeOperation = MODE_CHECKFPS;
+int8_t ModeOperation = MODE_DIGITSHOW;
