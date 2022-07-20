@@ -67,23 +67,20 @@ void createNeedle4(void) {
   //needle4.fillCircle( NEEDLE_RADIUS, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
 }
 
-TFT_eSprite createNeedle(uint8_t needleClear) {
-  TFT_eSprite returnNeedle = TFT_eSprite(&tft);
-
-  returnNeedle.setColorDepth(COLOR_BITS_PER_PIXEL);
+/*
+void createNeedle(int *neelde_ptr, int needleClear) {
+  *needle_ptr.setColorDepth(COLOR_BITS_PER_PIXEL);
   // Needles create at 3 oclock point
-  returnNeedle.createSprite(NEEDLE_LENGTH , NEEDLE_WIDTH + needleClear );  // create the needle Sprite
+  *needle_ptr.createSprite(NEEDLE_LENGTH , NEEDLE_WIDTH + needleClear );  // create the needle Sprite
 
   // Define needle pivot point relative to top left corner of Sprite
-  returnNeedle.setPivot(0, NEEDLE_RADIUS + needleClear);     // Set pivot point in this Sprite
+  *needle_ptr.setPivot(0, NEEDLE_RADIUS + needleClear);     // Set pivot point in this Sprite
 
-  returnNeedle.fillSprite(COLOR_BACKGROUND); 
+  *needle_ptr.fillSprite(COLOR_BACKGROUND); 
   // Keep needle tip 0 pixel inside dial circle to avoid leaving stray pixels
-  returnNeedle.fillRect(0, needleClear, NEEDLE_LENGTH, NEEDLE_WIDTH + needleClear, COLOR_NEEDLE ); 
+  *needle_ptr.fillRect(0, needleClear, NEEDLE_LENGTH, NEEDLE_WIDTH + needleClear, COLOR_NEEDLE ); 
 
   // Punch circle hole
   //returnNeedle.fillCircle( NEEDLE_RADIUS, 0, NEEDLE_RADIUS, COLOR_TRANSP); //punch hole in centre
-
-  return returnNeedle;
-  returnNeedle.deleteSprite();
 }
+*/
