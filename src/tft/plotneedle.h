@@ -5,6 +5,9 @@ void plotNeedle(int16_t angleBack, int8_t movementBack, int16_t angleFront, int8
   //clear trail back
   switch (movementBack)
   {
+  case 0:
+    needle1.pushRotated( angleBack, COLOR_TRANSP);
+    break;
   case 1:
     needle1.pushRotated( angleBack, COLOR_TRANSP);
     break;
@@ -19,12 +22,16 @@ void plotNeedle(int16_t angleBack, int8_t movementBack, int16_t angleFront, int8
     break;
  
   default:
+    Print("Impossible movementBack value");
     break;
   }
 
   //clear trail front
   switch (MovementFront)
   {
+  case 0:
+    needle1.pushRotated( angleFront, COLOR_TRANSP);
+    break;
   case 1:
     needle1.pushRotated( angleFront, COLOR_TRANSP);
     break;
@@ -39,6 +46,7 @@ void plotNeedle(int16_t angleBack, int8_t movementBack, int16_t angleFront, int8
     break;
  
   default:
+    Print("Impossible movementFront value");
     break;
   }
 

@@ -47,6 +47,7 @@ void setup()   {
     modeDigitTestSetup();
     break;
   default:
+    Println("Impossible ModeOperation in setup");
     break;
   }
   SetupFinished();
@@ -74,7 +75,7 @@ void loop() {
     modeDigitTestLoop();
     break;
   default:
+    Println("Impossible ModeOperation in loop");
     break;
   }
-
 }

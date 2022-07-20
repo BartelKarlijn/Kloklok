@@ -90,6 +90,7 @@ void calculateMovement(int nr_from, int nr_to) {
                 angleto2 = angleFrontTo;
             }
         default:
+            Println("Impossible movementMode");
             break;
         }
 
