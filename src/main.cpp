@@ -44,11 +44,11 @@ void loop() {
   
   // Plot needle at random angle 
   for (int i = 0; i <= 5; i++ ) {
-    plotNeedle(angleBack[i], moveBack, angleFront[i], moveFront, tft_cs[i]);
     angleBack[i] = angleBack[i] + moveBack;
     if (angleBack[i] >= 360) {angleBack[i] = 0; }
     angleFront[i] = angleFront[i] + moveFront;
     if (angleFront[i] >= 360) {angleFront[i] = 0; }
+    plotNeedle(angleBack[i], moveBack, angleFront[i], moveFront, tft_cs[i]);
   }
   delay(1);
 
