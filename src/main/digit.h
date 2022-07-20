@@ -1,6 +1,6 @@
 struct clockface {
-  int16_t angleFront;    //smallest angle (0, 90, 180, 225, 270 )
-  int16_t angleBack;     //largest  angle (0, 90, 180, 225, 270 )
+  int16_t angleBack;    //smallest angle (0, 90, 180, 225, 270 )
+  int16_t angleFront;     //largest  angle (0, 90, 180, 225, 270 )
   bool    clear;         //clear if at 225
   bool    extra;         //draw extra needle at 180
 };

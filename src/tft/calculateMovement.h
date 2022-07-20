@@ -17,10 +17,10 @@ void calculateMovement(int nr_from, int nr_to) {
 
     for (int i = 0; i <= 5; i++) {
         // calculate rotation angles
-        angleBackFrom  = digit[nr_from, i]->angleBack;
-        angleFrontFrom = digit[nr_from, i]->angleFront;
-        angleBackTo    = digit[nr_to, i]->angleBack;
-        angleFrontTo   = digit[nr_to, i]->angleFront;
+        angleBackFrom  = digit[nr_from][i].angleBack;
+        angleFrontFrom = digit[nr_from][i].angleFront;
+        angleBackTo    = digit[nr_to][i].angleBack;
+        angleFrontTo   = digit[nr_to][i].angleFront;
 
         // option1
         rotationBack2Back   = calculateRotation(angleBackTo  , angleBackFrom);
