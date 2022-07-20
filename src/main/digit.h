@@ -64,7 +64,7 @@ const clockface digit[10][6] =
 // digit 6
   {
     {  90, 180, false, false},
-    { 180, 270, false, false},
+    { 270, 270, false, false},
     {   0,  90, false, true},
     { 270, 270, false, true},
     {   0,  90, false, false},
@@ -72,7 +72,7 @@ const clockface digit[10][6] =
   },
 // digit 7
   {
-    { 180, 180, false, false},
+    {  90,  90, false, false},
     { 180, 270, false, false},
     { 225, 225, true, false},
     {   0, 180, false, false},
