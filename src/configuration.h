@@ -50,10 +50,11 @@
 
 ///////////////// Screen Orientation  //////////////////////////////
 #define UP    0
-#define DOWN  2
-#define LEFT  3
-#define RIGHT 4
-#define TFT_ORIENTATION UP  // the same for all 6 screens as we're using only 1 tft object
+#define DOWN  90
+#define LEFT  180
+#define RIGHT 270
+#define TFT_ORIENTATION (UP / 90)  // the same for all 6 screens as we're using only 1 tft object
+int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
 
 ///////////////// Colors  //////////////////////////////
 #define COLOR_BITS_PER_PIXEL 16     //16 appeared to be the most performant

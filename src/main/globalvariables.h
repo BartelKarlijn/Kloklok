@@ -15,8 +15,15 @@ TFT_eSprite needleAxis   = TFT_eSprite(&tft); // Sprite object for centre Axis
 #define DIAL_WIDTH    SCREEN_CENTER * 2
 
 // Angles
-int16_t angleBack[6];      // Angle of back needle
-int16_t angleFront[6];     
+// Current angle
+int16_t angleBack[6];      
+int16_t angleFront[6];
+// Movement of next frame.  Even, Uneven: every other framenr we switch between both
+int8_t  moveEvenFront[6];  
+int8_t  moveUnEvFront[6];  
+int8_t  moveEvenBack[6];
+int8_t  moveUnEvBack[6];
+
 // How fast is the movement
 int16_t moveFront;
 int16_t moveBack;
