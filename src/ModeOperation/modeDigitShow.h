@@ -10,6 +10,6 @@ void modeDigitShowLoop(){
     showDigit(nr);
     Print("Showing nr ");
     Println(String(nr));
-    delay(2000);
+    delay(1000);
   }
 }
