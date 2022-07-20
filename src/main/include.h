@@ -29,8 +29,12 @@
 #include <tft/setupTft.h>
 #include <tft/createNeelde.h>
 #include <tft/createAxis.h>
-#include <tft/plotneedle.h>
+#include <tft/plotNeedle.h>
 #include <tft/moveFromTo.h>
+#include <tft/clearScreens.h>
+#include <tft/showDigit.h>
+#include <tft/calculateMovement.h>
+
 //wifi
 #include <wifi\html_buttonSimple.h>  // routine om simpele pushbutton te maken
 #include <wifi\html_buttonUpDown.h>  // routine om PID parameters up/down aan te passen
