@@ -1,7 +1,7 @@
 void modeDigitShowSetup(){
   clearScreens(COLOR_TEST);
-  delay(500);
   Println("TestColor showed");
+  delay(500);
 }
 
 void modeDigitShowLoop(){
