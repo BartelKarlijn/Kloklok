@@ -29,10 +29,26 @@ void setup()   {
   // tft
   setupTft();
 
-  moveFront = 1;
-  moveBack  = 1;
-
-  myTime = millis();
+  switch (ModeOperation)
+  {
+  case MODE_CHECKFPS:
+    modeCheckFpsSetup();
+    break;
+  case MODE_CLOCK:
+    modeClockSetup();
+    break;
+  case MODE_CLOCKDEMO:
+    modeClockDemoSetup();
+    break;
+  case MODE_DIGITSHOW:
+    modeDigitShowSetup();
+    break;
+  case MODE_DIGITTEST:
+    modeDigitTestSetup();
+    break;
+  default:
+    break;
+  }
   SetupFinished();
 }
 
@@ -40,46 +56,25 @@ void setup()   {
 // Loop
 // =======================================================================================
 void loop() {
-  unsigned long myTimeRef;
-  
-  // Plot needle at random angle 
-  for (int i = 0; i <= 5; i++ ) {
-    angleBack[i] = angleBack[i] + moveBack;
-    if (angleBack[i] >= 360) {angleBack[i] = 0; }
-    angleFront[i] = angleFront[i] + moveFront;
-    if (angleFront[i] >= 360) {angleFront[i] = 0; }
-    plotNeedle(angleBack[i], moveBack, angleFront[i], moveFront, tft_cs[i]);
-  }
-  delay(1);
-
-  // timing
-  cnt++;
-  //Serial.println(cnt);
-  if ( cnt >= 90 ) {
-    myTimeRef = millis() - myTime;
-    Print(String(cnt));
-    Print(" screens in ");
-    Print(String(myTimeRef));
-    Print(" ms = ");
-    Print(String( cnt * 1000/ myTimeRef));
-    Println("fps");
-    delay(100);
-    moveFront++;
-//    backlight = backlight + 50;
-//    if (backlight > 255) {
-//      backlight = 0;
-//      ledcWrite(PWMChannel, backlight);
-//      }
-//    Print("Backlight ");
-//    Println(String(backlight));
-
-    if (moveFront >= 5) { 
-      moveFront = 1; 
-      moveBack++;
-      if (moveBack >= 5) { moveBack = 1;}
-    }
-    myTime = millis();
-    cnt = 0;
+  switch (ModeOperation)
+  {
+  case MODE_CHECKFPS:
+    modeCheckFpsLoop();
+    break;
+  case MODE_CLOCK:
+    modeClockLoop();
+    break;
+  case MODE_CLOCKDEMO:
+    modeClockDemoLoop();
+    break;
+  case MODE_DIGITSHOW:
+    modeDigitShowLoop();
+    break;
+  case MODE_DIGITTEST:
+    modeDigitTestLoop();
+    break;
+  default:
+    break;
   }
 
 }

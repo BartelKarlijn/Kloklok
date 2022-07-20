@@ -1,0 +1,7 @@
+void modeDigitShowSetup(){
+
+}
+
+void modeDigitShowLoop(){
+
+}

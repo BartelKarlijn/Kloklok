@@ -25,6 +25,7 @@
 #include <main/setupBacklight.h>
 #include <main/print.h>
 #include <main/save_eprom.h>
+
 //   tft
 #include <tft/setupTft.h>
 #include <tft/clearScreens.h>
@@ -46,3 +47,10 @@
 #include <wifi\setup_AsyncWebserver.h> 
 #include <wifi\setup_ConnectKnownWifi.h>
 #include <wifi\setup_CreateAccessPoint.h>
+
+//  operationModes
+#include <ModeOperation/modeCheckFps.h>
+#include <ModeOperation/modeClock.h>
+#include <ModeOperation/modeClockDemo.h>
+#include <ModeOperation/modeDigitShow.h>
+#include <ModeOperation/modeDigitTest.h>
