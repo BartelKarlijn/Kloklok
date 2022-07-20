@@ -23,12 +23,12 @@
 */
 #define TFT__BL    19    //Backlight
 
-#define TFT0_CS    32    //Chip Select pin tftx
-#define TFT1_CS    33    //Chip Select pin tftx
-#define TFT2_CS    25    //Chip Select pin tftx
-#define TFT3_CS    26    //Chip Select pin tftx
-#define TFT4_CS    27    //Chip Select pin tftx
-#define TFT5_CS    13    //Chip Select pin tftx
+#define TFT0_CS    33    //Chip Select pin tftx
+#define TFT1_CS    32    //Chip Select pin tftx
+#define TFT2_CS    26    //Chip Select pin tftx
+#define TFT3_CS    25    //Chip Select pin tftx
+#define TFT4_CS    13    //Chip Select pin tftx
+#define TFT5_CS    27    //Chip Select pin tftx
 
 ///////////////// TFT backlight  //////////////////////////////
 #define PWMFreq    5000
@@ -53,7 +53,7 @@
 #define DOWN  90
 #define LEFT  180
 #define RIGHT 270
-#define TFT_ORIENTATION (UP / 90)  // the same for all 6 screens as we're using only 1 tft object
+#define TFT_ORIENTATION (RIGHT / 90)  // the same for all 6 screens as we're using only 1 tft object
 int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
 
 ///////////////// Colors  //////////////////////////////
