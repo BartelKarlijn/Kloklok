@@ -27,13 +27,13 @@
 #include <main/save_eprom.h>
 //   tft
 #include <tft/setupTft.h>
+#include <tft/clearScreens.h>
 #include <tft/createNeelde.h>
 #include <tft/createAxis.h>
 #include <tft/plotNeedle.h>
-#include <tft/moveFromTo.h>
-#include <tft/clearScreens.h>
 #include <tft/showDigit.h>
 #include <tft/calculateMovement.h>
+#include <tft/moveNextDigit.h>
 
 //wifi
 #include <wifi\html_buttonSimple.h>  // routine om simpele pushbutton te maken
