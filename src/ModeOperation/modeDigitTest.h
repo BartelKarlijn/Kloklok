@@ -1,5 +1,5 @@
 void modeDigitTestSetup(){
-  clearScreens(COLOR_TEST);
+  clearScreens(COLOR_TEST, true);
   delay(500);
 }
 

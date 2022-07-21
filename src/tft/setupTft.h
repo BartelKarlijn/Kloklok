@@ -6,7 +6,7 @@ void setupTft() {
     digitalWrite( tft_cs[i], LOW);
   }
 
-  // setup TFT
+  // setup TFT, taling to all screens at same time
   tft.begin();
   tft.setRotation(TFT_ORIENTATION);       // 0 1 2 3 : rotate 90°
   tft.fillScreen(COLOR_TEST);
