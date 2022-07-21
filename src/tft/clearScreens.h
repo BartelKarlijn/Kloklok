@@ -1,4 +1,4 @@
-void clearScreens(int8_t color, bool replotAxis) {
+void clearScreens(int color, bool replotAxis) {
   for (int i = 0; i <= 5; i++) {
     // Clear screen if needed
     // Pull cs_pin low to write to screen

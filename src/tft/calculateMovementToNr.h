@@ -97,7 +97,7 @@ void calculateMovementToNr(uint8_t nr_to) {
     Print(String(angleFFr));
     Print(" to ");
     Println(String(angleFTo));
-    delay(10);
+    delay(100);
 
     Print("rotB2B= ");
     Print(String(rotB2B));
@@ -107,13 +107,13 @@ void calculateMovementToNr(uint8_t nr_to) {
     Print(String(rotB2F));
     Print("  rotB2F= ");
     Println(String(rotB2F));
-    delay(10);
+    delay(100);
 
     Print(" rotB = ");
     Print(String(rot90framesBack));
     Print("   rotF = ");
     Println(String(rot90framesFront));
-    delay(10);
+    delay(100);
 
     Print("moveEvenBack= ");
     Print(String(moveEvenBack[0]));
@@ -123,6 +123,6 @@ void calculateMovementToNr(uint8_t nr_to) {
     Print(String(moveEvenFront[0]));
     Print("  moveUnEvFront= ");
     Print(String(moveUnEvFront[0]));
-    Println("");
+    Println(" ");
     delay(1000);
 }
