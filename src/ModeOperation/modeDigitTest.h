@@ -14,11 +14,18 @@ void modeDigitTestLoop(){
     Print(String(currentNr));
     Print("  Next is ");
     Println(String(nextNr));
+    delay(100);
     clearScreens(COLOR_BACKGROUND, true);
     showDigit(currentNr);
+    Println("Showing digit currentNr");
+    delay(100);
 
     calculateMovementToNr(nextNr);
+    Println("Movents calculated");
+    delay(100);
+
     moveNextDigit();
+    Println("Dance finished");
     currentNr = nextNr;
 
     delay(5000);
