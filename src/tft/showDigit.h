@@ -3,6 +3,8 @@ void showDigit(int nr ){
   // nr should be 0-9
   for (int i = 0; i <= 5; i++) {
     //Movement is 0
-    plotNeedle( digit[nr][i].angleBack, 0, digit[nr][i].angleFront, 0, tft_cs[i]);
+    angleBack[i] = digit[nr][i].angleBack; 
+    angleFront[i] = digit[nr][i].angleFront; 
+    plotNeedle( angleBack[i], 0, angleFront[i], 0, tft_cs[i]);
   }
 }
