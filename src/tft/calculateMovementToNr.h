@@ -24,7 +24,33 @@ void calculateMovementToNr(uint8_t nr_to) {
         // option2
          rotB2F  = calculateRotation(angleBFr, angleFTo);
          rotF2B  = calculateRotation(angleBTo, angleFFr);
+    if (i = 0 ){
+    Print("angle Back: ");
+    Print(String(angleBFr));
+    Print(" to ");
+    Print(String(angleBTo));
+    Print("  angle Front: ");
+    Print(String(angleFFr));
+    Print(" to ");
+    Println(String(angleFTo));
+    delay(100);
 
+    Print("rotB2B= ");
+    Print(String(rotB2B));
+    Print("  rotF2F= ");
+    Print(String(rotF2F));
+    Print("  rotB2F= ");
+    Print(String(rotB2F));
+    Print("  rotB2F= ");
+    Println(String(rotB2F));
+    delay(100);
+
+    Print(" rotB = ");
+    Print(String(rot90framesBack));
+    Print("   rotF = ");
+    Println(String(rot90framesFront));
+    delay(100);
+    }
 
         switch (movementMode) {
         case MOVEMENTMODEMIN:  // find the min movement as one with a difference of 0
@@ -89,32 +115,6 @@ void calculateMovementToNr(uint8_t nr_to) {
 
     }
     
-    Print("angle Back: ");
-    Print(String(angleBFr));
-    Print(" to ");
-    Print(String(angleBTo));
-    Print("  angle Front: ");
-    Print(String(angleFFr));
-    Print(" to ");
-    Println(String(angleFTo));
-    delay(100);
-
-    Print("rotB2B= ");
-    Print(String(rotB2B));
-    Print("  rotF2F= ");
-    Print(String(rotF2F));
-    Print("  rotB2F= ");
-    Print(String(rotB2F));
-    Print("  rotB2F= ");
-    Println(String(rotB2F));
-    delay(100);
-
-    Print(" rotB = ");
-    Print(String(rot90framesBack));
-    Print("   rotF = ");
-    Println(String(rot90framesFront));
-    delay(100);
-
     Print("moveEvenBack= ");
     Print(String(moveEvenBack[0]));
     Print("  moveUnEvBack= ");
