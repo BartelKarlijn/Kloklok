@@ -1,14 +1,17 @@
 void modeDigitTestSetup(){
   clearScreens(COLOR_TEST, true);
-  delay(500);
+  currentNr = 0;
+  showDigit(currentNr);
+  Println("Showing test color with 0");
+  delay(2000);
 }
 
 void modeDigitTestLoop(){
-  for (int nr = 0; nr <=9; nr++){
-    showDigit(nr);
-    calculateMovement(nr, nr + 1);
+    Print("CurrentNr is ");
+    Println(String(currentNr));
+    calculateMovement(currentNr, currentNr + 1);
     moveNextDigit();
-    delay(2000);
-  }
-
+    currentNr++;
+    if (currentNr >= 1) {currentNr = 0;}
+    delay(5000);
 }

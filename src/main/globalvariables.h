@@ -15,6 +15,7 @@ TFT_eSprite needleAxis   = TFT_eSprite(&tft); // Sprite object for centre Axis
 #define DIAL_WIDTH    SCREEN_CENTER * 2
 
 // Angles
+int currentNr;  // What digit are we displaying?
 // Current angle
 int16_t angleBack[6];      
 int16_t angleFront[6];

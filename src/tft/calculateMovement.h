@@ -89,6 +89,7 @@ void calculateMovement(int nr_from, int nr_to) {
                 angleto1 = angleBackTo;
                 angleto2 = angleFrontTo;
             }
+            break;
         default:
             Println("Impossible movementMode");
             break;
@@ -102,5 +103,16 @@ void calculateMovement(int nr_from, int nr_to) {
         moveUnEvBack[i]  = (rotation90framesBack + 45) / 90;   // rounded up
         moveEvenFront[i] = rotation90framesFront / 90;          // rounded down as we calculate with integers
         moveUnEvFront[i] = (rotation90framesFront + 45) / 90; // rounded up
+
+        Print("moveEvenBack 0 = ");
+        Print(String(moveEvenBack[0]));
+        Print("moveUnEvBack 0 = ");
+        Print(String(moveUnEvBack[0]));
+        Print("moveEvenFront 0 = ");
+        Print(String(moveEvenFront[0]));
+        Print("moveEvenFront 0 = ");
+        Print(String(moveUnEvFront[0]));
+        Println("");
+        delay(1000);
     }
 }
