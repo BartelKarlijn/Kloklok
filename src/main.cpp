@@ -8,7 +8,6 @@
 // =======================================================================================
 void setup()   {
   setupSerial();
-  setupBacklight();
   get_datafrom_eeprom (); // parameters uit eeprom halen (oa ssid/pw en PID)
 
   //wifi
@@ -16,6 +15,7 @@ void setup()   {
   setup_AsyncWebserver();    // webserver om html te tonen 
   setup_CreateAccessPoint(); // Toch eigen AccessPoint opzetten als gekende wifi niet gelukt.
 
+  setupBacklight();
   // Create the Sprites
 //  needle1 = createNeedle( NEEDLE_CLEAR1 );
 //  needle2 = createNeedle( NEEDLE_CLEAR2 );
