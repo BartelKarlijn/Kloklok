@@ -7,11 +7,17 @@ void modeDigitTestSetup(){
 }
 
 void modeDigitTestLoop(){
+    uint8_t nextNr = currentNr + 1;
+    if (nextNr >= 2) {nextNr = 0;}
     Print("CurrentNr is ");
-    Println(String(currentNr));
+    Print(String(currentNr));
+    Print("  Next is ");
+    Println(String(nextNr));
+
     calculateMovement(currentNr, currentNr + 1);
     moveNextDigit();
-    currentNr++;
-    if (currentNr >= 1) {currentNr = 0;}
+    currentNr = nextNr;
+
     delay(5000);
+    clearScreens(COLOR_BACKGROUND, true);
 }

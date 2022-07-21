@@ -1,13 +1,9 @@
 int16_t calculateRotation(int16_t angleFrom, int16_t angleTo) {
-    int16_t rotation = angleFrom - angleTo;
-    if (rotation < 0)
-    {
-        rotation = 360 + rotation;
-    }
+    int16_t rotation = (angleFrom - angleTo + 720) % 360; 
     return rotation;
 }
 
-void calculateMovement(int nr_from, int nr_to) {
+void calculateMovement(int nr_from, uint8_t nr_to) {
     // This shoudl update the even and uneven movement variables for Front and back
     // The idea is to rotate from one position (per 90deg + 225deg) to any other
     int16_t rotationBack2Back, rotationBack2Front, rotationFront2Back, rotationFront2Front;
@@ -32,60 +28,48 @@ void calculateMovement(int nr_from, int nr_to) {
 
         switch (movementMode)
         {
-        case MOVEMENTMODEMIN:
-            // find the min movement as one with a difference of 0
-            if ((rotationBack2Back = 0) or (rotationFront2Front = 0))
-            {
+        case MOVEMENTMODEMIN:  // find the min movement as one with a difference of 0
+            if ((rotationBack2Back = 0) or (rotationFront2Front = 0)) {
                 // min movement found
                 angleto1 = angleBackTo;
                 angleto2 = angleFrontTo;
             }
-            else
-            {
+            else {
                 angleto1 = angleFrontTo;
                 angleto2 = angleBackTo;
             }
             break;
-        case MOVEMENTMODEMAX:
-            // Similar to Min mode, but we add 360 to one of the 0 steps
-            if (rotationBack2Back = 0)
-            {
+        case MOVEMENTMODEMAX: // Similar to Min mode, but we add 360 to one of the 0 steps
+            if (rotationBack2Back = 0) {
                 // Add 360 to movement found
                 angleto1 = angleBackTo + 360;
                 angleto2 = angleFrontTo;
             }
-            else if (rotationBack2Back = 0)
-            {
+            else if (rotationBack2Back = 0) {
                 // Add 360 to movement found
                 angleto1 = angleBackTo;
                 angleto2 = angleFrontTo + 360;
             }
-            else
-            {
+            else {
                 angleto1 = angleFrontTo;
                 angleto2 = angleBackTo;
             }
             break;
-        case MOVEMENTMODEFUN:
-            // Both dials should be moving
-            if ((rotationBack2Front != 0) and (rotationFront2Back != 0))
-            {
+        case MOVEMENTMODEFUN: // Both dials should be moving
+            if ((rotationBack2Front != 0) and (rotationFront2Back != 0)) {
                 // non 0 movement found
                 angleto1 = angleFrontTo;
                 angleto2 = angleBackTo;
             }
-            else if (rotationBack2Back = 0)
-            {
+            else if (rotationBack2Back = 0)  {
                 angleto1 = angleBackTo + 360;
                 angleto2 = angleFrontTo;
             }
-            else if (rotationFront2Front = 0)
-            {
+            else if (rotationFront2Front = 0) {
                 angleto1 = angleBackTo;
                 angleto2 = angleFrontTo + 360;
             }
-            else
-            {
+            else {
                 angleto1 = angleBackTo;
                 angleto2 = angleFrontTo;
             }
@@ -96,23 +80,28 @@ void calculateMovement(int nr_from, int nr_to) {
         }
 
         // Calculate rotation angles per frame
-        rotation90framesBack = angleto1 - angleBackFrom;
-        rotation90framesFront = angleto2 - angleFrontFrom;
+        rotation90framesBack = calculateRotation(angleBackFrom, angleto1);
+        rotation90framesFront = calculateRotation(angleFrontFrom, angleto2);
 
         moveEvenBack[i]  = rotation90framesBack / 90;            // rounded down as we calculate with integers
         moveUnEvBack[i]  = (rotation90framesBack + 45) / 90;   // rounded up
         moveEvenFront[i] = rotation90framesFront / 90;          // rounded down as we calculate with integers
         moveUnEvFront[i] = (rotation90framesFront + 45) / 90; // rounded up
 
-        Print("moveEvenBack 0 = ");
-        Print(String(moveEvenBack[0]));
-        Print("moveUnEvBack 0 = ");
-        Print(String(moveUnEvBack[0]));
-        Print("moveEvenFront 0 = ");
-        Print(String(moveEvenFront[0]));
-        Print("moveEvenFront 0 = ");
-        Print(String(moveUnEvFront[0]));
-        Println("");
-        delay(1000);
     }
+    Print("RotationBack = ");
+    Print(String(rotation90framesBack));
+    Print("  RotationFront = ");
+    Println(String(rotation90framesFront));
+
+    Print("moveEvenBack = ");
+    Print(String(moveEvenBack[0]));
+    Print("  moveUnEvBack = ");
+    Print(String(moveUnEvBack[0]));
+    Print("  moveEvenFront = ");
+    Print(String(moveEvenFront[0]));
+    Print("  moveEvenFront = ");
+    Print(String(moveUnEvFront[0]));
+    Println("");
+    delay(1000);
 }

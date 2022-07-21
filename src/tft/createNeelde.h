@@ -68,7 +68,7 @@ void createNeedle4(void) {
 }
 
 /*
-void createNeedle(int *neelde_ptr, int needleClear) {
+void createNeedle(int *neelde_ptr, uint8_t needleClear) {
   *needle_ptr.setColorDepth(COLOR_BITS_PER_PIXEL);
   // Needles create at 3 oclock point
   *needle_ptr.createSprite(NEEDLE_LENGTH , NEEDLE_WIDTH + needleClear );  // create the needle Sprite
