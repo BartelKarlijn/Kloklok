@@ -14,7 +14,7 @@ void modeDigitTestLoop(){
     Print("  Next is ");
     Println(String(nextNr));
 
-    calculateMovement(currentNr, currentNr + 1);
+    calculateMovementToNr(nextNr);
     moveNextDigit();
     currentNr = nextNr;
 

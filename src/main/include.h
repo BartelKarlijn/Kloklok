@@ -33,7 +33,7 @@
 #include <tft/createAxis.h>
 #include <tft/plotNeedle.h>
 #include <tft/showDigit.h>
-#include <tft/calculateMovement.h>
+#include <tft/calculateMovementToNr.h>
 #include <tft/moveNextDigit.h>
 
 //wifi
