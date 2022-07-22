@@ -11,11 +11,11 @@ void moveNextDigit() {
       plotNeedle(angleBack[i], moveUnEvBack[i], angleFront[i], moveUnEvFront[i], tft_cs[i]);
 
       // and next even
-      angleBack[i] = angleBack[i] + moveUnEvBack[i];
+      angleBack[i] = angleBack[i] + moveEvenBack[i];
       if (angleBack[i] >= 360) {angleBack[i] = 0; }
-      angleFront[i] = angleFront[i] + moveUnEvFront[i];
+      angleFront[i] = angleFront[i] + moveEvenFront[i];
       if (angleFront[i] >= 360) {angleFront[i] = 0; }
-      plotNeedle(angleBack[i], moveUnEvBack[i], angleFront[i], moveUnEvFront[i], tft_cs[i]);
+      plotNeedle(angleBack[i], moveEvenBack[i], angleFront[i], moveEvenFront[i], tft_cs[i]);
     }
   }
 }
