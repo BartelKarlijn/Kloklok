@@ -1,7 +1,11 @@
 void modeCheckFpsSetup(){
-  moveFront = 1;
+  moveFront = 1; //Start with slowest movemnent
   moveBack  = 1;
-
+  for (int i = 0; i <= 5; i++ ) {
+    angleBack[i] = random(360);
+  }
+  cnt = 0;
+  clearScreens(COLOR_BACKGROUND, true);
   myTime = millis();
 }
 
@@ -31,13 +35,6 @@ void modeCheckFpsLoop(){
     Println("fps");
     delay(100);
     moveFront++;
-//    backlight = backlight + 50;
-//    if (backlight > 255) {
-//      backlight = 0;
-//      ledcWrite(PWMChannel, backlight);
-//      }
-//    Print("Backlight ");
-//    Println(String(backlight));
 
     if (moveFront >= 5) { 
       moveFront = 1; 
