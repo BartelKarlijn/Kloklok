@@ -64,7 +64,7 @@ int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
 #define COLOR_TEST       TFT_RED
 
 ///////////////// wifi  //////////////////////////////
-#define autoConnectAP "KlokKlok"    //ssid access point voor als je niet aan wifi geraakt
+#define autoConnectAP "KloKlok"    //ssid access point voor als je niet aan wifi geraakt
 
 ///////////////// working modes  //////////////////////////////
 #define MODE_CHECKFPS  0       // check how many fps we can achieve
