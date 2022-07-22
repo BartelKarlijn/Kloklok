@@ -39,16 +39,15 @@ void get_datafrom_eeprom () {
 //  else              { Kd = Kd_eeprom; }
 //  if(Angle_eeprom ==0) { selfBalanceAngleSetpoint = BASE_Angle;   }
 //  else              { selfBalanceAngleSetpoint = Angle_eeprom; }
-
 }
 
-void save_PIDdatato_eeprom () {
+void save_ConfigToEeprom () {
 //  pref_eeprom.putFloat("Kp_eeprom", Kp);
 //  pref_eeprom.putFloat("Ki_eeprom", Ki);
 //  pref_eeprom.putFloat("Kd_eeprom", Kd);
 //  pref_eeprom.putFloat("Angle_eeprom", selfBalanceAngleSetpoint);
 
-  Println("PID data saved");
+  Println("Config saved");
 }
 
 void save_WIFIdatato_eeprom () {

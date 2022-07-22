@@ -24,12 +24,12 @@ String html_processorConfig(const String& var){
   return String();
 }
 
-String html_processorController(const String& var){
+String html_processorRoot(const String& var){
 // Replaces placeholder with button section in your web page
   if(var == "BUTTONPLACEHOLDER"){
     String buttons = "";
     buttons += html_joystickCode;
-    buttons += "<h1>Wiebelrobot controller</h1>";
+    buttons += "<h1>Kloklok</h1>";
     buttons += html_joystickObject;
     buttons += html_buttonLink("naar Configuratie", hdlConfig);
     return buttons;

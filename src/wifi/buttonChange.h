@@ -31,8 +31,8 @@ void buttonChangeMotorENA(){
 //  digitalWrite(motorPinENA, motorENA ? LOW : HIGH);
 }
 
-void buttonChangeSavePID() {
-  save_PIDdatato_eeprom ();  
+void buttonChangeConfig() {
+  save_ConfigToEeprom ();  
 //  resetPID();
   Println("Paramters stored to eeprom");
 }
