@@ -58,8 +58,8 @@ int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
 
 ///////////////// Colors  //////////////////////////////
 #define COLOR_BITS_PER_PIXEL 16     //16 appeared to be the most performant
-#define COLOR_BACKGROUND TFT_BLACK
-#define COLOR_NEEDLE     TFT_WHITE
+#define COLOR_BACKGROUND TFT_BLUE   //  TFT_BLACK
+#define COLOR_NEEDLE     TFT_YELLOW //  TFT_WHITE
 #define COLOR_TRANSP     TFT_PINK
 #define COLOR_TEST       TFT_RED
 

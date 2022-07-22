@@ -86,54 +86,5 @@ void calculateMovementToNr(uint8_t nr_to) {
         moveEvenFront[i] = rot90framesFront / 90;          // rounded down as we calculate with integers
         moveUnEvFront[i] = (rot90framesFront + 45) / 90; // rounded up
 
-    if (i < 1 ){
-    Print("angle Back: ");
-    Print(String(angleBFr));
-    Print(" to ");
-    Print(String(angleBTo));
-    Print("  angle Front: ");
-    Print(String(angleFFr));
-    Print(" to ");
-    Println(String(angleFTo));
-    delay(100);
-
-    Print("rotB2B= ");
-    Print(String(rotB2B));
-    Print("  rotF2F= ");
-    Print(String(rotF2F));
-    Print("  rotB2F= ");
-    Print(String(rotB2F));
-    Print("  rotF2B= ");
-    Println(String(rotF2B));
-    delay(100);
-
-    Print("move Back: ");
-    Print(String(angleBFr));
-    Print(" to ");
-    Print(String(angleto1));
-    Print("  move Front: ");
-    Print(String(angleFFr));
-    Print(" to ");
-    Println(String(angleto2));
-    delay(100);
-
-    Print(" rotB = ");
-    Print(String(rot90framesBack));
-    Print("   rotF = ");
-    Println(String(rot90framesFront));
-    delay(100);
-
-    Print("moveEvenBack= ");
-    Print(String(moveEvenBack[0]));
-    Print("  moveUnEvBack= ");
-    Print(String(moveUnEvBack[0]));
-    Print("  moveEvenFront= ");
-    Print(String(moveEvenFront[0]));
-    Print("  moveUnEvFront= ");
-    Print(String(moveUnEvFront[0]));
-    Println(" ");
-    delay(1000);
-    }
-
     }
 }

@@ -9,20 +9,11 @@ void modeDigitTestSetup(){
 void modeDigitTestLoop(){
     uint16_t nextNr = currentNr + 1;
     if (nextNr > 9) {nextNr = 0;}
-    Println(".");
-    Print("CurrentNr is ");
-    Print(String(currentNr));
-    Print("  Next is ");
-    Println(String(nextNr));
-    delay(100);
-//    clearScreens(COLOR_BACKGROUND, true);
     showDigit(currentNr);
     Println("Showing digit currentNr");
-    delay(100);
+    delay(10);
 
     calculateMovementToNr(nextNr);
-    Println("Movents calculated");
-    delay(100);
 
     moveNextDigit();
     Println("Dance finished");
