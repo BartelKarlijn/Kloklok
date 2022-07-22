@@ -23,12 +23,12 @@
 */
 #define TFT__BL    19    //Backlight
 
-#define TFT0_CS    32    //Chip Select pin tftx
-#define TFT1_CS    33    //Chip Select pin tftx
-#define TFT2_CS    25    //Chip Select pin tftx
-#define TFT3_CS    26    //Chip Select pin tftx
-#define TFT4_CS    27    //Chip Select pin tftx
-#define TFT5_CS    13    //Chip Select pin tftx
+#define TFT0_CS    33    //Chip Select pin tftx
+#define TFT1_CS    32    //Chip Select pin tftx
+#define TFT2_CS    26    //Chip Select pin tftx
+#define TFT3_CS    25    //Chip Select pin tftx
+#define TFT4_CS    13    //Chip Select pin tftx
+#define TFT5_CS    27    //Chip Select pin tftx
 
 ///////////////// TFT backlight  //////////////////////////////
 #define PWMFreq    5000
@@ -50,17 +50,26 @@
 
 ///////////////// Screen Orientation  //////////////////////////////
 #define UP    0
-#define DOWN  2
-#define LEFT  3
-#define RIGHT 4
-#define TFT_ORIENTATION UP  // the same for all 6 screens as we're using only 1 tft object
+#define DOWN  90
+#define LEFT  180
+#define RIGHT 270
+#define TFT_ORIENTATION (RIGHT / 90)  // the same for all 6 screens as we're using only 1 tft object
+int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
 
 ///////////////// Colors  //////////////////////////////
 #define COLOR_BITS_PER_PIXEL 16     //16 appeared to be the most performant
-#define COLOR_BACKGROUND TFT_BLACK
-#define COLOR_NEEDLE     TFT_WHITE
+#define COLOR_BACKGROUND TFT_BLUE   //  TFT_BLACK
+#define COLOR_NEEDLE     TFT_YELLOW //  TFT_WHITE
 #define COLOR_TRANSP     TFT_PINK
 #define COLOR_TEST       TFT_RED
 
 ///////////////// wifi  //////////////////////////////
 #define autoConnectAP "KlokKlok"    //ssid access point voor als je niet aan wifi geraakt
+
+///////////////// working modes  //////////////////////////////
+#define MODE_CHECKFPS  0       // check how many fps we can achieve
+#define MODE_CLOCK     1       // Regular clock mode
+#define MODE_CLOCKDEMO 2       // 'Demo' clock by rapidly browsing nrs
+#define MODE_DIGITSHOW 3       // Test digits one by one (no movement in between)
+#define MODE_DIGITTEST 4       // Do movement betwen digits
+int8_t ModeOperation = MODE_DIGITTEST;

@@ -6,7 +6,7 @@ void setup_CreateAccessPoint(){
     WiFi.mode(WIFI_STA);
     WiFi.disconnect();
     delay(100);
-    int n = WiFi.scanNetworks();
+    uint8_t n = WiFi.scanNetworks();
     Serial.println("scan done");
     if (n == 0)
       Serial.println("no networks found");

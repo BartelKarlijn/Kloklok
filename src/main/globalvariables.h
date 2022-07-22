@@ -15,21 +15,34 @@ TFT_eSprite needleAxis   = TFT_eSprite(&tft); // Sprite object for centre Axis
 #define DIAL_WIDTH    SCREEN_CENTER * 2
 
 // Angles
-int16_t angleBack[6];      // Angle of back needle
-int16_t angleFront[6];     
+uint8_t currentNr;  // What digit are we displaying?
+// Current angle
+int16_t angleBack[6];      
+int16_t angleFront[6];
+// Movement of next frame.  Even, Uneven: every other framenr we switch between both
+uint16_t  moveEvenFront[6];  
+uint16_t  moveUnEvFront[6];  
+uint16_t  moveEvenBack[6];
+uint16_t  moveUnEvBack[6];
+
 // How fast is the movement
-int16_t moveFront;
-int16_t moveBack;
+uint16_t moveFront;
+uint16_t moveBack;
 // Backlight
-int backlight;
+uint16_t backlight;
 
 // timing
 unsigned long myTime;
-int cnt;
+uint8_t cnt;
 
 //////////////// LED ///////////////////////
 boolean startupError;
 
+//MovementModes
+#define MOVEMENTMODEMIN 1   // as little movement as possible
+#define MOVEMENTMODEMAX 2   // as much movement as possible
+#define MOVEMENTMODEFUN 3   // balanced
+int16_t movementMode = MOVEMENTMODEFUN;
 //////// Preferences //////////
 Preferences pref_eeprom;
 
@@ -56,36 +69,36 @@ const char* PARAM_output = "output";   // voor de asyncwebserver
 
 // knoppen
 const char* oms_Kp = "Kp proportioneel";
-const int   id_Kpup = 111;            // knop ID, moet uniek zijn, zie html_processor
-const int   id_Kpdo = 112; 
-const int   id_Kpra = 113;  
+const uint16_t   id_Kpup = 111;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Kpdo = 112; 
+const uint16_t   id_Kpra = 113;  
 
 const char* oms_Ki = "Ki Integraal";
-const int   id_Kiup = 121;
-const int   id_Kido = 122; 
-const int   id_Kira = 123;  
+const uint16_t   id_Kiup = 121;
+const uint16_t   id_Kido = 122; 
+const uint16_t   id_Kira = 123;  
 
 const char* oms_Kd = "Kd Derivation";
-const int   id_Kdup = 131;
-const int   id_Kddo = 132; 
-const int   id_Kdra = 133;  
+const uint16_t   id_Kdup = 131;
+const uint16_t   id_Kddo = 132; 
+const uint16_t   id_Kdra = 133;  
 
 const char* oms_An = "Balanceer Hoek";
-const int   id_Anup = 141;
-const int   id_Ando = 142; 
-const int   id_Anra = 143;  
+const uint16_t   id_Anup = 141;
+const uint16_t   id_Ando = 142; 
+const uint16_t   id_Anra = 143;  
 
 const char* oms_ShowAngle = "Gemeten Hoek=";
-const int   id_ShowAngle = 21;
+const uint16_t   id_ShowAngle = 21;
 
 const char* oms_SaveConfig = "Save PID";
-const int   id_SaveConfig = 22;
+const uint16_t   id_SaveConfig = 22;
 
 const char* oms_Restart = "Restart";
-const int   id_Restart = 23;
+const uint16_t   id_Restart = 23;
 
 const char* oms_MotorENA = "Motoren aan/uit";
-const int   id_MotorENA = 24;
+const uint16_t   id_MotorENA = 24;
 
 volatile float Kp_change = 1.0;      // Elke druk in wifi app, verhoogt/verlaagt met waarde
 volatile float Ki_change = 1.0;

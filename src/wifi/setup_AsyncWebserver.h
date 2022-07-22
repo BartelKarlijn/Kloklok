@@ -52,7 +52,7 @@ void setup_AsyncWebserver(){
   // Verwerk als er op een knop wordt gedrukt
   webserver.on(hdlKnop, HTTP_GET, [](AsyncWebServerRequest *request) {
     String IDknopString;
-    int IDknop;
+    uint16_t IDknop;
     // GET input1 value on <ESP_IP>/update?output=<inputMessage1>&state=<inputMessage2>
     if (request->hasParam(PARAM_output)) {
       IDknopString = request->getParam(PARAM_output)->value();
@@ -115,6 +115,7 @@ void setup_AsyncWebserver(){
       break;
 
     default:
+      Println("Impossible IDknop");
       break;
     }  // einde switch
     
