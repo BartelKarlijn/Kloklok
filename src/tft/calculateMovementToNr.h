@@ -8,8 +8,8 @@ void calculateMovementToNr(uint8_t nr_to) {
     // The idea is to rotate from one position (per 90deg + 225deg) to any other
     int16_t rotB2B,  rotB2F,  rotF2B,  rotF2F;
     int16_t angleto1, angleto2, angleBTo, angleFTo, angleBFr, angleFFr;
-    int8_t rot90framesBack, rot90framesFront;
-    int8_t  rotBEven,  rotBUneven,  rotFEven,  rotFUneven;
+    int16_t rot90framesBack, rot90framesFront;
+    int16_t  rotBEven,  rotBUneven,  rotFEven,  rotFUneven;
 
     for (int i = 0; i <= 5; i++) {
         // calculate rotation angles
@@ -23,34 +23,7 @@ void calculateMovementToNr(uint8_t nr_to) {
          rotF2F = calculateRotation(angleFFr , angleFTo);
         // option2
          rotB2F  = calculateRotation(angleBFr, angleFTo);
-         rotF2B  = calculateRotation(angleBTo, angleFFr);
-    if (i = 0 ){
-    Print("angle Back: ");
-    Print(String(angleBFr));
-    Print(" to ");
-    Print(String(angleBTo));
-    Print("  angle Front: ");
-    Print(String(angleFFr));
-    Print(" to ");
-    Println(String(angleFTo));
-    delay(100);
-
-    Print("rotB2B= ");
-    Print(String(rotB2B));
-    Print("  rotF2F= ");
-    Print(String(rotF2F));
-    Print("  rotB2F= ");
-    Print(String(rotB2F));
-    Print("  rotB2F= ");
-    Println(String(rotB2F));
-    delay(100);
-
-    Print(" rotB = ");
-    Print(String(rot90framesBack));
-    Print("   rotF = ");
-    Println(String(rot90framesFront));
-    delay(100);
-    }
+         rotF2B  = calculateRotation(angleFFr, angleBTo);
 
         switch (movementMode) {
         case MOVEMENTMODEMIN:  // find the min movement as one with a difference of 0
@@ -113,8 +86,43 @@ void calculateMovementToNr(uint8_t nr_to) {
         moveEvenFront[i] = rot90framesFront / 90;          // rounded down as we calculate with integers
         moveUnEvFront[i] = (rot90framesFront + 45) / 90; // rounded up
 
-    }
-    
+    if (i < 1 ){
+    Print("angle Back: ");
+    Print(String(angleBFr));
+    Print(" to ");
+    Print(String(angleBTo));
+    Print("  angle Front: ");
+    Print(String(angleFFr));
+    Print(" to ");
+    Println(String(angleFTo));
+    delay(100);
+
+    Print("rotB2B= ");
+    Print(String(rotB2B));
+    Print("  rotF2F= ");
+    Print(String(rotF2F));
+    Print("  rotB2F= ");
+    Print(String(rotB2F));
+    Print("  rotF2B= ");
+    Println(String(rotF2B));
+    delay(100);
+
+    Print("move Back: ");
+    Print(String(angleBFr));
+    Print(" to ");
+    Print(String(angleto1));
+    Print("  move Front: ");
+    Print(String(angleFFr));
+    Print(" to ");
+    Println(String(angleto2));
+    delay(100);
+
+    Print(" rotB = ");
+    Print(String(rot90framesBack));
+    Print("   rotF = ");
+    Println(String(rot90framesFront));
+    delay(100);
+
     Print("moveEvenBack= ");
     Print(String(moveEvenBack[0]));
     Print("  moveUnEvBack= ");
@@ -125,4 +133,7 @@ void calculateMovementToNr(uint8_t nr_to) {
     Print(String(moveUnEvFront[0]));
     Println(" ");
     delay(1000);
+    }
+
+    }
 }

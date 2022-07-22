@@ -1,4 +1,4 @@
-String html_buttonUpDown( String omschrijving, uint8_t IDrange, uint8_t IDup, uint8_t IDdown, float Kx, float Kx_change) {
+String html_buttonUpDown( String omschrijving, uint16_t IDrange, uint16_t IDup, uint16_t IDdown, float Kx, float Kx_change) {
 /*
   String ptr = "<p>";
   ptr += omschrijving;

@@ -7,7 +7,7 @@ void modeDigitTestSetup(){
 }
 
 void modeDigitTestLoop(){
-    uint8_t nextNr = currentNr + 1;
+    uint16_t nextNr = currentNr + 1;
     if (nextNr >= 2) {nextNr = 0;}
     Println(".");
     Print("CurrentNr is ");

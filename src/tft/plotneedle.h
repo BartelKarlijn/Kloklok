@@ -1,4 +1,4 @@
-void plotNeedle(int16_t angleBack, int8_t movementBack, int16_t angleFront, int8_t MovementFront, uint8_t cs_pin) {
+void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int16_t MovementFront, uint16_t cs_pin) {
   // Pull cs_pin low to write to screen
   digitalWrite( cs_pin, LOW);
 
