@@ -1,6 +1,6 @@
 const char config_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE html> <html>
-<head><title>Wiebelrobot</title>
+<head><title>Kloklok</title>
 <meta name="viewport" content="width=device-width, initial-scale=1", user-scalable=no>
 <link rel="icon" href="data:,">
 <style>
