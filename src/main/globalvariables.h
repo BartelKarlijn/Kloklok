@@ -67,6 +67,7 @@ const char* PARAM_output = "output";   // voor de asyncwebserver
 #define hdlWebSerial  "/webserial"               // Dit is niet te wijzigen, is om Serial Monitor via web te hebben
 
 // knoppen
+int16_t Kp;
 const char* oms_Kp = "Kp proportioneel";
 const uint16_t   id_Kpup = 111;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_Kpdo = 112; 
