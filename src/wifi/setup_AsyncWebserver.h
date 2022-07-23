@@ -44,11 +44,6 @@ void setup_AsyncWebserver(){
     request->send_P(200, "text/html", config_html, html_processorRoot);
   });
 
-  // Route for configuration
-  webserver.on(hdlConfig, HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send_P(200, "text/html", config_html, html_processorConfig);
-  });
-
   // Verwerk als er op een knop wordt gedrukt
   webserver.on(hdlKnop, HTTP_GET, [](AsyncWebServerRequest *request) {
     String IDknopString;
@@ -75,13 +70,13 @@ void setup_AsyncWebserver(){
     case id_Kpra:
 //      Kp_change = buttonChangeStep(Kp_change, "Kp step");
       break;
-//Save Config
+    //Save Config
     case id_SaveConfig:
       buttonChangeConfig();
       break;
     //Restart
     case id_Restart:
-//      buttonChangeRestart();
+      buttonChangeRestart();
       break;
 
     default:

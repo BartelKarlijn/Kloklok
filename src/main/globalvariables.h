@@ -61,7 +61,6 @@ const char* PARAM_output = "output";   // voor de asyncwebserver
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
 #define hdlKnop       "/knop"                    // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlUpdate     "/update"                  // Dit niet wijzigen: is voor OTA firmware 
-#define hdlConfig     "/configuratie"            // handle voor wiebelrobot in te stellen
 #define hdlWifiPWD    "/wificfg"                 // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 //#define hdlWifiScan   "/wifiscan"                // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlWifiSave   "/wifisave"                // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
