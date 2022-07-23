@@ -42,7 +42,7 @@ void setup_CreateAccessPoint(){
   }
   wifi_scan += "</ol>";
 
-  WiFi.softAP(autoConnectAP, "");
+  WiFi.softAP(AUTOCONNECTAP, "");
   Serial.println("Local IP: http://192.168.4.1/");
   
   }
