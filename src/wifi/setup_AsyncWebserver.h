@@ -57,8 +57,8 @@ void setup_AsyncWebserver(){
       IDknop = 0;
     }
 
-    //Print("knop= ");
-    //Println(String(IDknop));
+    Print("knop= ");
+    Println(String(IDknop));
     switch (IDknop) {
     //Kp
     case id_Kpdo:

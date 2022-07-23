@@ -72,34 +72,10 @@ const uint16_t   id_Kpup = 111;            // knop ID, moet uniek zijn, zie html
 const uint16_t   id_Kpdo = 112; 
 const uint16_t   id_Kpra = 113;  
 
-const char* oms_Ki = "Ki Integraal";
-const uint16_t   id_Kiup = 121;
-const uint16_t   id_Kido = 122; 
-const uint16_t   id_Kira = 123;  
-
-const char* oms_Kd = "Kd Derivation";
-const uint16_t   id_Kdup = 131;
-const uint16_t   id_Kddo = 132; 
-const uint16_t   id_Kdra = 133;  
-
-const char* oms_An = "Balanceer Hoek";
-const uint16_t   id_Anup = 141;
-const uint16_t   id_Ando = 142; 
-const uint16_t   id_Anra = 143;  
-
-const char* oms_ShowAngle = "Gemeten Hoek=";
-const uint16_t   id_ShowAngle = 21;
-
-const char* oms_SaveConfig = "Save PID";
+const char* oms_SaveConfig = "Save Config";
 const uint16_t   id_SaveConfig = 22;
 
 const char* oms_Restart = "Restart";
 const uint16_t   id_Restart = 23;
 
-const char* oms_MotorENA = "Motoren aan/uit";
-const uint16_t   id_MotorENA = 24;
-
 volatile float Kp_change = 1.0;      // Elke druk in wifi app, verhoogt/verlaagt met waarde
-volatile float Ki_change = 1.0;
-volatile float Kd_change = 1.0; 
-volatile float An_change = 1.0; 
