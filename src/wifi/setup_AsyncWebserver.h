@@ -62,13 +62,17 @@ void setup_AsyncWebserver(){
     switch (IDknop) {
     //Kp
     case id_Kpdo:
-//      Kp = buttonChangeUp(Kp, -Kp_change, "Kp");
+      Kp = buttonChangeUp(Kp, -1, "Kp");
       break;
     case id_Kpup:
-//      Kp = buttonChangeUp(Kp, +Kp_change, "Kp");
+      Kp = buttonChangeUp(Kp, +1, "Kp");
       break;
-    case id_Kpra:
-//      Kp_change = buttonChangeStep(Kp_change, "Kp step");
+    //Kp
+    case id_Modedo:
+      Kp = buttonChangeUp(Mode, +1, "Mode");
+      break;
+    case id_Modeup:
+      Kp = buttonChangeUp(Mode, -1, "Mode");
       break;
     //Save Config
     case id_SaveConfig:

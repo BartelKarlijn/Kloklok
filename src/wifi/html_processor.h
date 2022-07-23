@@ -3,8 +3,9 @@ String html_processorRoot(const String& var){
   if(var == "BUTTONPLACEHOLDER"){
     String buttons = "";
     buttons += "<h1>" + String(AUTOCONNECTAP) + "</h1><table>";
-    buttons += html_buttonUpDown(oms_Kp, id_Kpra, id_Kpup, id_Kpdo, Kp, Kp_change);
-//    buttons += html_buttonSimple(id_ShowAngle, String(currentAngle), oms_ShowAngle);
+
+    buttons += html_buttonUpDown(oms_Kp, id_Kpup, id_Kpdo, Kp, "Mode1=test");
+    buttons += html_buttonUpDown(oms_Mode, id_Modeup, id_Modedo, Mode, "changeMode");
     buttons += html_buttonSimple(id_SaveConfig, "SAVE", oms_SaveConfig);
     buttons += html_buttonSimple(id_Restart, "/!\\", oms_Restart);
     buttons += "</table>";

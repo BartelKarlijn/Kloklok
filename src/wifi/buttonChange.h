@@ -8,8 +8,8 @@ float buttonChangeStep(float var_Change, String Change_Oms) {
   return var_Change;
 }
 
-float  buttonChangeUp(float var, float var_Change, String Change_Oms) {
-  var += var_Change;
+uint8_t  buttonChangeUp(uint8_t var, int8_t varChange, String Change_Oms) {
+  var = var + varChange;
   Print("Changing ");
   Print(Change_Oms);
   Print(", new value ");
@@ -17,30 +17,14 @@ float  buttonChangeUp(float var, float var_Change, String Change_Oms) {
   return var;
 }
 
-void buttonChangeAngle(){
-  Print("Hoek= ");
-//  Print(String(currentAngle));
-  Print("   pidOutput= ");
-//  Println(String(pidOutput));
-}
-
-void buttonChangeMotorENA(){
-  Print("Motoren zijn nu ");
-//  motorENA = not(motorENA);
-//  Println(motorENA ? "aan" : "uit");
-//  digitalWrite(motorPinENA, motorENA ? LOW : HIGH);
-}
-
 void buttonChangeConfig() {
   save_ConfigToEeprom ();  
-//  resetPID();
   Println("Paramters stored to eeprom");
 }
 
 void buttonChangeRestart() {
 //  digitalWrite(ledpin, LOW);
   Println("Restarting ESP");
-//  setSpeed(0,0);
   delay(100);
   ESP.restart();
 }

@@ -29,7 +29,7 @@ void setup()   {
   // tft
   setupTft();
 
-  switch (ModeOperation)
+  switch (Mode)
   {
   case MODE_CHECKFPS:
     modeCheckFpsSetup();
@@ -47,7 +47,7 @@ void setup()   {
     modeDigitTestSetup();
     break;
   default:
-    Println("Impossible ModeOperation in setup");
+    Println("Impossible Mode in setup");
     break;
   }
   SetupFinished();
@@ -57,7 +57,7 @@ void setup()   {
 // Loop
 // =======================================================================================
 void loop() {
-  switch (ModeOperation)
+  switch (Mode)
   {
   case MODE_CHECKFPS:
     modeCheckFpsLoop();

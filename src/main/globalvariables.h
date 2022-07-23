@@ -71,7 +71,12 @@ int16_t Kp;
 const char* oms_Kp = "Kp proportioneel";
 const uint16_t   id_Kpup = 111;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_Kpdo = 112; 
-const uint16_t   id_Kpra = 113;  
+//const uint16_t   id_Kpra = 113;  
+
+//Mode
+const char* oms_Mode = "Operation Mode";
+const uint16_t   id_Modeup = 121;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Modedo = 122; 
 
 const char* oms_SaveConfig = "Save Config";
 const uint16_t   id_SaveConfig = 22;
