@@ -1,18 +1,7 @@
-void modeCheckFpsSetup(){
-  modeOld = mode;
-  moveFront = 1; //Start with slowest movemnent
-  moveBack  = 1;
-  for (int i = 0; i <= 5; i++ ) {
-    angleBack[i] = random(360);
-  }
-  cnt = 0;
-  clearScreens(COLOR_BACKGROUND, true);
-  myTime = millis();
-}
-
 void modeCheckFpsLoop(){
   unsigned long myTimeRef;
-
+  
+  checkStillSameMode ();
   // Plot needle at random angle 
   for (int i = 0; i <= 5; i++ ) {
     angleBack[i] = angleBack[i] + moveBack;

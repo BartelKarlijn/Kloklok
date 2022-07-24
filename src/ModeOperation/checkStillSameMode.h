@@ -3,12 +3,28 @@ void checkStillSameMode () {
   if (mode != modeOld) {
     switch (mode)
     {
-    case /* constant-expression */:
-        /* code */
-        break;
-    
+    case MODE_CHECKFPS:
+      modeCheckFpsSetup();
+      break;
+    case MODE_CLOCK:
+      modeClockSetup();
+      break;
+    case MODE_CLOCKDEMO:
+      modeClockDemoSetup();
+      break;
+    case MODE_DIGITSHOW:
+      modeDigitShowSetup();
+      break;
+    case MODE_DIGITTEST:
+      modeDigitTestSetup();
+      break;
+    case MODE_SLAVE:
+      modeSlaveSetup();
+      break;
     default:
-        break;
-    }
+      Println("Impossible mode in setup");
+      break;
+  }
+  modeOld = mode;
   }
 }

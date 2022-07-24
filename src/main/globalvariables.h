@@ -64,7 +64,7 @@ const char* PARAM_output = "output";   // voor de asyncwebserver
 int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
 uint16_t clockRotation[6];
 //Mode
-int8_t mode, modeNew, modeOld;
+int8_t mode, modeNew, modeOld = 99;             // On 99, checkStillSameMode gets launched
 
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
