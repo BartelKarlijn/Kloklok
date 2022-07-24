@@ -1,3 +1,4 @@
 void processMessage() {
-    
+  
+  messageChanged = false;
 }

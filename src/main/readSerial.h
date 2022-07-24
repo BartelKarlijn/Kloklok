@@ -2,16 +2,12 @@ void readSerial(){
   if (Serial.available() > 0) {
     // read the incoming string:
     serialMessage = Serial.readString();
-
-    // prints the received data
-    Print("received via Serial: ");
-    Print(serialMessage);
+    messageChanged = true;
   }
   WebSerial.msgCallback(recvMsg);
   if (incomingMessage != "" ) {
-    Print("received via WebSerial: ");
-    serialMessage = incomingMessage;   
+    messageChanged = true;
+    serialMessage = incomingMessage;
     incomingMessage = "";
-    Println(serialMessage);
   }
 }
