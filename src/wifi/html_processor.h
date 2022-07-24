@@ -4,8 +4,8 @@ String html_processorRoot(const String& var){
     String buttons = "";
     buttons += "<h1>" + String(AUTOCONNECTAP) + "</h1><table>";
 
-    buttons += html_buttonUpDown(oms_Kp, id_Kpup, id_Kpdo, Kp, "Mode1=test");
-    buttons += html_buttonUpDown(oms_Mode, id_Modeup, id_Modedo, Mode, "changeMode");
+    buttons += html_buttonUpDown(oms_Kp, id_Kpup, id_Kpdo, Kp, "Kp");
+    buttons += html_buttonUpDown(oms_mode, id_Modeup, id_Modedo, modeNew, "changeMode");
     buttons += html_buttonSimple(id_SaveConfig, "SAVE", oms_SaveConfig);
     buttons += html_buttonSimple(id_Restart, "/!\\", oms_Restart);
     buttons += "</table>";

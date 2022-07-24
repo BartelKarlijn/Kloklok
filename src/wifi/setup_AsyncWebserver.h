@@ -69,10 +69,10 @@ void setup_AsyncWebserver(){
       break;
     //Kp
     case id_Modedo:
-      Mode = buttonChangeUp(Mode, -1, "Mode");
+      modeNew = buttonChangeUp(modeNew, -1, "modeNew");
       break;
     case id_Modeup:
-      Mode = buttonChangeUp(Mode, +1, "Mode");
+      modeNew = buttonChangeUp(modeNew, +1, "modeNew");
       break;
     //Save Config
     case id_SaveConfig:

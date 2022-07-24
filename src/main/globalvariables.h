@@ -74,7 +74,10 @@ const uint16_t   id_Kpdo = 112;
 //const uint16_t   id_Kpra = 113;  
 
 //Mode
-const char* oms_Mode = "Operation Mode";
+int8_t mode = MODE_DIGITTEST;
+int8_t modeNew = mode;
+
+const char* oms_mode = "Operation Mode";
 const uint16_t   id_Modeup = 121;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_Modedo = 122; 
 
