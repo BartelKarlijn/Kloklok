@@ -14,5 +14,6 @@ void modeSlaveLoop(){
  if (serialMessage != "" ) {
    Print("I received via WebSerial: ");
    Println(serialMessage);
+   serialMessage = "";
  }
 }
