@@ -9,6 +9,9 @@ void get_datafrom_eeprom () {
   // Note: Namespace name is limited to 15 chars.
   pref_eeprom.begin("KlokKlok", false);
 
+  String ssid_eeprom = pref_eeprom.getString("ssid_eeprom","");
+  String pwd_eeprom = pref_eeprom.getString("pwd_eeprom","");
+
   // Get the counter value, if the key does not exist, return a default value of 0
   // Note: Key name is limited to 15 chars.
   uint8_t mode_eeprom = pref_eeprom.getUInt("mode_eeprom", 0);
@@ -35,6 +38,18 @@ void get_datafrom_eeprom () {
   uint16_t rot5_eeprom = pref_eeprom.getUInt("rot5_eeprom", 0);
   Serial.print("Uit eprom uitgelezen waarde voor rot5 = ");
   Serial.println(rot5_eeprom);
+  bool flag_read = pref_eeprom.getBool("flag_read", false);
+  if (flag_read) {
+    mode = mode_eeprom;
+    modeNew = mode;
+    namePtr = namePtr_eeprom;
+    clockRotation[0] = rot0_eeprom;
+    clockRotation[1] = rot1_eeprom;
+    clockRotation[2] = rot2_eeprom;
+    clockRotation[3] = rot3_eeprom;
+    clockRotation[4] = rot4_eeprom;
+    clockRotation[5] = rot5_eeprom;
+  }
 }
 
 void save_ConfigToEeprom () {
@@ -46,6 +61,7 @@ void save_ConfigToEeprom () {
   pref_eeprom.putUInt("rot3_eeprom", rotationTbl[3]);
   pref_eeprom.putUInt("rot4_eeprom", rotationTbl[4]);
   pref_eeprom.putUInt("rot5_eeprom", rotationTbl[5]);
+  pref_eeprom.putBool("flag_read", true);
   
   Println("Config saved");
 }

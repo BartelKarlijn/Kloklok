@@ -50,9 +50,9 @@
 
 ///////////////// Screen Orientation  //////////////////////////////
 #define ROT_UP    0
-#define ROT_DOWN  90
-#define ROT_LEFT  180
-#define ROT_RIGHT 270
+#define ROT_RIGHT 90
+#define ROT_DOWN  180
+#define ROT_LEFT  270
 #define TFT_ORIENTATION (ROT_RIGHT / 90)  // the same for all 6 screens as we're using only 1 tft object
 
 ///////////////// Colors  //////////////////////////////
