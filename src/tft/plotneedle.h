@@ -1,7 +1,7 @@
-void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int16_t MovementFront, uint16_t cs_pin) {
-  uint16_t rotationOffset = rotationTbl[clockRotation[cs_pin]];
+void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int16_t MovementFront, uint16_t kloknr) {
+  uint16_t rotationOffset = rotationTbl[clockRotation[kloknr]];
   // Pull cs_pin low to write to screen
-  digitalWrite( cs_pin, LOW);
+  digitalWrite( tft_cs[kloknr], LOW);
 
   //clear trail back
   switch (movementBack)
@@ -52,5 +52,5 @@ void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int
   }
 
   // Pull cs_pin low to end write to screen
-  digitalWrite( cs_pin, HIGH);
+  digitalWrite( tft_cs[kloknr], HIGH);
 }
