@@ -2,13 +2,13 @@ void modeDigitTestLoop(){
   checkStillSameMode ();
   uint16_t nextNr = currentNr + 1;
   if (nextNr > 9) {nextNr = 0;}
-    calculateMovementToNr(nextNr);
+  calculateMovementToNr(nextNr);
 
-    moveNextDigit();
-    currentNr = nextNr;
-    showDigit(currentNr);
-    Print("Showing digit ");
-    Println(String(currentNr));
+  moveNextDigit();
+  currentNr = nextNr;
+  showDigit(currentNr);
+  Print("Showing digit ");
+  Println(String(currentNr));
 
-    delay(2000);
+  delay(2000);
 }

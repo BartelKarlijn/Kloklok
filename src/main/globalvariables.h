@@ -71,6 +71,9 @@ uint16_t clockRotation[6];
 //Mode
 int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
 
+// Time
+uint8_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
+
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
 #define hdlKnop       "/knop"                    // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
