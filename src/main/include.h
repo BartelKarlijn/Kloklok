@@ -25,6 +25,7 @@
 #include <main/setupBacklight.h>
 #include <main/print.h>
 #include <main/save_eprom.h>
+#include <main/readSerial.h>
 
 //   tft
 #include <tft/setupTft.h>
