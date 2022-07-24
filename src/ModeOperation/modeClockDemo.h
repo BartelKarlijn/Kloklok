@@ -1,4 +1,5 @@
 void modeClockDemoSetup(){
+  modeOld = mode;
 
 }
 

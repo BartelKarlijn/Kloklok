@@ -48,6 +48,7 @@
 #include <wifi\setup_CreateAccessPoint.h>
 
 //  operationModes
+#include <ModeOperation/checkStillSameMode.h>
 #include <ModeOperation/modeCheckFps.h>
 #include <ModeOperation/modeClock.h>
 #include <ModeOperation/modeClockDemo.h>

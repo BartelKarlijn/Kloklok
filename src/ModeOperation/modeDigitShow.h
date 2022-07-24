@@ -1,4 +1,5 @@
 void modeDigitShowSetup(){
+  modeOld = mode;
   clearScreens(COLOR_TEST, false);
   Println("TestColor showed");
   delay(500);
