@@ -67,10 +67,10 @@ void setup_AsyncWebserver(){
       mode = buttonChangeUp(mode, +1, "mode", COUNT_MODES);
       break;
     case id_namePtrdo:  //name pointer
-      namePtrNew = buttonChangeUp(namePtrNew, -1, "namePtrNew", 4);
+      namePtr = buttonChangeUp(namePtr, -1, "namePtr", 4);
       break;
     case id_namePtrup:
-      namePtrNew = buttonChangeUp(namePtrNew, +1, "modePtrNew", 4);
+      namePtr = buttonChangeUp(namePtr, +1, "namePtr", 4);
       break;
     case id_Rot0do:  //name Rotation 0
       clockRotation[0] = buttonChangeUp(clockRotation[0], -1, "clockRotation[0]", 4);

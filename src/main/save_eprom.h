@@ -58,7 +58,6 @@ void get_datafrom_eeprom () {
 }
 
 void save_ConfigToEeprom () {
-  namePtr = namePtrNew;
   pref_eeprom.putUInt("mode_eeprom", mode);
   pref_eeprom.putUInt("namePtr_eeprom", namePtr);
   pref_eeprom.putUInt("rot0_eeprom", clockRotation[0]);
