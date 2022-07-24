@@ -75,9 +75,12 @@
 #define MODE_CHECKFPS      2       // check how many fps we can achieve
 #define MODE_DIGITSHOW     3       // Test digits one by one (no movement in between)
 #define MODE_DIGITTEST     4       // Do movement betwen digits
+#define MODE_SLAVE         5
 #define MODEDESC_CHECKFPS  "CheckPFS"
 #define MODEDESC_CLOCK     "Clock"
 #define MODEDESC_CLOCKDEMO "ClockDemo"
 #define MODEDESC_DIGITSHOW "DigitShow"
 #define MODEDESC_DIGITTEST "DigitTest" 
-String modeTbl[] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITTEST};
+#define MODEDESC_SLAVE     "Slave"
+#define COUNT_MODES 6
+String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITTEST, MODEDESC_SLAVE};
