@@ -27,7 +27,7 @@ void calculateMovementToNr(uint8_t nr_to) {
 
         switch (movementMode) {
         case MOVEMENTMODEMIN:  // find the min movement as one with a difference of 0
-            if (( rotB2B = 0) or ( rotF2F = 0)) {
+            if (( rotB2B == 0) or ( rotF2F == 0)) {
                 // min movement found
                 angleto1 = angleBTo;
                 angleto2 = angleFTo;
@@ -38,12 +38,12 @@ void calculateMovementToNr(uint8_t nr_to) {
             }
             break;
         case MOVEMENTMODEMAX: // Similar to Min mode, but we add 360 to one of the 0 steps
-            if ( rotB2B = 0) {
+            if ( rotB2B == 0) {
                 // Add 360 to movement found
                 angleto1 = angleBTo + 360;
                 angleto2 = angleFTo;
             }
-            else if ( rotF2F = 0) {
+            else if ( rotF2F == 0) {
                 // Add 360 to movement found
                 angleto1 = angleBTo;
                 angleto2 = angleFTo + 360;
@@ -59,11 +59,11 @@ void calculateMovementToNr(uint8_t nr_to) {
                 angleto1 = angleFTo;
                 angleto2 = angleBTo;
             }
-            else if ( rotB2B = 0)  {
+            else if ( rotB2B == 0)  {
                 angleto1 = angleBTo + 360;
                 angleto2 = angleFTo;
             }
-            else if ( rotF2F = 0) {
+            else if ( rotF2F == 0) {
                 angleto1 = angleBTo;
                 angleto2 = angleFTo + 360;
             }

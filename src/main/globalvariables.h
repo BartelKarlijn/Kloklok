@@ -53,7 +53,8 @@ uint8_t namePtr, namePtrNew;  //pointer to nameTbl
 String nameTbl[] = {NAME_MASTER, NAME_SLAVE2, NAME_SLAVE3, NAME_SLAVE4};
 String incomingMessage, serialMessage;
 bool   messageChanged;
-String cmdHey, cmdClock, cmdCommand, cmdParam;
+String cmdHey, cmdCommand;
+uint8_t cmdClock, cmdParam;
 
 //DNSServer dnsServer;    //Even afgezet want voor eigen AP wellicht niet nodig
 String wifi_ssid ;
