@@ -1,6 +1,6 @@
 String html_buttonUpDown( String omschrijving, uint16_t IDup, uint16_t IDdown, uint8_t Var, String VarLabel) {
 
-  String ptr = "<p>";
+  String ptr = "<tr><td>\n";
   ptr += omschrijving;
   ptr += "</td><td><do class=\"button button-of\" onclick=\"toggleCheckbox(this)\" id=\""; 
   ptr += IDdown;
@@ -8,7 +8,7 @@ String html_buttonUpDown( String omschrijving, uint16_t IDup, uint16_t IDdown, u
   ptr += Var;
   ptr += "</td><td><up class=\"button button-of\" onclick=\"toggleCheckbox(this)\" id=\""; 
   ptr += IDup;
-  ptr += "\"> + </up></td><td> Mode= </td><td>" ;
+  ptr += "\"> + </up></td><td> Value= </td><td>" ;
   ptr += VarLabel;
   ptr += "</td></tr>\n" ;
 
