@@ -84,3 +84,10 @@
 #define MODEDESC_SLAVE     "Slave"
 #define COUNT_MODES 6
 String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITTEST, MODEDESC_SLAVE};
+
+///////////////// Commands  //////////////////////////////
+// Commmands are fixed lenght of 1
+#define COMMAND_CLEARS    1  // Clear screen without replotting axis
+#define COMMAND_CLEARA    2  // Clear screen and replot axis
+#define COMMAND_SHOWDB    3  // Show digit
+#define COMMAND_MOVETO    4  // Move to digit
