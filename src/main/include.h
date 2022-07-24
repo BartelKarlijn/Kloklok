@@ -26,6 +26,7 @@
 #include <main/print.h>
 #include <main/save_eprom.h>
 #include <main/readSerial.h>
+#include <main/processMessage.h>
 
 //   tft
 #include <tft/setupTft.h>
