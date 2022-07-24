@@ -35,7 +35,6 @@ void get_datafrom_eeprom () {
   uint16_t rot5_eeprom = pref_eeprom.getUInt("rot5_eeprom", 0);
   Serial.print("Uit eprom uitgelezen waarde voor rot5 = ");
   Serial.println(rot5_eeprom);
- 
 }
 
 void save_ConfigToEeprom () {
