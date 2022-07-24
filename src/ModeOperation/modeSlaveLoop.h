@@ -5,6 +5,6 @@ void modeSlaveLoop(){
     Print("Message= ");
     Println(serialMessage);
   }
-  processMessage();
+  parseMessage();
   delay(1000);
 }

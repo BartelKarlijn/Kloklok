@@ -1,4 +1,0 @@
-void processMessage() {
-  
-  messageChanged = false;
-}
