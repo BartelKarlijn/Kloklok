@@ -67,9 +67,14 @@ int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
 #define AUTOCONNECTAP "KloKlok"    //ssid access point voor als je niet aan wifi geraakt
 
 ///////////////// working modes  //////////////////////////////
-#define MODE_CHECKFPS  0       // check how many fps we can achieve
-#define MODE_CLOCK     1       // Regular clock mode
-#define MODE_CLOCKDEMO 2       // 'Demo' clock by rapidly browsing nrs
-#define MODE_DIGITSHOW 3       // Test digits one by one (no movement in between)
-#define MODE_DIGITTEST 4       // Do movement betwen digits
-int8_t modeTbl[] = {MODE_CHECKFPS, MODE_CLOCK, MODE_CLOCKDEMO, MODE_DIGITSHOW, MODE_DIGITTEST};
+#define MODE_CHECKFPS      0       // check how many fps we can achieve
+#define MODE_CLOCK         1       // Regular clock mode
+#define MODE_CLOCKDEMO     2       // 'Demo' clock by rapidly browsing nrs
+#define MODE_DIGITSHOW     3       // Test digits one by one (no movement in between)
+#define MODE_DIGITTEST     4       // Do movement betwen digits
+#define MODEDESC_CHECKFPS  "CheckPFS"
+#define MODEDESC_CLOCK     "Clock"
+#define MODEDESC_CLOCKDEMO "ClockDemo"
+#define MODEDESC_DIGITSHOW "DigitShow"
+#define MODEDESC_DIGITTEST "DigitTest" 
+String modeTbl[] = {MODEDESC_CHECKFPS, MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_DIGITSHOW, MODEDESC_DIGITTEST};

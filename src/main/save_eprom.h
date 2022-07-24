@@ -46,7 +46,9 @@ void save_ConfigToEeprom () {
 //  pref_eeprom.putFloat("Ki_eeprom", Ki);
 //  pref_eeprom.putFloat("Kd_eeprom", Kd);
 //  pref_eeprom.putFloat("Angle_eeprom", selfBalanceAngleSetpoint);
-
+  pref_eeprom.putUInt("mode_eeprom", mode);
+  pref_eeprom.putUInt("mode_eeprom", mode);
+  
   Println("Config saved");
 }
 
