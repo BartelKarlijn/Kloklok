@@ -5,6 +5,6 @@ void showDigit(int nr ){
     //Movement is 0
     angleBack[i] = digit[nr][i].angleBack;
     angleFront[i] = digit[nr][i].angleFront;
-    plotNeedle( angleBack[i], 0, angleFront[i], 0, tft_cs[i]);
+    plotNeedle( angleBack[i], 0, angleFront[i], 0, i);
   }
 }

@@ -18,7 +18,7 @@ void modeCheckFpsLoop(){
     if (angleBack[i] >= 360) {angleBack[i] = 0; }
     angleFront[i] = angleFront[i] + moveFront;
     if (angleFront[i] >= 360) {angleFront[i] = 0; }
-    plotNeedle(angleBack[i], moveBack, angleFront[i], moveFront, tft_cs[i]);
+    plotNeedle(angleBack[i], moveBack, angleFront[i], moveFront, i);
   }
   delay(1);
 
