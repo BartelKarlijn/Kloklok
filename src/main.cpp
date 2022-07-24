@@ -46,6 +46,9 @@ void setup()   {
   case MODE_DIGITTEST:
     modeDigitTestSetup();
     break;
+  case MODE_SLAVE:
+    modeSlaveSetup();
+    break;
   default:
     Println("Impossible mode in setup");
     break;
@@ -73,6 +76,9 @@ void loop() {
     break;
   case MODE_DIGITTEST:
     modeDigitTestLoop();
+    break;
+  case MODE_SLAVE:
+    modeSlaveLoop();
     break;
   default:
     Println("Impossible modeOperation in loop");
