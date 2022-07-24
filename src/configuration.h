@@ -70,9 +70,9 @@
 #define NAME_SLAVE4 "KloKlok_slave_1m" 
 
 ///////////////// working modes  //////////////////////////////
-#define MODE_CHECKFPS      0       // check how many fps we can achieve
-#define MODE_CLOCK         1       // Regular clock mode
-#define MODE_CLOCKDEMO     2       // 'Demo' clock by rapidly browsing nrs
+#define MODE_CLOCK         0       // Regular clock mode
+#define MODE_CLOCKDEMO     1       // 'Demo' clock by rapidly browsing nrs
+#define MODE_CHECKFPS      2       // check how many fps we can achieve
 #define MODE_DIGITSHOW     3       // Test digits one by one (no movement in between)
 #define MODE_DIGITTEST     4       // Do movement betwen digits
 #define MODEDESC_CHECKFPS  "CheckPFS"
@@ -80,4 +80,4 @@
 #define MODEDESC_CLOCKDEMO "ClockDemo"
 #define MODEDESC_DIGITSHOW "DigitShow"
 #define MODEDESC_DIGITTEST "DigitTest" 
-String modeTbl[] = {MODEDESC_CHECKFPS, MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_DIGITSHOW, MODEDESC_DIGITTEST};
+String modeTbl[] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITTEST};

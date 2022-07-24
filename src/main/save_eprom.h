@@ -14,6 +14,12 @@ void get_datafrom_eeprom () {
 
   // Get the counter value, if the key does not exist, return a default value of 0
   // Note: Key name is limited to 15 chars.
+  wifi_ssid = pref_eeprom.getString("ssid_eeprom","");
+  Serial.print("Uit eprom uitgelezen waarde voor SSID = ");
+  Serial.println(wifi_ssid);
+  wifi_pwd = pref_eeprom.getString("pwd_eeprom","");
+  Serial.print("Uit eprom uitgelezen waarde voor PWD = ");
+  Serial.println("*****");
   uint8_t mode_eeprom = pref_eeprom.getUInt("mode_eeprom", 0);
   Serial.print("Uit eprom uitgelezen waarde voor mode = ");
   Serial.println(mode_eeprom);
