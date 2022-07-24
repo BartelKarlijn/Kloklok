@@ -61,12 +61,12 @@ void get_datafrom_eeprom () {
 void save_ConfigToEeprom () {
   pref_eeprom.putUInt("mode_eeprom", mode);
   pref_eeprom.putUInt("namePtr_eeprom", namePtr);
-  pref_eeprom.putUInt("rot0_eeprom", rotationTbl[0]);
-  pref_eeprom.putUInt("rot1_eeprom", rotationTbl[1]);
-  pref_eeprom.putUInt("rot2_eeprom", rotationTbl[2]);
-  pref_eeprom.putUInt("rot3_eeprom", rotationTbl[3]);
-  pref_eeprom.putUInt("rot4_eeprom", rotationTbl[4]);
-  pref_eeprom.putUInt("rot5_eeprom", rotationTbl[5]);
+  pref_eeprom.putUInt("rot0_eeprom", clockRotation[0]);
+  pref_eeprom.putUInt("rot1_eeprom", clockRotation[1]);
+  pref_eeprom.putUInt("rot2_eeprom", clockRotation[2]);
+  pref_eeprom.putUInt("rot3_eeprom", clockRotation[3]);
+  pref_eeprom.putUInt("rot4_eeprom", clockRotation[4]);
+  pref_eeprom.putUInt("rot5_eeprom", clockRotation[5]);
   pref_eeprom.putBool("flag_read", true);
   
   Println("Config saved");

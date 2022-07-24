@@ -60,19 +60,53 @@ void setup_AsyncWebserver(){
     Print("knop= ");
     Println(String(IDknop));
     switch (IDknop) {
-    //Kp
-    case id_Kpdo:
-      Kp = buttonChangeUp(Kp, -1, "Kp");
-      break;
-    case id_Kpup:
-      Kp = buttonChangeUp(Kp, +1, "Kp");
-      break;
-    //Kp
-    case id_Modedo:
-      modeNew = buttonChangeUp(modeNew, -1, "modeNew");
+    case id_Modedo:  //mode
+      modeNew = buttonChangeUp(modeNew, -1, "modeNew", 5);
       break;
     case id_Modeup:
-      modeNew = buttonChangeUp(modeNew, +1, "modeNew");
+      modeNew = buttonChangeUp(modeNew, +1, "modeNew", 5);
+      break;
+    case id_namePtrdo:  //name pointer
+      namePtrNew = buttonChangeUp(namePtrNew, -1, "namePtrNew", 4);
+      break;
+    case id_namePtrup:
+      namePtrNew = buttonChangeUp(namePtrNew, +1, "modePtrNew", 4);
+      break;
+    case id_Rot0do:  //name Rotation 0
+      clockRotation[0] = buttonChangeUp(clockRotation[0], -1, "clockRotation[0]", 4);
+      break;
+    case id_Rot0up:
+      clockRotation[0] = buttonChangeUp(clockRotation[0], +1, "clockRotation[0]", 4);
+      break;
+    case id_Rot1do:  //name Rotation 1
+      clockRotation[1] = buttonChangeUp(clockRotation[1], -1, "clockRotation[0]", 4);
+      break;
+    case id_Rot1up:
+      clockRotation[1] = buttonChangeUp(clockRotation[1], +1, "clockRotation[0]", 4);
+      break;
+    case id_Rot2do:  //name Rotation 2
+      clockRotation[2] = buttonChangeUp(clockRotation[2], -1, "clockRotation[0]", 4);
+      break;
+    case id_Rot2up:
+      clockRotation[2] = buttonChangeUp(clockRotation[2], +1, "clockRotation[0]", 4);
+      break;
+    case id_Rot3do:  //name Rotation 3
+      clockRotation[3] = buttonChangeUp(clockRotation[3], -1, "clockRotation[0]", 4);
+      break;
+    case id_Rot3up:
+      clockRotation[3] = buttonChangeUp(clockRotation[3], +1, "clockRotation[0]", 4);
+      break;
+    case id_Rot4do:  //name Rotation 4
+      clockRotation[4] = buttonChangeUp(clockRotation[4], -1, "clockRotation[0]", 4);
+      break;
+    case id_Rot4up:
+      clockRotation[4] = buttonChangeUp(clockRotation[4], +1, "clockRotation[0]", 4);
+      break;
+    case id_Rot5do:  //name Rotation 5
+      clockRotation[5] = buttonChangeUp(clockRotation[5], -1, "clockRotation[0]", 4);
+      break;
+    case id_Rot5up:
+      clockRotation[5] = buttonChangeUp(clockRotation[5], +1, "clockRotation[0]", 4);
       break;
     //Save Config
     case id_SaveConfig:

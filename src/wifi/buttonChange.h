@@ -8,8 +8,12 @@ float buttonChangeStep(float var_Change, String Change_Oms) {
   return var_Change;
 }
 
-uint8_t  buttonChangeUp(uint8_t var, int8_t varChange, String Change_Oms) {
-  var = var + varChange;
+uint8_t  buttonChangeUp(uint16_t var, int16_t varChange, String Change_Oms, uint16_t varMax) {
+  int32_t varTmp;
+  varTmp = var + varChange;
+  if (varTmp < 0) {varTmp = varMax -1;}
+  if (varTmp >= varMax) {varTmp = 0;}
+  var = varTmp;
   Print("Changing ");
   Print(Change_Oms);
   Print(", new value ");
