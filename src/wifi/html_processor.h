@@ -2,7 +2,7 @@ String html_processorRoot(const String& var){
 // Replaces placeholder with button section in your web page
   if(var == "BUTTONPLACEHOLDER"){
     String buttons = "";
-    buttons += "<h1>" + String(AUTOCONNECTAP) + "</h1><table>";
+    buttons += "<h1>" + nameTbl[namePtr] + "</h1><table>";
 
     buttons += html_buttonUpDown(oms_Kp, id_Kpup, id_Kpdo, Kp, "Kp");
     buttons += html_buttonUpDown(oms_mode, id_Modeup, id_Modedo, modeNew, "changeMode");

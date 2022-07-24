@@ -49,6 +49,9 @@ Preferences pref_eeprom;
 //////// Wifi //////////
 // Create AsyncWebServer object on port 80
 AsyncWebServer webserver(80);
+uint8_t namePtr, namePtrNew;  //pointer to nameTbl
+String nameTbl[] = {NAME_MASTER, NAME_SLAVE2, NAME_SLAVE3, NAME_SLAVE4};
+
 //DNSServer dnsServer;    //Even afgezet want voor eigen AP wellicht niet nodig
 String wifi_ssid ;
 String wifi_pwd  ;
@@ -56,6 +59,13 @@ String wifi_scan;         //Lijst met scan van wifi netwerken
 const char* PARAM_ssid   = "ssid";     // voor de asyncwebserver
 const char* PARAM_pwd    = "pwd" ;     // voor de asyncwebserver
 const char* PARAM_output = "output";   // voor de asyncwebserver
+
+// Clock rotation
+int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
+int16_t ClockRotation[6];
+//Mode
+int8_t mode = MODE_DIGITTEST;
+int8_t modeNew = mode;
 
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
@@ -72,10 +82,6 @@ const char* oms_Kp = "Kp proportioneel";
 const uint16_t   id_Kpup = 111;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_Kpdo = 112; 
 //const uint16_t   id_Kpra = 113;  
-
-//Mode
-int8_t mode = MODE_DIGITTEST;
-int8_t modeNew = mode;
 
 const char* oms_mode = "Operation Mode";
 const uint16_t   id_Modeup = 121;            // knop ID, moet uniek zijn, zie html_processor

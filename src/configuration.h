@@ -49,12 +49,11 @@
 #define NEEDLE_CLEAR4 9   // area of needle to clear
 
 ///////////////// Screen Orientation  //////////////////////////////
-#define UP    0
-#define DOWN  90
-#define LEFT  180
-#define RIGHT 270
-#define TFT_ORIENTATION (RIGHT / 90)  // the same for all 6 screens as we're using only 1 tft object
-int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
+#define ROT_UP    0
+#define ROT_DOWN  90
+#define ROT_LEFT  180
+#define ROT_RIGHT 270
+#define TFT_ORIENTATION (ROT_RIGHT / 90)  // the same for all 6 screens as we're using only 1 tft object
 
 ///////////////// Colors  //////////////////////////////
 #define COLOR_BITS_PER_PIXEL 16     //16 appeared to be the most performant
@@ -64,7 +63,11 @@ int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
 #define COLOR_TEST       TFT_RED
 
 ///////////////// wifi  //////////////////////////////
-#define AUTOCONNECTAP "KloKlok"    //ssid access point voor als je niet aan wifi geraakt
+// names below are used as AccessPoint name and calls from master
+#define NAME_MASTER "KloKlok_master_10h"
+#define NAME_SLAVE2 "KloKlok_slave_1h" 
+#define NAME_SLAVE3 "KloKlok_slave_10m" 
+#define NAME_SLAVE4 "KloKlok_slave_1m" 
 
 ///////////////// working modes  //////////////////////////////
 #define MODE_CHECKFPS      0       // check how many fps we can achieve
