@@ -26,8 +26,11 @@
 #include <main/print.h>
 #include <main/save_eprom.h>
 #include <main/readSerial.h>
-#include <main/parseMessage.h>
-#include <main/clearActions.h>
+
+// clock
+#include <clock/parseMessage.h>
+#include <clock/clearActions.h>
+#include <clock/distributeCommand.h>
 
 //   tft
 #include <tft/setupTft.h>
