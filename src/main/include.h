@@ -53,3 +53,4 @@
 #include <ModeOperation/modeClockDemo.h>
 #include <ModeOperation/modeDigitShow.h>
 #include <ModeOperation/modeDigitTest.h>
+#include <ModeOperation/modeSlave.h>
