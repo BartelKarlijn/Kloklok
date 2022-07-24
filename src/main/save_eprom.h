@@ -47,7 +47,6 @@ void get_datafrom_eeprom () {
   bool flag_read = pref_eeprom.getBool("flag_read", false);
   if (flag_read) {
     mode = mode_eeprom;
-    modeNew = mode;
     namePtr = namePtr_eeprom;
     clockRotation[0] = rot0_eeprom;
     clockRotation[1] = rot1_eeprom;
@@ -60,7 +59,6 @@ void get_datafrom_eeprom () {
 
 void save_ConfigToEeprom () {
   namePtr = namePtrNew;
-  mode    = modeNew;
   pref_eeprom.putUInt("mode_eeprom", mode);
   pref_eeprom.putUInt("namePtr_eeprom", namePtr);
   pref_eeprom.putUInt("rot0_eeprom", clockRotation[0]);
