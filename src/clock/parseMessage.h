@@ -7,6 +7,9 @@ void parseMessage() {
   //     command    (length 1)
   //     parameter (digit)
   // eg "hey 3 4 8"  = clock 3 moveto 8
+  //    "hey 2 5 5"  = clock 2 setmode 5 = Slave
+  //    "hey 2 5 5"  = clock 2 setmode 4 = digitTest
+  
 
   messageChanged = false;
   cmdHey = serialMessage.substring(0, 4);

@@ -1,5 +1,6 @@
 void modeSlaveSetup(){
-  stopWifi();
+  startWifi();   // Moet eigenlijk stop zijn
   clearScreens(COLOR_TEST, true);
-  delay(500);
+  Println("Now in mode Slave");
+  delay(100);
 }

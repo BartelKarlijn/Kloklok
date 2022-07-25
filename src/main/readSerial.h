@@ -4,10 +4,12 @@ void readSerial(){
     serialMessage = Serial.readString();
     messageChanged = true;
   }
-  WebSerial.msgCallback(recvMsg);
-  if (incomingMessage != "" ) {
-    messageChanged = true;
-    serialMessage = incomingMessage;
-    incomingMessage = "";
+  if (flagWifiOn) {
+    WebSerial.msgCallback(recvMsg);
+    if (incomingMessage != "" ) {
+      messageChanged = true;
+      serialMessage = incomingMessage;
+      incomingMessage = "";
+    }
   }
 }

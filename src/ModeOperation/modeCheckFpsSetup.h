@@ -8,5 +8,7 @@ void modeCheckFpsSetup(){
   cnt = 0;
   clearScreens(COLOR_BACKGROUND, true);
   myTime = millis();
-
+  
+  Println("Now in mode CheckFPS");
+  delay(100);
 }
