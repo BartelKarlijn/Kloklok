@@ -4,6 +4,7 @@ void modeSlaveLoop(){
   if (messageChanged) {
     Print("Message= ");
     Println(serialMessage);
+    messageChanged = false;
   }
   parseMessage();
   if (cmdAction) {
