@@ -16,8 +16,6 @@ void modeClockDemoLoop(){
   moveNextDigit();
   currentNr = nextNr;
   showDigit(currentNr);
-  Print("Showing digit ");
-  Println(String(currentNr));
 
   delay(2000);
 

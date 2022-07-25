@@ -64,10 +64,10 @@
 
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
-#define NAME_MASTER "KloKlok_master_10h"
-#define NAME_SLAVE2 "KloKlok_slave_1h" 
-#define NAME_SLAVE3 "KloKlok_slave_10m" 
-#define NAME_SLAVE4 "KloKlok_slave_1m" 
+#define NAME_MASTER "KloKlok_masterX000"
+#define NAME_SLAVE2 "KloKlok_slave_0X00" 
+#define NAME_SLAVE3 "KloKlok_slave_0000" 
+#define NAME_SLAVE4 "KloKlok_slave_000X" 
 
 ///////////////// working modes  //////////////////////////////
 #define MODE_CLOCK         0       // Regular clock mode
