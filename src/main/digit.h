@@ -19,7 +19,7 @@ const clockface digit[10][6] =
 // digit 1
   {   
     {225, 225, true, false},
-    {180, 180, false, false},
+    {180, 255, false, false},
     {225, 225, true, false},
     {  0, 180, false, false},
     {225, 225, true, false},
