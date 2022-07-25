@@ -10,7 +10,7 @@ void modeClockDemoLoop(){
   if (time_00X0 > 9) {time_00X0 = 0;}
   time_000X = time_00X0 + 1;
   if (time_000X > 9) {time_000X = 0;}
-  distributeCommand(COMMAND_MOVETO);
+  distributeCommand(COMMAND_MOVETO, time_0X00, time_00X0, time_000X);
 
   calculateMovementToNr(nextNr);
   moveNextDigit();
