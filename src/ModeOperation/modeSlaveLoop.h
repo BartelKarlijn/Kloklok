@@ -22,11 +22,14 @@ void modeSlaveLoop(){
       calculateMovementToNr(cmdParam);
       moveNextDigit();
       break;    
+    case COMMAND_SETMOD:
+      mode = cmdParam;
+      break;
     default:
       break;
     }
   }
 
   cmdAction = false;
-  delay(1000);
+  delay(100);
 }

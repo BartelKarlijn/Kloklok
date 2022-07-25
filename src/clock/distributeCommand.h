@@ -11,5 +11,4 @@ void distributeCommand(uint8_t command) {
   distributeCommandSingle(3, command, time_000X);
   distributeCommandSingle(2, command, time_00X0);
   distributeCommandSingle(1, command, time_0X00);
-  distributeCommandSingle(0, command, time_X000);
 }

@@ -91,3 +91,4 @@ String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHEC
 #define COMMAND_CLEARA    2  // Clear screen and replot axis
 #define COMMAND_SHOWDB    3  // Show digit
 #define COMMAND_MOVETO    4  // Move to digit
+#define COMMAND_SETMOD    5  // Set in specific mode
