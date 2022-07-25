@@ -1,4 +1,5 @@
 void modeClockDemoSetup(){
+  startWifi();
   clearScreens(COLOR_BACKGROUND, true);
   currentNr = 0;
   showDigit(currentNr);

@@ -1,4 +1,5 @@
 void modeDigitTestSetup(){
+  startWifi();
   clearScreens(COLOR_TEST, true);
   currentNr = 0;
   showDigit(currentNr);

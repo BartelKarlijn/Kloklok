@@ -56,6 +56,7 @@ bool   messageChanged;
 String cmdHey;
 uint8_t cmdClock, cmdCommand, cmdParam;
 bool   cmdAction;
+bool   flagWifiOn;
 
 //DNSServer dnsServer;    //Even afgezet want voor eigen AP wellicht niet nodig
 String wifi_ssid ;
