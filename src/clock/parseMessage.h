@@ -28,7 +28,6 @@ void parseMessage() {
       Println(String(cmdParam));
     }
   }
-
   serialMessage = "";
   
 }
