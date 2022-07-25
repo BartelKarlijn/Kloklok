@@ -64,10 +64,10 @@
 
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
-#define NAME_MASTER "KloKlok_master_10h"
-#define NAME_SLAVE2 "KloKlok_slave_1h" 
-#define NAME_SLAVE3 "KloKlok_slave_10m" 
-#define NAME_SLAVE4 "KloKlok_slave_1m" 
+#define NAME_MASTER "KloKlok_masterX000"
+#define NAME_SLAVE1 "KloKlok_slave_0X00" 
+#define NAME_SLAVE2 "KloKlok_slave_00X0" 
+#define NAME_SLAVE3 "KloKlok_slave_000X" 
 
 ///////////////// working modes  //////////////////////////////
 #define MODE_CLOCK         0       // Regular clock mode
@@ -87,7 +87,8 @@ String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHEC
 
 ///////////////// Commands  //////////////////////////////
 // Commmands are fixed lenght of 1
-#define COMMAND_CLEARS    1  // Clear screen without replotting axis
-#define COMMAND_CLEARA    2  // Clear screen and replot axis
-#define COMMAND_SHOWDB    3  // Show digit
-#define COMMAND_MOVETO    4  // Move to digit
+#define COMMAND_CLEARS    1  // Clear screen without.                     Param 0=clear axis, 1=plot axis
+#define COMMAND_SHOWDG    3  // Show digit                                Param = digit to show
+#define COMMAND_MOVETO    4  // Move to digit                             Param = digit moving to
+#define COMMAND_SETMOD    5  // Set in specific mode                      Param = new mode
+#define REACTIONTIME   1000  // Slaves are reacting 1000s after command  

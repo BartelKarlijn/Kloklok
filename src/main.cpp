@@ -10,11 +10,6 @@ void setup()   {
   setupSerial();
   get_datafrom_eeprom (); // parameters uit eeprom halen (oa ssid/pw en PID)
 
-  //wifi
-  setup_ConnectKnownWifi();  // Aan gekende wifi connecteren
-  setup_AsyncWebserver();    // webserver om html te tonen 
-  setup_CreateAccessPoint(); // Toch eigen AccessPoint opzetten als gekende wifi niet gelukt.
-
   setupBacklight();
   // Create the Sprites
 //  needle1 = createNeedle( NEEDLE_CLEAR1 );
@@ -29,30 +24,6 @@ void setup()   {
   // tft
   setupTft();
 
-  switch (mode)
-  {
-  case MODE_CHECKFPS:
-    modeCheckFpsSetup();
-    break;
-  case MODE_CLOCK:
-    modeClockSetup();
-    break;
-  case MODE_CLOCKDEMO:
-    modeClockDemoSetup();
-    break;
-  case MODE_DIGITSHOW:
-    modeDigitShowSetup();
-    break;
-  case MODE_DIGITTEST:
-    modeDigitTestSetup();
-    break;
-  case MODE_SLAVE:
-    modeSlaveSetup();
-    break;
-  default:
-    Println("Impossible mode in setup");
-    break;
-  }
   SetupFinished();
 }
 

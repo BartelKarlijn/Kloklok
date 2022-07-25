@@ -43,15 +43,17 @@
 #include <tft/moveNextDigit.h>
 
 //wifi
-#include <wifi\html_buttonSimple.h>  // routine om simpele pushbutton te maken
-#include <wifi\html_buttonUpDown.h>  // routine om PID parameters up/down aan te passen
-#include <wifi\html_buttonLink.h>    // routine om knoppen met link te maken
-#include <wifi\html_sendPage.h>      // send the (config) html string
-#include <wifi\html_processor.h>     // vervangt placeholder in sendPage
-#include <wifi\buttonChange.h>       // acties die gebeuren als je op knop drukt
-#include <wifi\setup_AsyncWebserver.h> 
-#include <wifi\setup_ConnectKnownWifi.h>
-#include <wifi\setup_CreateAccessPoint.h>
+#include <wifi/html_buttonSimple.h>  // routine om simpele pushbutton te maken
+#include <wifi/html_buttonUpDown.h>  // routine om PID parameters up/down aan te passen
+#include <wifi/html_buttonLink.h>    // routine om knoppen met link te maken
+#include <wifi/html_sendPage.h>      // send the (config) html string
+#include <wifi/html_processor.h>     // vervangt placeholder in sendPage
+#include <wifi/buttonChange.h>       // acties die gebeuren als je op knop drukt
+#include <wifi/setup_AsyncWebserver.h> 
+#include <wifi/setup_ConnectKnownWifi.h>
+#include <wifi/setup_CreateAccessPoint.h>
+#include <wifi/startWifi.h>
+#include <wifi/stopWifi.h>
 
 //  operationModes
 #include <ModeOperation/modeCheckFpsSetup.h>

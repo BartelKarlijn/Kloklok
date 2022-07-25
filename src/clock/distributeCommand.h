@@ -1,15 +1,16 @@
-void distributeCommandSingle(uint8_t clock, uint8_t command, uint8_t param) {
+void distributeCommandSingle(uint8_t command, uint8_t clock, uint8_t param) {
   String commandString = "hey ";
-  commandString        += String(clock) + " ";
   commandString        += String(command) + " ";
+  commandString        += String(clock) + " ";
   commandString        += String(param);
-  Print(commandString);
+  Println(commandString);
 }
 
 
-void distributeCommand(uint8_t command) {
-  distributeCommandSingle(3, command, time_000X);
-  distributeCommandSingle(2, command, time_00X0);
-  distributeCommandSingle(1, command, time_0X00);
-  distributeCommandSingle(0, command, time_X000);
+void distributeCommand(uint8_t command, uint8_t p1, uint8_t p2, uint8_t p3) {
+  distributeCommandSingle(command, 3, p3);
+  distributeCommandSingle(command, 2, p2);
+  distributeCommandSingle(command, 1, p1);
+  Println(".");
+  delay(REACTIONTIME);
 }

@@ -1,6 +1,8 @@
 void modeDigitShowSetup(){
+  startWifi();
   clearScreens(COLOR_TEST, false);
   Println("TestColor showed");
-  delay(500);
+  Println("Now in mode DigitShow");
+  delay(100);
 }
 
