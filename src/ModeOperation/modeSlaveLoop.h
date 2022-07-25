@@ -32,5 +32,4 @@ void modeSlaveLoop(){
   }
 
   cmdAction = false;
-  delay(100);
 }
