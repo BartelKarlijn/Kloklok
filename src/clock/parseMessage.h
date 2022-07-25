@@ -27,7 +27,8 @@ void parseMessage() {
     Print("  command= ");
     Print(String(cmdCommand));
     Print("  param= ");
-    Println(String(cmdParam));
+    Print(String(cmdParam));
+    Println(".");
 
   } 
   cmdHey = "";
