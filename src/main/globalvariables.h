@@ -50,7 +50,7 @@ Preferences pref_eeprom;
 // Create AsyncWebServer object on port 80
 AsyncWebServer webserver(80);
 uint8_t namePtr;  //pointer to nameTbl
-String nameTbl[] = {NAME_MASTER, NAME_SLAVE2, NAME_SLAVE3, NAME_SLAVE4};
+String nameTbl[] = {NAME_MASTER, NAME_SLAVE1, NAME_SLAVE2, NAME_SLAVE3};
 String incomingMessage, serialMessage;
 bool   messageChanged;
 String cmdHey;
