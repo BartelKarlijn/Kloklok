@@ -18,19 +18,20 @@ void parseMessage() {
     cmdCommand = serialMessage.substring(4, 5).toInt();
     cmdClock   = serialMessage.substring(6, 7).toInt();
     cmdParam   = serialMessage.substring(8, 9).toInt();
-    cmdAction  = true;
-    
-    Print("Hey= ");
-    Print(cmdHey);
-    Print("  Clock= ");
-    Print(String(cmdClock));
-    Print("  command= ");
-    Print(String(cmdCommand));
-    Print("  param= ");
-    Println(String(cmdParam));
-
+    if (cmdClock == namePtr) {
+      cmdAction  = true;
+     
+      Print("Hey= ");
+      Print(cmdHey);
+      Print("  Clock= ");
+      Print(String(cmdClock));
+      Print("  command= ");
+      Print(String(cmdCommand));
+      Print("  param= ");
+      Println(String(cmdParam));
+    }
   } 
   cmdHey = "";
-  serialMessage = "";
+  serialMessage.clear();
   
 }
