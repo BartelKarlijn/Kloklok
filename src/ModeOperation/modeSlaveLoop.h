@@ -16,7 +16,7 @@ void modeSlaveLoop(){
     case COMMAND_CLEARA:
       clearScreens(COLOR_BACKGROUND, true);
       break;
-    case COMMAND_SHOWDB:
+    case COMMAND_SHOWDG:
       showDigit(cmdParam);
       break;
     case COMMAND_MOVETO:
