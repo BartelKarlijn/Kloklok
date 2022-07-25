@@ -87,9 +87,8 @@ String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHEC
 
 ///////////////// Commands  //////////////////////////////
 // Commmands are fixed lenght of 1
-#define COMMAND_CLEARS    1  // Clear screen without replotting axis
-#define COMMAND_CLEARA    2  // Clear screen and replot axis
-#define COMMAND_SHOWDG    3  // Show digit
-#define COMMAND_MOVETO    4  // Move to digit
-#define COMMAND_SETMOD    5  // Set in specific mode
+#define COMMAND_CLEARS    1  // Clear screen without.                     Param 0=clear axis, 1=plot axis
+#define COMMAND_SHOWDG    3  // Show digit                                Param = digit to show
+#define COMMAND_MOVETO    4  // Move to digit                             Param = digit moving to
+#define COMMAND_SETMOD    5  // Set in specific mode                      Param = new mode
 #define REACTIONTIME   1000  // Slaves are reacting 1000s after command  
