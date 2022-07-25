@@ -1,24 +1,25 @@
-void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int16_t MovementFront, uint16_t cs_pin) {
+void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int16_t MovementFront, uint16_t kloknr) {
+  uint16_t rotationOffset = rotationTbl[clockRotation[kloknr]];
   // Pull cs_pin low to write to screen
-  digitalWrite( cs_pin, LOW);
+  digitalWrite( tft_cs[kloknr], LOW);
 
   //clear trail back
   switch (movementBack)
   {
   case 0:
-    needle1.pushRotated( angleBack, COLOR_TRANSP);
+    needle1.pushRotated( angleBack + rotationOffset, COLOR_TRANSP);
     break;
   case 1:
-    needle1.pushRotated( angleBack, COLOR_TRANSP);
+    needle1.pushRotated( angleBack + rotationOffset, COLOR_TRANSP);
     break;
   case 2:
-    needle2.pushRotated( angleBack, COLOR_TRANSP);
+    needle2.pushRotated( angleBack + rotationOffset, COLOR_TRANSP);
     break;
   case 3:
-    needle3.pushRotated( angleBack, COLOR_TRANSP);
+    needle3.pushRotated( angleBack + rotationOffset, COLOR_TRANSP);
     break;
   case 4:
-    needle4.pushRotated( angleBack, COLOR_TRANSP);
+    needle4.pushRotated( angleBack + rotationOffset, COLOR_TRANSP);
     break;
  
   default:
@@ -30,19 +31,19 @@ void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int
   switch (MovementFront)
   {
   case 0:
-    needle1.pushRotated( angleFront, COLOR_TRANSP);
+    needle1.pushRotated( angleFront + rotationOffset, COLOR_TRANSP);
     break;
   case 1:
-    needle1.pushRotated( angleFront, COLOR_TRANSP);
+    needle1.pushRotated( angleFront + rotationOffset, COLOR_TRANSP);
     break;
   case 2:
-    needle2.pushRotated( angleFront, COLOR_TRANSP);
+    needle2.pushRotated( angleFront + rotationOffset, COLOR_TRANSP);
     break;
   case 3:
-    needle3.pushRotated( angleFront, COLOR_TRANSP);
+    needle3.pushRotated( angleFront + rotationOffset, COLOR_TRANSP);
     break;
   case 4:
-    needle4.pushRotated( angleFront, COLOR_TRANSP);
+    needle4.pushRotated( angleFront + rotationOffset, COLOR_TRANSP);
     break;
  
   default:
@@ -51,5 +52,5 @@ void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int
   }
 
   // Pull cs_pin low to end write to screen
-  digitalWrite( cs_pin, HIGH);
+  digitalWrite( tft_cs[kloknr], HIGH);
 }

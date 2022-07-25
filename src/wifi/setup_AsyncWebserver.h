@@ -41,12 +41,7 @@ void setup_AsyncWebserver(){
 
   // Route for root / web page (controller)
   webserver.on(hdlRoot, HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send_P(200, "text/html", config_html, html_processorController);
-  });
-
-  // Route for configuration
-  webserver.on(hdlConfig, HTTP_GET, [](AsyncWebServerRequest *request) {
-    request->send_P(200, "text/html", config_html, html_processorConfig);
+    request->send_P(200, "text/html", config_html, html_processorRoot);
   });
 
   // Verwerk als er op een knop wordt gedrukt
@@ -62,56 +57,64 @@ void setup_AsyncWebserver(){
       IDknop = 0;
     }
 
-    //Print("knop= ");
-    //Println(String(IDknop));
+    Print("knop= ");
+    Println(String(IDknop));
     switch (IDknop) {
-    //Kp
-    case id_Kpdo:
-//      Kp = buttonChangeUp(Kp, -Kp_change, "Kp");
+    case id_Modedo:  //mode
+      mode = buttonChangeUp(mode, -1, "mode", COUNT_MODES);
       break;
-    case id_Kpup:
-//      Kp = buttonChangeUp(Kp, +Kp_change, "Kp");
+    case id_Modeup:
+      mode = buttonChangeUp(mode, +1, "mode", COUNT_MODES);
       break;
-    case id_Kpra:
-//      Kp_change = buttonChangeStep(Kp_change, "Kp step");
+    case id_namePtrdo:  //name pointer
+      namePtr = buttonChangeUp(namePtr, -1, "namePtr", 4);
       break;
-    //Ki
-    case id_Kido:
-//      Ki = buttonChangeUp(Ki, -Ki_change, "Ki");
+    case id_namePtrup:
+      namePtr = buttonChangeUp(namePtr, +1, "namePtr", 4);
       break;
-    case id_Kiup:
-//      Ki = buttonChangeUp(Ki, +Ki_change, "Ki");
+    case id_Rot0do:  //name Rotation 0
+      clockRotation[0] = buttonChangeUp(clockRotation[0], -1, "clockRotation[0]", 4);
       break;
-    case id_Kira:
-//      Ki_change = buttonChangeStep(Ki_change, "Ki step");
+    case id_Rot0up:
+      clockRotation[0] = buttonChangeUp(clockRotation[0], +1, "clockRotation[0]", 4);
       break;
-    //Kd
-    case id_Kddo:
-//      Kd = buttonChangeUp(Kd, -Kd_change, "Kd");
+    case id_Rot1do:  //name Rotation 1
+      clockRotation[1] = buttonChangeUp(clockRotation[1], -1, "clockRotation[0]", 4);
       break;
-    case id_Kdup:
-//      Kd = buttonChangeUp(Kd, +Kd_change, "Kd");
+    case id_Rot1up:
+      clockRotation[1] = buttonChangeUp(clockRotation[1], +1, "clockRotation[0]", 4);
       break;
-    case id_Kdra:
-//      Kd_change = buttonChangeStep(Kd_change, "Kd step");
+    case id_Rot2do:  //name Rotation 2
+      clockRotation[2] = buttonChangeUp(clockRotation[2], -1, "clockRotation[0]", 4);
       break;
-    //An
-    case id_Ando:
-//      selfBalanceAngleSetpoint = buttonChangeUp(selfBalanceAngleSetpoint, -An_change, "Angle");
+    case id_Rot2up:
+      clockRotation[2] = buttonChangeUp(clockRotation[2], +1, "clockRotation[0]", 4);
       break;
-    case id_Anup:
-//      selfBalanceAngleSetpoint = buttonChangeUp(selfBalanceAngleSetpoint, +An_change, "Angle");
+    case id_Rot3do:  //name Rotation 3
+      clockRotation[3] = buttonChangeUp(clockRotation[3], -1, "clockRotation[0]", 4);
       break;
-    case id_Anra:
-//      An_change = buttonChangeStep(An_change, "Angle step");
+    case id_Rot3up:
+      clockRotation[3] = buttonChangeUp(clockRotation[3], +1, "clockRotation[0]", 4);
       break;
-    //Save PID
+    case id_Rot4do:  //name Rotation 4
+      clockRotation[4] = buttonChangeUp(clockRotation[4], -1, "clockRotation[0]", 4);
+      break;
+    case id_Rot4up:
+      clockRotation[4] = buttonChangeUp(clockRotation[4], +1, "clockRotation[0]", 4);
+      break;
+    case id_Rot5do:  //name Rotation 5
+      clockRotation[5] = buttonChangeUp(clockRotation[5], -1, "clockRotation[0]", 4);
+      break;
+    case id_Rot5up:
+      clockRotation[5] = buttonChangeUp(clockRotation[5], +1, "clockRotation[0]", 4);
+      break;
+    //Save Config
     case id_SaveConfig:
-//      buttonChangeSavePID();
+      buttonChangeConfig();
       break;
     //Restart
     case id_Restart:
-//      buttonChangeRestart();
+      buttonChangeRestart();
       break;
 
     default:

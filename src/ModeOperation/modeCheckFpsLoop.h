@@ -1,20 +1,14 @@
-void modeCheckFpsSetup(){
-  moveFront = 1;
-  moveBack  = 1;
-
-  myTime = millis();
-}
-
 void modeCheckFpsLoop(){
   unsigned long myTimeRef;
   
+  checkStillSameMode ();
   // Plot needle at random angle 
   for (int i = 0; i <= 5; i++ ) {
     angleBack[i] = angleBack[i] + moveBack;
     if (angleBack[i] >= 360) {angleBack[i] = 0; }
     angleFront[i] = angleFront[i] + moveFront;
     if (angleFront[i] >= 360) {angleFront[i] = 0; }
-    plotNeedle(angleBack[i], moveBack, angleFront[i], moveFront, tft_cs[i]);
+    plotNeedle(angleBack[i], moveBack, angleFront[i], moveFront, i);
   }
   delay(1);
 
@@ -31,13 +25,6 @@ void modeCheckFpsLoop(){
     Println("fps");
     delay(100);
     moveFront++;
-//    backlight = backlight + 50;
-//    if (backlight > 255) {
-//      backlight = 0;
-//      ledcWrite(PWMChannel, backlight);
-//      }
-//    Print("Backlight ");
-//    Println(String(backlight));
 
     if (moveFront >= 5) { 
       moveFront = 1; 

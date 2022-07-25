@@ -49,6 +49,14 @@ Preferences pref_eeprom;
 //////// Wifi //////////
 // Create AsyncWebServer object on port 80
 AsyncWebServer webserver(80);
+uint8_t namePtr;  //pointer to nameTbl
+String nameTbl[] = {NAME_MASTER, NAME_SLAVE2, NAME_SLAVE3, NAME_SLAVE4};
+String incomingMessage, serialMessage;
+bool   messageChanged;
+String cmdHey;
+uint8_t cmdClock, cmdCommand, cmdParam;
+bool   cmdAction;
+
 //DNSServer dnsServer;    //Even afgezet want voor eigen AP wellicht niet nodig
 String wifi_ssid ;
 String wifi_pwd  ;
@@ -57,50 +65,59 @@ const char* PARAM_ssid   = "ssid";     // voor de asyncwebserver
 const char* PARAM_pwd    = "pwd" ;     // voor de asyncwebserver
 const char* PARAM_output = "output";   // voor de asyncwebserver
 
+// Clock rotation
+int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
+uint16_t clockRotation[6];
+//Mode
+int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
+
+// Time
+uint8_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
+
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
 #define hdlKnop       "/knop"                    // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlUpdate     "/update"                  // Dit niet wijzigen: is voor OTA firmware 
-#define hdlConfig     "/configuratie"            // handle voor wiebelrobot in te stellen
 #define hdlWifiPWD    "/wificfg"                 // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 //#define hdlWifiScan   "/wifiscan"                // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlWifiSave   "/wifisave"                // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlWebSerial  "/webserial"               // Dit is niet te wijzigen, is om Serial Monitor via web te hebben
 
 // knoppen
-const char* oms_Kp = "Kp proportioneel";
-const uint16_t   id_Kpup = 111;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Kpdo = 112; 
-const uint16_t   id_Kpra = 113;  
+const char* oms_mode = "Operation Mode";
+const uint16_t   id_Modeup = 121;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Modedo = 122; 
 
-const char* oms_Ki = "Ki Integraal";
-const uint16_t   id_Kiup = 121;
-const uint16_t   id_Kido = 122; 
-const uint16_t   id_Kira = 123;  
+const char* oms_namePtr = "Name mstr/slave";
+const uint16_t   id_namePtrup = 131;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_namePtrdo = 132; 
 
-const char* oms_Kd = "Kd Derivation";
-const uint16_t   id_Kdup = 131;
-const uint16_t   id_Kddo = 132; 
-const uint16_t   id_Kdra = 133;  
+const char* oms_Rot0 = "Rotation sc0";
+const uint16_t   id_Rot0up = 201;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Rot0do = 202; 
 
-const char* oms_An = "Balanceer Hoek";
-const uint16_t   id_Anup = 141;
-const uint16_t   id_Ando = 142; 
-const uint16_t   id_Anra = 143;  
+const char* oms_Rot1 = "Rotation sc1";
+const uint16_t   id_Rot1up = 211;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Rot1do = 212; 
 
-const char* oms_ShowAngle = "Gemeten Hoek=";
-const uint16_t   id_ShowAngle = 21;
+const char* oms_Rot2 = "Rotation sc2";
+const uint16_t   id_Rot2up = 221;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Rot2do = 222; 
 
-const char* oms_SaveConfig = "Save PID";
+const char* oms_Rot3 = "Rotation sc3";
+const uint16_t   id_Rot3up = 231;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Rot3do = 232; 
+
+const char* oms_Rot4 = "Rotation sc4";
+const uint16_t   id_Rot4up = 241;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Rot4do = 242; 
+
+const char* oms_Rot5 = "Rotation sc5";
+const uint16_t   id_Rot5up = 251;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Rot5do = 252; 
+
+const char* oms_SaveConfig = "Save Config";
 const uint16_t   id_SaveConfig = 22;
 
 const char* oms_Restart = "Restart";
 const uint16_t   id_Restart = 23;
-
-const char* oms_MotorENA = "Motoren aan/uit";
-const uint16_t   id_MotorENA = 24;
-
-volatile float Kp_change = 1.0;      // Elke druk in wifi app, verhoogt/verlaagt met waarde
-volatile float Ki_change = 1.0;
-volatile float Kd_change = 1.0; 
-volatile float An_change = 1.0; 

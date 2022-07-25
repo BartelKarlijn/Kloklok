@@ -2,9 +2,9 @@
 
 ///////////////// Serial  ///////////////////////////
 // Een, beide of geen enkele van de 2 onderstaande opties kunnen gebruikt worden
-#define PrintWebserial   //om Serial via webpagina ipadres/webserial te volgen
-#define PrintSerial      //om Serial via serial connectie te volgen
-#define SerialSpeed 115200
+#define PRINTWEBSERIAL   //om Serial via webpagina ipadres/webserial te volgen
+#define PRINTSERIAL      //om Serial via serial connectie te volgen
+#define SERIALSPEED 115200
 
 ///////////////// Pins  //////////////////////////////
 // already used in user_setup.h:
@@ -49,12 +49,11 @@
 #define NEEDLE_CLEAR4 9   // area of needle to clear
 
 ///////////////// Screen Orientation  //////////////////////////////
-#define UP    0
-#define DOWN  90
-#define LEFT  180
-#define RIGHT 270
-#define TFT_ORIENTATION (RIGHT / 90)  // the same for all 6 screens as we're using only 1 tft object
-int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
+#define ROT_UP    0
+#define ROT_RIGHT 90
+#define ROT_DOWN  180
+#define ROT_LEFT  270
+#define TFT_ORIENTATION (ROT_RIGHT / 90)  // the same for all 6 screens as we're using only 1 tft object
 
 ///////////////// Colors  //////////////////////////////
 #define COLOR_BITS_PER_PIXEL 16     //16 appeared to be the most performant
@@ -64,12 +63,31 @@ int8_t ClockRotation[6] = {0, 0, 0, 0, 0, 0};
 #define COLOR_TEST       TFT_RED
 
 ///////////////// wifi  //////////////////////////////
-#define autoConnectAP "KlokKlok"    //ssid access point voor als je niet aan wifi geraakt
+// names below are used as AccessPoint name and calls from master
+#define NAME_MASTER "KloKlok_master_10h"
+#define NAME_SLAVE2 "KloKlok_slave_1h" 
+#define NAME_SLAVE3 "KloKlok_slave_10m" 
+#define NAME_SLAVE4 "KloKlok_slave_1m" 
 
 ///////////////// working modes  //////////////////////////////
-#define MODE_CHECKFPS  0       // check how many fps we can achieve
-#define MODE_CLOCK     1       // Regular clock mode
-#define MODE_CLOCKDEMO 2       // 'Demo' clock by rapidly browsing nrs
-#define MODE_DIGITSHOW 3       // Test digits one by one (no movement in between)
-#define MODE_DIGITTEST 4       // Do movement betwen digits
-int8_t ModeOperation = MODE_DIGITTEST;
+#define MODE_CLOCK         0       // Regular clock mode
+#define MODE_CLOCKDEMO     1       // 'Demo' clock by rapidly browsing nrs
+#define MODE_CHECKFPS      2       // check how many fps we can achieve
+#define MODE_DIGITSHOW     3       // Test digits one by one (no movement in between)
+#define MODE_DIGITTEST     4       // Do movement betwen digits
+#define MODE_SLAVE         5
+#define MODEDESC_CHECKFPS  "CheckPFS"
+#define MODEDESC_CLOCK     "Clock"
+#define MODEDESC_CLOCKDEMO "ClockDemo"
+#define MODEDESC_DIGITSHOW "DigitShow"
+#define MODEDESC_DIGITTEST "DigitTest" 
+#define MODEDESC_SLAVE     "Slave"
+#define COUNT_MODES 6
+String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITTEST, MODEDESC_SLAVE};
+
+///////////////// Commands  //////////////////////////////
+// Commmands are fixed lenght of 1
+#define COMMAND_CLEARS    1  // Clear screen without replotting axis
+#define COMMAND_CLEARA    2  // Clear screen and replot axis
+#define COMMAND_SHOWDB    3  // Show digit
+#define COMMAND_MOVETO    4  // Move to digit

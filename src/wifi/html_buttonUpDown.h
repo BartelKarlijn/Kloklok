@@ -1,33 +1,16 @@
-String html_buttonUpDown( String omschrijving, uint16_t IDrange, uint16_t IDup, uint16_t IDdown, float Kx, float Kx_change) {
-/*
-  String ptr = "<p>";
-  ptr += omschrijving;
-  ptr += "<do class=\"button button-of\" onclick=\"toggleCheckbox(this)\" id=\" "; 
-  ptr += IDdown;
-  ptr += "\">-  </do> \n" ;
-  ptr += Kx;
-  ptr += " <up class=\"button button-of\" onclick=\"toggleCheckbox(this)\" id=\" "; 
-  ptr += IDup;
-  ptr += "\">+  </up> Stap=\n" ;
-  ptr += Kx_change;
-  ptr += " <ra class=\"button button-of\" onclick=\"toggleCheckbox(this)\" id=\" "; 
-  ptr += IDrange;
-  ptr += "\"> x10 </ra><p>\n" ;
-*/
+String html_buttonUpDown( String omschrijving, uint16_t IDup, uint16_t IDdown, uint8_t Var, String VarLabel) {
 
   String ptr = "<tr><td>\n";
   ptr += omschrijving;
   ptr += "</td><td><do class=\"button button-of\" onclick=\"toggleCheckbox(this)\" id=\""; 
   ptr += IDdown;
   ptr += "\"> - </do></td><td>\n" ;
-  ptr += Kx;
+  ptr += Var;
   ptr += "</td><td><up class=\"button button-of\" onclick=\"toggleCheckbox(this)\" id=\""; 
   ptr += IDup;
-  ptr += "\"> + </up></td><td> Stap= </td><td>" ;
-  ptr += Kx_change;
-  ptr += "</td><td> <ch class=\"button button-on\" onclick=\"toggleCheckbox(this)\" id=\""; 
-  ptr += IDrange;
-  ptr += "\"> 1-10-100 </ch></td></tr>\n" ;
+  ptr += "\"> + </up></td><td> Value= </td><td>" ;
+  ptr += VarLabel;
+  ptr += "</td></tr>\n" ;
 
   return ptr;
 }

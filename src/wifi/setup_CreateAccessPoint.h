@@ -1,5 +1,9 @@
 void setup_CreateAccessPoint(){
   // Als nog altijd geen connectie, AccessPoint opzetten
+  char autoConnectAP[64];
+  String nameConnectAP = nameTbl[namePtr];
+  nameConnectAP.toCharArray(autoConnectAP, 64);
+
   if ((WiFi.status() != WL_CONNECTED)) {
     Serial.println("Not connected to wifi; setup up Accespoint");
     Serial.println("Scanning Networks");

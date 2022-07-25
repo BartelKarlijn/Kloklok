@@ -1,7 +1,3 @@
 void modeClockSetup(){
 
 }
-
-void modeClockLoop(){
-
-}

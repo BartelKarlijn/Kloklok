@@ -1,0 +1,4 @@
+void modeClockLoop(){
+  checkStillSameMode ();
+
+}

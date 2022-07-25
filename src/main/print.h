@@ -1,17 +1,24 @@
 void Print(String TXT){
-#ifdef PrintWebserial
+#ifdef PRINTWEBSERIAL
   WebSerial.print(TXT);
 #endif
-#ifdef PrintSerial
+#ifdef PRINTSERIAL
   Serial.print(TXT);
 #endif
 }
 
 void Println(String TXT){
-#ifdef PrintWebserial
+#ifdef PRINTWEBSERIAL
   WebSerial.println(TXT);
 #endif
-#ifdef PrintSerial
+#ifdef PRINTSERIAL
   Serial.println(TXT);
 #endif
+}
+
+void recvMsg(uint8_t *data, size_t len){
+  incomingMessage = "";
+  for(int i=0; i < len; i++){
+    incomingMessage += char(data[i]);
+  }
 }

@@ -1,7 +1,0 @@
-void modeClockDemoSetup(){
-
-}
-
-void modeClockDemoLoop(){
-
-}
