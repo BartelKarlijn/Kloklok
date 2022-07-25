@@ -32,6 +32,6 @@ void modeSlaveLoop(){
       break;
     }
   }
-
-  cmdAction = false;
+  cmdAction = false;   // Be ready when next action is coming
+  
 }
