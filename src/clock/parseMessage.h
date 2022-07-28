@@ -1,5 +1,7 @@
 void parseMessage() {
   String cmdClockString;
+  char intToChar[3];
+
   // commands start with 
   // structure:
   //     <         (CMD_BEGIN)
@@ -13,11 +15,17 @@ void parseMessage() {
   
 
   messageChanged = false;
-  for (int i = 0; i < serialMessage.length(); i++) {
-    if( (serialMessage[i] == CMD_BEGIN) and (serialMessage[i+2] == namePtr) and (serialMessage[i+4]== CMD_STOP) ) {
-      cmdCommand = serialMessage[i+1];
-      cmdClock   = serialMessage[i+2];
-      cmdParam   = serialMessage[i+3];
+  for (int i = 4; i < serialMessage.length(); i++) {
+    if( (serialMessage.charAt(i) == CMD_START) and (serialMessage.charAt(i+4)== CMD_STOP)) {
+      cmdClockString = serialMessage.charAt(i+2);
+      //cmdClockString = serialMessage(i+2);
+      if( cmdClockString.toInt() == namePtr ) {
+      cmdClockString = serialMessage.charAt(i+1);
+      cmdCommand = cmdClockString.toInt();
+      cmdClockString = serialMessage.charAt(i+2);
+      cmdClock   = cmdClockString.toInt();
+      cmdClockString = serialMessage.charAt(i+3);
+      cmdParam   =  cmdClockString.toInt();
       cmdAction  = true;
      
       Print("Command= ");
@@ -26,6 +34,8 @@ void parseMessage() {
       Print(String(cmdClock));
       Print("  param= ");
       Println(String(cmdParam));
+      break;           // don't process message further
+    }
     }
   }
   serialMessage = "";

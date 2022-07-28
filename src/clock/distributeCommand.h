@@ -1,5 +1,5 @@
 void distributeCommandSingle(uint8_t command, uint8_t clock, uint8_t param) {
-  String commandString = String(CMD_BEGIN);
+  String commandString = String(CMD_START);
   commandString        += String(command);
   commandString        += String(clock);
   commandString        += String(param);
