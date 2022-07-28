@@ -28,12 +28,6 @@ void parseMessage() {
       cmdParam   =  cmdClockString.toInt();
       cmdAction  = true;
      
-      Print("Command= ");
-      Print(String(cmdCommand));
-      Print(" Clock= ");
-      Print(String(cmdClock));
-      Print("  param= ");
-      Println(String(cmdParam));
       break;           // don't process message further
     }
     }
