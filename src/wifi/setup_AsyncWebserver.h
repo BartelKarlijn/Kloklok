@@ -73,10 +73,10 @@ void setup_AsyncWebserver(){
       namePtr = buttonChangeUp(namePtr, +1, "namePtr", 4);
       break;
     case id_waitDelaydo:  //delay between movements
-      namePtr = buttonChangeUp(waitDelay, -1000, "waitDelay", WAITDELAYMAX);
+      waitDelay = buttonChangeUp(waitDelay, -1, "waitDelay", WAITDELAYMAX);
       break;
     case id_waitDelayup:
-      namePtr = buttonChangeUp(waitDelay, +1000, "waitDelay", WAITDELAYMAX);
+      waitDelay = buttonChangeUp(waitDelay, +1, "waitDelay", WAITDELAYMAX);
       break;
     case id_Rot0do:  //name Rotation 0
       clockRotation[0] = buttonChangeUp(clockRotation[0], -1, "clockRotation[0]", 4);

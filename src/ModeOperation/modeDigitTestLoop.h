@@ -10,5 +10,5 @@ void modeDigitTestLoop(){
   Print("Showing digit ");
   Println(String(currentNr));
 
-  delay(waitDelay);
+  delay(waitDelay * 1000 + 150);
 }
