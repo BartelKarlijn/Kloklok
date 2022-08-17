@@ -26,7 +26,7 @@ void get_datafrom_eeprom () {
   uint8_t namePtr_eeprom = pref_eeprom.getUInt("namePtr_eeprom", 0);
   Serial.print("Uit eprom uitgelezen waarde voor namePtr = ");
   Serial.println(namePtr_eeprom);
-  uint16_t waitDelay_eeprom = pref_eeprom.getUInt("waitDelay", 0);
+  uint16_t waitDelay_eeprom = pref_eeprom.getUInt("waitDel_eeprom", 0);
   Serial.print("Uit eprom uitgelezen waarde voor waitDelay = ");
   Serial.println(waitDelay_eeprom);
   uint16_t rot0_eeprom = pref_eeprom.getUInt("rot0_eeprom", 0);
@@ -64,7 +64,7 @@ void get_datafrom_eeprom () {
 void save_ConfigToEeprom () {
   pref_eeprom.putUInt("mode_eeprom", mode);
   pref_eeprom.putUInt("namePtr_eeprom", namePtr);
-  pref_eeprom.putUInt("waitDelay_eeprom", waitDelay);
+  pref_eeprom.putUInt("waitDel_eeprom", waitDelay);
   pref_eeprom.putUInt("rot0_eeprom", clockRotation[0]);
   pref_eeprom.putUInt("rot1_eeprom", clockRotation[1]);
   pref_eeprom.putUInt("rot2_eeprom", clockRotation[2]);
