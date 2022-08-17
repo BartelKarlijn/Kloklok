@@ -49,6 +49,7 @@ Preferences pref_eeprom;
 //////// Wifi //////////
 // Create AsyncWebServer object on port 80
 AsyncWebServer webserver(80);
+uint16_t waitDelay;
 uint8_t namePtr;  //pointer to nameTbl
 String nameTbl[] = {NAME_MASTER, NAME_SLAVE1, NAME_SLAVE2, NAME_SLAVE3};
 String incomingMessage;
@@ -92,6 +93,10 @@ const uint16_t   id_Modedo = 122;
 const char* oms_namePtr = "Name mstr/slave";
 const uint16_t   id_namePtrup = 131;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_namePtrdo = 132; 
+
+const char* oms_waitDelay = "Delay between steps";
+const uint16_t   id_waitDelayup = 141;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_waitDelaydo = 142; 
 
 const char* oms_Rot0 = "Rotation sc0";
 const uint16_t   id_Rot0up = 201;            // knop ID, moet uniek zijn, zie html_processor

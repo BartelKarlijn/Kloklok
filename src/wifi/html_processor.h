@@ -6,6 +6,7 @@ String html_processorRoot(const String& var){
 
     buttons += html_buttonUpDown(oms_mode, id_Modeup, id_Modedo, mode, modeTbl[mode]);
     buttons += html_buttonUpDown(oms_namePtr, id_namePtrup, id_namePtrdo, namePtr, nameTbl[namePtr]);
+    buttons += html_buttonUpDown(oms_waitDelay, id_waitDelayup, id_waitDelaydo, waitDelay, String(waitDelay) ) ;
     buttons += html_buttonUpDown(oms_Rot0, id_Rot0up, id_Rot0do, clockRotation[0], String(rotationTbl[clockRotation[0]]));
     buttons += html_buttonUpDown(oms_Rot1, id_Rot1up, id_Rot1do, clockRotation[1], String(rotationTbl[clockRotation[1]]));
     buttons += html_buttonUpDown(oms_Rot2, id_Rot2up, id_Rot2do, clockRotation[2], String(rotationTbl[clockRotation[2]]));
