@@ -20,6 +20,6 @@ void modeClockDemoLoop(){
   currentNr = nextNr;
   showDigit(currentNr);
 
-  delay(2000);
+  delay(waitDelay);
 
 }

@@ -5,6 +5,6 @@ void modeDigitShowLoop(){
     showDigit(nr);
     Print("Showing nr ");
     Println(String(nr));
-    delay(1000);
+    delay(waitDelay);
   }
 }
