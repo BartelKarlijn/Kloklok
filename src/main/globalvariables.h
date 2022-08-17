@@ -50,6 +50,7 @@ Preferences pref_eeprom;
 // Create AsyncWebServer object on port 80
 AsyncWebServer webserver(80);
 uint16_t waitDelay = 1000;       // default value, gets overwritten from eeprom
+#define  WAITDELAYMAX 60000    // max value uint16_t = 65000
 uint8_t namePtr;  //pointer to nameTbl
 String nameTbl[] = {NAME_MASTER, NAME_SLAVE1, NAME_SLAVE2, NAME_SLAVE3};
 String incomingMessage;
