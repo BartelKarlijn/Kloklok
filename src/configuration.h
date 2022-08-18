@@ -25,10 +25,10 @@
 
 #define TFT0_CS    33    //Chip Select pin tftx
 #define TFT1_CS    32    //Chip Select pin tftx
-#define TFT2_CS    26    //Chip Select pin tftx
-#define TFT3_CS    25    //Chip Select pin tftx
-#define TFT4_CS    13    //Chip Select pin tftx
-#define TFT5_CS    27    //Chip Select pin tftx
+#define TFT2_CS    27    //Chip Select pin tftx
+#define TFT3_CS    13    //Chip Select pin tftx
+#define TFT4_CS    25    //Chip Select pin tftx
+#define TFT5_CS    26    //Chip Select pin tftx
 
 ///////////////// TFT backlight  //////////////////////////////
 #define PWMFreq    5000
