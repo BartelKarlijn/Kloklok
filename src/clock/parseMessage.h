@@ -15,7 +15,7 @@ void parseMessage() {
   
 
   messageChanged = false;
-  for (int i = 4; i < serialMessage.length(); i++) {
+  for (int i = 0; i < serialMessage.length(); i++) {
     if( (serialMessage.charAt(i) == CMD_START) and (serialMessage.charAt(i+4)== CMD_STOP)) {
       cmdClockString = serialMessage.charAt(i+2);
       //cmdClockString = serialMessage(i+2);
