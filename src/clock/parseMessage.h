@@ -11,7 +11,7 @@ void parseMessage() {
   //     >         (CMD_STOP)
   // eg "<438>"  = clock 3 moveto 8
   //    "<525>"  = clock 2 setmode 5 = Slave
-  //    "<524>"  = clock 2 setmode 4 = digitTest
+  //    "<524>"  = clock 2 setmode 4 = digitDance
   
 
   messageChanged = false;

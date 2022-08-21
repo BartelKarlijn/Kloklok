@@ -15,8 +15,8 @@ void checkStillSameMode () {
     case MODE_DIGITSHOW:
       modeDigitShowSetup();
       break;
-    case MODE_DIGITTEST:
-      modeDigitTestSetup();
+    case MODE_DIGITDANCE:
+      modeDigitDanceSetup();
       break;
     case MODE_SLAVE:
       modeSlaveSetup();

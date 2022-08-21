@@ -75,20 +75,20 @@ const int daylightOffset_sec = 0;
 #define NAME_SLAVE3 "KloKlok_slave_000X" 
 
 ///////////////// working modes  //////////////////////////////
-#define MODE_CLOCK         0       // Regular clock mode
-#define MODE_CLOCKDEMO     1       // 'Demo' clock by rapidly browsing nrs
-#define MODE_CHECKFPS      2       // check how many fps we can achieve
-#define MODE_DIGITSHOW     3       // Test digits one by one (no movement in between)
-#define MODE_DIGITTEST     4       // Do movement betwen digits
-#define MODE_SLAVE         5
-#define MODEDESC_CHECKFPS  "CheckPFS"
-#define MODEDESC_CLOCK     "Clock"
-#define MODEDESC_CLOCKDEMO "ClockDemo"
-#define MODEDESC_DIGITSHOW "DigitShow"
-#define MODEDESC_DIGITTEST "DigitTest" 
-#define MODEDESC_SLAVE     "Slave"
+#define MODE_CLOCK          0       // Regular clock mode
+#define MODE_CLOCKDEMO      1       // 'Demo' clock by rapidly browsing nrs
+#define MODE_CHECKFPS       2       // check how many fps we can achieve
+#define MODE_DIGITSHOW      3       // Test digits one by one (no movement in between)
+#define MODE_DIGITDANCE     4       // Do movement betwen digits
+#define MODE_SLAVE          5
+#define MODEDESC_CHECKFPS   "CheckPFS"
+#define MODEDESC_CLOCK      "Clock"
+#define MODEDESC_CLOCKDEMO  "ClockDemo"
+#define MODEDESC_DIGITSHOW  "DigitShow"
+#define MODEDESC_DIGITDANCE "DigitDance" 
+#define MODEDESC_SLAVE      "Slave"
 #define COUNT_MODES 6
-String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITTEST, MODEDESC_SLAVE};
+String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITDANCE, MODEDESC_SLAVE};
 
 ///////////////// Commands  //////////////////////////////
 // Commmands are fixed lenght of 1
