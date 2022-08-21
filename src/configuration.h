@@ -62,6 +62,11 @@
 #define COLOR_TRANSP     TFT_PINK
 #define COLOR_TEST       TFT_RED
 
+///////////////// Time  //////////////////////////////
+const char* ntpServer  = "pool.ntp.org";
+const long gmtOffset_sec = 7200;
+const int daylightOffset_sec = 3600;
+
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
 #define NAME_MASTER "KloKlok_masterX000"

@@ -12,6 +12,7 @@
 #include <ESPAsyncWebServer.h>
 #include <AsyncElegantOTA.h>
 #include <WebSerial.h>
+#include <time.h>
 
 // Own libraries
 // variables
