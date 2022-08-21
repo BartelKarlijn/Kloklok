@@ -5,11 +5,6 @@ void modeClockLoop(){
     Print("Failed to obtain time");
     return;
   }
-//  Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
-//  Serial.println(&timeinfo, "%H");
-//  Serial.println(&timeinfo, "%M");
-//  Serial.print("Second: ");
-//  Serial.println(&timeinfo, "%S");
 
   Println("Time variables");
   char timeHour[3];
