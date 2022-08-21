@@ -75,6 +75,11 @@ const int daylightOffset_sec = 3600;
 #define NAME_SLAVE2 "KloKlok_slave_00X0" 
 #define NAME_SLAVE3 "KloKlok_slave_000X" 
 
+//MovementModes
+#define MOVEMENTMODEMIN 1   // as little movement as possible
+#define MOVEMENTMODEMAX 2   // as much movement as possible
+#define MOVEMENTMODEFUN 3   // balanced
+
 ///////////////// working modes  //////////////////////////////
 #define MODE_CLOCK          0       // Regular clock mode
 #define MODE_CLOCKDEMO      1       // 'Demo' clock by rapidly browsing nrs

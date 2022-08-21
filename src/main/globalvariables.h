@@ -38,11 +38,6 @@ uint8_t cnt;
 //////////////// LED ///////////////////////
 boolean startupError;
 
-//MovementModes
-#define MOVEMENTMODEMIN 1   // as little movement as possible
-#define MOVEMENTMODEMAX 2   // as much movement as possible
-#define MOVEMENTMODEFUN 3   // balanced
-int16_t movementMode = MOVEMENTMODEFUN;
 //////// Preferences //////////
 Preferences pref_eeprom;
 
@@ -71,6 +66,14 @@ const char* PARAM_output = "output";   // voor de asyncwebserver
 // Clock rotation
 int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
 uint16_t clockRotation;
+
+//MovementModes
+#define MOVEMENTMODEMIN 1   // as little movement as possible
+#define MOVEMENTMODEMAX 2   // as much movement as possible
+#define MOVEMENTMODEFUN 3   // balanced
+int16_t movementModeTbl[] = {MOVEMENTMODEMIN, MOVEMENTMODEMAX, MOVEMENTMODEFUN };
+int16_t movementMode = MOVEMENTMODEMAX;
+
 //Mode
 int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
 
