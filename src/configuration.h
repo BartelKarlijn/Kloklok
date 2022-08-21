@@ -64,8 +64,9 @@
 
 ///////////////// Time  //////////////////////////////
 const char* ntpServer  = "pool.ntp.org";
-const long gmtOffset_sec = 7200;
-const int daylightOffset_sec = 0;
+const long gmtOffset_sec = 3600;
+const int daylightOffset_sec = 3600;
+#define DELAY_CATCHUP 7000     //Give slaves time to catch up after boot
 
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
@@ -96,6 +97,6 @@ String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHEC
 #define COMMAND_SHOWDG    3  // Show digit                                Param = digit to show
 #define COMMAND_MOVETO    4  // Move to digit                             Param = digit moving to
 #define COMMAND_SETMOD    5  // Set in specific mode                      Param = new mode
-#define REACTIONTIME   1000  // Slaves are reacting 1000s after command
+#define REACTIONTIME    800  // Slaves are reacting 1000s after command
 #define CMD_START        '<' // char
 #define CMD_STOP         '>' // char

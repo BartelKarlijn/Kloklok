@@ -1,10 +1,24 @@
 void modeDigitShowLoop(){
   checkStillSameMode ();
-  for (int nr = 0; nr <=9; nr++){
-    clearScreens(COLOR_BACKGROUND, true);
-    showDigit(nr);
-    Print("Showing nr ");
-    Println(String(nr));
-    delay(waitDelay * 1000 + 150);
-  }
+
+    uint16_t nextNr = currentNr + 1;
+  if (nextNr > 9) {nextNr = 0;}
+  time_X000 = nextNr - 10;
+
+  time_0X00 = currentNr + 2;
+  if (time_0X00 > 9) {time_0X00 = time_0X00 -10;}
+  
+  time_00X0 = currentNr + 3;
+  if (time_00X0 > 9) {time_00X0 = time_00X0 -10;}
+  
+  time_000X = currentNr + 4;
+  if (time_000X > 9) {time_000X = time_000X -10;}
+  
+  distributeCommand(COMMAND_SHOWDG, time_0X00, time_00X0, time_000X);
+  showDigit(nextNr, true);
+
+  delay(waitDelay * 1000 + 150);
+  Print("Showing nr: ");
+  Println(String(currentNr));
+  currentNr = nextNr;
 }

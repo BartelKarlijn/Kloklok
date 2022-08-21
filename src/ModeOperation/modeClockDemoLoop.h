@@ -18,7 +18,7 @@ void modeClockDemoLoop(){
   calculateMovementToNr(nextNr);
   moveNextDigit();
   currentNr = nextNr;
-  showDigit(currentNr);
+  showDigit(currentNr, false);
 
   delay(waitDelay * 1000 + 150);
 
