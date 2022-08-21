@@ -68,10 +68,6 @@ int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
 uint16_t clockRotation;
 
 //MovementModes
-#define MOVEMENTMODEMIN 1   // as little movement as possible
-#define MOVEMENTMODEMAX 2   // as much movement as possible
-#define MOVEMENTMODEFUN 3   // balanced
-int16_t movementModeTbl[] = {MOVEMENTMODEMIN, MOVEMENTMODEMAX, MOVEMENTMODEFUN };
 int16_t movementMode = MOVEMENTMODEMAX;
 
 //Mode
@@ -101,6 +97,10 @@ const uint16_t   id_namePtrdo = 132;
 const char* oms_waitDelay = "Delay between steps";
 const uint16_t   id_waitDelayup = 141;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_waitDelaydo = 142; 
+
+const char* oms_mvmt = "Movement Mode";
+const uint16_t   id_Mvmtup = 151;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Mvmtdo = 152; 
 
 const char* oms_Rot = "Rotation sc";
 const uint16_t   id_Rotup = 201;            // knop ID, moet uniek zijn, zie html_processor

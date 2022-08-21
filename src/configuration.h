@@ -75,6 +75,16 @@ const int daylightOffset_sec = 3600;
 #define NAME_SLAVE2 "KloKlok_slave_00X0" 
 #define NAME_SLAVE3 "KloKlok_slave_000X" 
 
+///////////////// movement modes  //////////////////////////////
+#define MOVEMENTMODEMIN 0   // as little movement as possible
+#define MOVEMENTMODEMAX 1   // as much movement as possible
+#define MOVEMENTMODEFUN 2   // balanced
+#define MOVEMENTMODEDESCMIN "minimum"
+#define MOVEMENTMODEDESCMAX "maximum"
+#define MOVEMENTMODEDESCFUN "balanced"
+#define MOVEMENTMODEDESCOUNT 3
+String movementModeTbl[MOVEMENTMODEDESCOUNT] = {MOVEMENTMODEDESCMIN, MOVEMENTMODEDESCMAX, MOVEMENTMODEDESCFUN };
+
 ///////////////// working modes  //////////////////////////////
 #define MODE_CLOCK          0       // Regular clock mode
 #define MODE_CLOCKDEMO      1       // 'Demo' clock by rapidly browsing nrs
@@ -88,8 +98,8 @@ const int daylightOffset_sec = 3600;
 #define MODEDESC_DIGITSHOW  "DigitShow"
 #define MODEDESC_DIGITDANCE "DigitDance" 
 #define MODEDESC_SLAVE      "Slave"
-#define COUNT_MODES 6
-String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITDANCE, MODEDESC_SLAVE};
+#define MODEDESC_COUNT 6
+String modeTbl[MODEDESC_COUNT] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITDANCE, MODEDESC_SLAVE};
 
 ///////////////// Commands  //////////////////////////////
 // Commmands are fixed lenght of 1

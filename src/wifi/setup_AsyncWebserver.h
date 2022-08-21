@@ -61,10 +61,16 @@ void setup_AsyncWebserver(){
     Println(String(IDknop));
     switch (IDknop) {
     case id_Modedo:  //mode
-      mode = buttonChangeUp(mode, -1, "mode", COUNT_MODES);
+      mode = buttonChangeUp(mode, -1, "mode", MODEDESC_COUNT);
       break;
     case id_Modeup:
-      mode = buttonChangeUp(mode, +1, "mode", COUNT_MODES);
+      mode = buttonChangeUp(mode, +1, "mode", MODEDESC_COUNT);
+      break;
+    case id_Mvmtdo:  //movement mode
+      mode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENTMODEDESCOUNT);
+      break;
+    case id_Mvmtup:
+      mode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENTMODEDESCOUNT);
       break;
     case id_namePtrdo:  //name pointer
       namePtr = buttonChangeUp(namePtr, -1, "namePtr", 4);
