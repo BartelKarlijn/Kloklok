@@ -2,34 +2,28 @@ void modeClockLoop(){
   checkStillSameMode ();
   struct tm timeinfo;
   if(!getLocalTime(&timeinfo)){
-    Serial.println("Failed to obtain time");
+    Print("Failed to obtain time");
     return;
   }
-  Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
-  Serial.print("Day of week: ");
-  Serial.println(&timeinfo, "%A");
-  Serial.print("Month: ");
-  Serial.println(&timeinfo, "%B");
-  Serial.print("Day of Month: ");
-  Serial.println(&timeinfo, "%d");
-  Serial.print("Year: ");
-  Serial.println(&timeinfo, "%Y");
-  Serial.print("Hour: ");
-  Serial.println(&timeinfo, "%H");
-  Serial.print("Hour (12 hour format): ");
-  Serial.println(&timeinfo, "%I");
-  Serial.print("Minute: ");
-  Serial.println(&timeinfo, "%M");
-  Serial.print("Second: ");
-  Serial.println(&timeinfo, "%S");
+//  Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
+//  Serial.println(&timeinfo, "%H");
+//  Serial.println(&timeinfo, "%M");
+//  Serial.print("Second: ");
+//  Serial.println(&timeinfo, "%S");
 
-  Serial.println("Time variables");
+  Println("Time variables");
   char timeHour[3];
-  strftime(timeHour,3, "%H", &timeinfo);
-  Serial.println(timeHour);
-  char timeWeekDay[10];
-  strftime(timeWeekDay,10, "%A", &timeinfo);
-  Serial.println(timeWeekDay);
-  Serial.println();
+  strftime(timeHour, 3, "%H", &timeinfo);
+  Print("Hour: ");
+  Println(String(timeHour));
+  char timeMin[3];
+  strftime(timeMin, 3, "%M", &timeinfo);
+  Print("Minute: ");
+  Println(String(timeMin));
+  char timeFull[40];
+  strftime(timeFull, 40, "%A, %d %B %Y %H:%M:%S", &timeinfo);
+  Print("FullTime");
+  Println(String(timeFull));
+  Println("");
   delay(waitDelay * 1000 + 150);
 }
