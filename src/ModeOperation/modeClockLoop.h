@@ -31,5 +31,5 @@ void modeClockLoop(){
   strftime(timeWeekDay,10, "%A", &timeinfo);
   Serial.println(timeWeekDay);
   Serial.println();
-  delay(waitDelay);
+  delay(waitDelay * 1000 + 150);
 }
