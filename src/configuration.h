@@ -65,7 +65,7 @@
 ///////////////// Time  //////////////////////////////
 const char* ntpServer  = "pool.ntp.org";
 const long gmtOffset_sec = 7200;
-const int daylightOffset_sec = 3600;
+const int daylightOffset_sec = 0;
 
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
