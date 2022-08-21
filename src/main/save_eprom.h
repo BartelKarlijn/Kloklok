@@ -29,35 +29,15 @@ void get_datafrom_eeprom () {
   uint16_t waitDelay_eeprom = pref_eeprom.getUInt("waitDel_eeprom", 0);
   Serial.print("Uit eprom uitgelezen waarde voor waitDelay = ");
   Serial.println(waitDelay_eeprom);
-  uint16_t rot0_eeprom = pref_eeprom.getUInt("rot0_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor rot0 = ");
-  Serial.println(rot0_eeprom);
-  uint16_t rot1_eeprom = pref_eeprom.getUInt("rot1_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor rot1 = ");
-  Serial.println(rot1_eeprom);
-  uint16_t rot2_eeprom = pref_eeprom.getUInt("rot2_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor rot2 = ");
-  Serial.println(rot2_eeprom);
-  uint16_t rot3_eeprom = pref_eeprom.getUInt("rot3_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor rot3 = ");
-  Serial.println(rot3_eeprom);
-  uint16_t rot4_eeprom = pref_eeprom.getUInt("rot4_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor rot4 = ");
-  Serial.println(rot4_eeprom);
-  uint16_t rot5_eeprom = pref_eeprom.getUInt("rot5_eeprom", 0);
-  Serial.print("Uit eprom uitgelezen waarde voor rot5 = ");
-  Serial.println(rot5_eeprom);
+  uint16_t rot_eeprom = pref_eeprom.getUInt("rot0_eeprom", 0);
+  Serial.print("Uit eprom uitgelezen waarde voor rot = ");
+  Serial.println(rot_eeprom);
   bool flag_read = pref_eeprom.getBool("flag_read", false);
   if (flag_read) {
     mode = mode_eeprom;
     namePtr = namePtr_eeprom;
     waitDelay   = waitDelay_eeprom;
-    clockRotation[0] = rot0_eeprom;
-    clockRotation[1] = rot1_eeprom;
-    clockRotation[2] = rot2_eeprom;
-    clockRotation[3] = rot3_eeprom;
-    clockRotation[4] = rot4_eeprom;
-    clockRotation[5] = rot5_eeprom;
+    clockRotation = rot_eeprom;
   }
 }
 
@@ -65,12 +45,7 @@ void save_ConfigToEeprom () {
   pref_eeprom.putUInt("mode_eeprom", mode);
   pref_eeprom.putUInt("namePtr_eeprom", namePtr);
   pref_eeprom.putUInt("waitDel_eeprom", waitDelay);
-  pref_eeprom.putUInt("rot0_eeprom", clockRotation[0]);
-  pref_eeprom.putUInt("rot1_eeprom", clockRotation[1]);
-  pref_eeprom.putUInt("rot2_eeprom", clockRotation[2]);
-  pref_eeprom.putUInt("rot3_eeprom", clockRotation[3]);
-  pref_eeprom.putUInt("rot4_eeprom", clockRotation[4]);
-  pref_eeprom.putUInt("rot5_eeprom", clockRotation[5]);
+  pref_eeprom.putUInt("rot0_eeprom", clockRotation);
   pref_eeprom.putBool("flag_read", true);
   
   Println("Config saved");

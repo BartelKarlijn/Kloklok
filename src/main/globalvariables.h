@@ -70,7 +70,7 @@ const char* PARAM_output = "output";   // voor de asyncwebserver
 
 // Clock rotation
 int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
-uint16_t clockRotation[6];
+uint16_t clockRotation;
 //Mode
 int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
 
@@ -99,29 +99,9 @@ const char* oms_waitDelay = "Delay between steps";
 const uint16_t   id_waitDelayup = 141;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_waitDelaydo = 142; 
 
-const char* oms_Rot0 = "Rotation sc0";
-const uint16_t   id_Rot0up = 201;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot0do = 202; 
-
-const char* oms_Rot1 = "Rotation sc1";
-const uint16_t   id_Rot1up = 211;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot1do = 212; 
-
-const char* oms_Rot2 = "Rotation sc2";
-const uint16_t   id_Rot2up = 221;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot2do = 222; 
-
-const char* oms_Rot3 = "Rotation sc3";
-const uint16_t   id_Rot3up = 231;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot3do = 232; 
-
-const char* oms_Rot4 = "Rotation sc4";
-const uint16_t   id_Rot4up = 241;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot4do = 242; 
-
-const char* oms_Rot5 = "Rotation sc5";
-const uint16_t   id_Rot5up = 251;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot5do = 252; 
+const char* oms_Rot = "Rotation sc";
+const uint16_t   id_Rotup = 201;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Rotdo = 202; 
 
 const char* oms_SaveConfig = "Save Config";
 const uint16_t   id_SaveConfig = 22;
