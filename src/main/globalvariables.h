@@ -72,6 +72,7 @@ int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launche
 
 // Time
 uint8_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
+String  time_hh, time_mm;
 
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht

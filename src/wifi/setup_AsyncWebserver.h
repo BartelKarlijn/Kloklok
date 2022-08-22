@@ -44,7 +44,33 @@ void setup_AsyncWebserver(){
     request->send_P(200, "text/html", config_html, html_processorRoot);
   });
 
-  // Verwerk als er op een knop wordt gedrukt
+ // catch setting time
+  webserver.on(hdlTimeSave, HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Setting Time");
+    if (request->hasParam(PARAM_HH)) {
+      time_hh = request->getParam(PARAM_HH)->value();
+    }
+    else {
+      time_hh = "00";
+    }
+    if (request->hasParam(PARAM_MM)) {
+      time_mm = request->getParam(PARAM_MM)->value();
+    }
+    else {
+      time_mm = "X";
+    }
+    Print("HH:MM ");
+    Print(time_hh);
+    Print(":");
+    Println(time_mm);
+    
+    ///save_WIFIdatato_eeprom (); 
+    //Println("Wifi SSID and PWD saved; please reboot ESP32");
+    request->send_P(200, "text/html", config_html, html_processorRoot);
+  });
+
+
+ // Verwerk als er op een knop wordt gedrukt
   webserver.on(hdlKnop, HTTP_GET, [](AsyncWebServerRequest *request) {
     String IDknopString;
     uint16_t IDknop;
