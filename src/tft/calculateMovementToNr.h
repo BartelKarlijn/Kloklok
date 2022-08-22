@@ -26,17 +26,6 @@ void calculateMovementToNr(uint8_t nr_to) {
          rotB2F  = calculateRotation(angleBFr, angleFTo);
          rotF2B  = calculateRotation(angleFFr, angleBTo);
 
-if(i == 0) {
-Print("RotB2B ");
-Println(String(rotB2B));
-Print("RotF2F ");
-Println(String(rotF2F));
-Print("RotB2F ");
-Println(String(rotB2F));
-Print("RotF2B ");
-Println(String(rotF2B));
-}
-
         switch (movementMode) {
         case MOVEMENTMODEMIN:  // find the min movement as one with a difference of 0
             if (( rotB2B == 0) or ( rotF2F == 0)) {
@@ -45,14 +34,12 @@ Println(String(rotF2B));
                 angleto2   = angleFTo;
                 extraBack  = 0;
                 extraFront = 0;
-if(i == 0) { Println("case 1");}
             }
             else {
                 angleto1   = angleFTo;
                 angleto2   = angleBTo;
                 extraBack  = 0;
                 extraFront = 0;
-if(i == 0) {Println("case 2");}
             }
             break;
         case MOVEMENTMODEMAX: // Similar to Min mode, but we add 360 to one of the 0 steps
@@ -62,7 +49,6 @@ if(i == 0) {Println("case 2");}
                 angleto2   = angleFTo;
                 extraBack  = 360;
                 extraFront = 0;
-if(i == 0) {Println("case 3");}
             }
             else if ( rotF2F == 0) {
                 // Add 360 to movement found
@@ -70,14 +56,12 @@ if(i == 0) {Println("case 3");}
                 angleto2   = angleFTo;
                 extraBack  = 0;
                 extraFront = 360;
-if(i == 0) {Println("case 4");}
             }
             else {
                 angleto1   = angleFTo;
                 angleto2   = angleBTo;
                 extraBack  = 0;
                 extraFront = 0;
-if(i == 0) {Println("case 5");}
             }
             break;
         case MOVEMENTMODEFUN: // Both dials should be moving
@@ -87,14 +71,12 @@ if(i == 0) {Println("case 5");}
                 angleto2   = angleBTo;
                 extraBack  = 0;
                 extraFront = 0;
-if(i == 0) {Println("case 6");}
             }
             else if ( rotB2B == 0)  {
                 angleto1   = angleBTo;
                 angleto2   = angleFTo;
                 extraBack  = 360;
                 extraFront = 0;
-if(i == 0) {Println("case 7");}
             }
             else if ( rotF2F == 0) {
                 angleto1   = angleBTo;
@@ -102,14 +84,12 @@ if(i == 0) {Println("case 7");}
                 extraBack  = 0;
                 extraFront = 360;
 
-if(i == 0) {Println("case 8");}
             }
             else {
                 angleto1   = angleBTo;
                 angleto2   = angleFTo;
                 extraBack  = 0;
                 extraFront = 0;
-if(i == 0) {Println("case 9");}
             }
             break;
         default:
