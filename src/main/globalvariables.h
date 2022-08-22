@@ -59,9 +59,6 @@ bool   flagWifiOn = false;
 String wifi_ssid ;
 String wifi_pwd  ;
 String wifi_scan;         //Lijst met scan van wifi netwerken
-const char* PARAM_ssid   = "ssid";     // voor de asyncwebserver
-const char* PARAM_pwd    = "pwd" ;     // voor de asyncwebserver
-const char* PARAM_output = "output";   // voor de asyncwebserver
 
 // Clock rotation
 int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
@@ -87,6 +84,8 @@ uint8_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
 #define hdlTimeSave   "/timesave"                // handle to submit time
 
 // knoppen
+const char* PARAM_output = "output";   // voor de asyncwebserver
+
 const char* oms_mode = "Operation Mode";
 const uint16_t   id_Modeup = 121;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_Modedo = 122; 
@@ -110,6 +109,10 @@ const uint16_t   id_Rotdo = 202;
 const char* oms_TimeSave = "Set time HH MM";
 const char* PARAM_HH    = "hh";             // parameter for asyncwebserver
 const char* PARAM_MM    = "mm";             // parameter for asyncwebserver
+
+const char* oms_WifiSave = "SSID / Password";
+const char* PARAM_ssid   = "ssid";     // voor de asyncwebserver
+const char* PARAM_pwd    = "pwd" ;     // voor de asyncwebserver
 
 const char* oms_SaveConfig = "Save Config";
 const uint16_t   id_SaveConfig = 22;
