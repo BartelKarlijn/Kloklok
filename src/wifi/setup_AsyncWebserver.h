@@ -63,6 +63,7 @@ void setup_AsyncWebserver(){
     Print(time_hh);
     Print(":");
     Println(time_mm);
+    flag_timeSetManually = true;
     
     ///save_WIFIdatato_eeprom (); 
     //Println("Wifi SSID and PWD saved; please reboot ESP32");
