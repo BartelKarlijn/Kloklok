@@ -18,7 +18,8 @@ String html_processorRoot(const String& var){
     buttons += html_buttonLink("Firmware update", hdlUpdate);
     
     buttons += "Build commit= " + String(AUTO_COMMITPT);
-    buttons += "Compilation time= " + String(CURRENT_TIME);
+    buttons += ", Compilation date= " + String(__DATE__);
+    buttons += ",  time= " + String(__TIME__);
 
     return buttons;
   }
