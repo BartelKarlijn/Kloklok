@@ -8,7 +8,7 @@ String html_processorRoot(const String& var){
     buttons += html_buttonUpDown(oms_namePtr, id_namePtrup, id_namePtrdo, namePtr, nameTbl[namePtr]);
     buttons += html_buttonUpDown(oms_waitDelay, id_waitDelayup, id_waitDelaydo, waitDelay, String(waitDelay) ) ;
     buttons += html_buttonUpDown(oms_Rot, id_Rotup, id_Rotdo, clockRotation, String(rotationTbl[clockRotation]));
-    buttons += html_buttonUpDown(oms_mvmt, id_Mvmtup, id_Mvmtdo, movementMode, movementModeTbl[movementMode]);
+    buttons += html_buttonUpDown(oms_mvmt, id_Mvmtup, id_Mvmtdo, movementMode, String(movementModeTbl[movementMode]));
     buttons += html_buttonSimple(id_SaveConfig, "SAVE", oms_SaveConfig);
     buttons += html_buttonSimple(id_Restart, "/!\\", oms_Restart);
     buttons += "</table>";

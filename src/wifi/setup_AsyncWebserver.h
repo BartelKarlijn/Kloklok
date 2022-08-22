@@ -66,12 +66,6 @@ void setup_AsyncWebserver(){
     case id_Modeup:
       mode = buttonChangeUp(mode, +1, "mode", MODEDESC_COUNT);
       break;
-    case id_Mvmtdo:  //movement mode
-      mode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENTMODEDESCOUNT);
-      break;
-    case id_Mvmtup:
-      mode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENTMODEDESCOUNT);
-      break;
     case id_namePtrdo:  //name pointer
       namePtr = buttonChangeUp(namePtr, -1, "namePtr", 4);
       break;
@@ -89,6 +83,12 @@ void setup_AsyncWebserver(){
       break;
     case id_Rotup:
       clockRotation = buttonChangeUp(clockRotation, +1, "clockRotation", 4);
+      break;
+    case id_Mvmtdo:  //movement mode
+      mode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENTMODEDESCOUNT);
+      break;
+    case id_Mvmtup:
+      mode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENTMODEDESCOUNT);
       break;
     //Save Config
     case id_SaveConfig:

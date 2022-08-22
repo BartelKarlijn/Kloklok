@@ -68,7 +68,7 @@ int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
 uint16_t clockRotation;
 
 //MovementModes
-int16_t movementMode = MOVEMENTMODEMAX;
+uint16_t movementMode;
 
 //Mode
 int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
