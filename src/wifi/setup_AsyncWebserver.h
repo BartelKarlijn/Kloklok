@@ -85,10 +85,10 @@ void setup_AsyncWebserver(){
       clockRotation = buttonChangeUp(clockRotation, +1, "clockRotation", 4);
       break;
     case id_Mvmtdo:  //movement mode
-      mode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENTMODEDESCOUNT);
+      movementMode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENTMODEDESCOUNT);
       break;
     case id_Mvmtup:
-      mode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENTMODEDESCOUNT);
+      movementMode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENTMODEDESCOUNT);
       break;
     //Save Config
     case id_SaveConfig:
