@@ -17,6 +17,9 @@ String html_processorRoot(const String& var){
     buttons += html_buttonLink("WebSerial", hdlWebSerial);
     buttons += html_buttonLink("Firmware update", hdlUpdate);
     
+    buttons += "Build commit= " + String(AUTO_COMMITPT);
+    buttons += "Compilation time= " + String(CURRENT_TIME);
+
     return buttons;
   }
   return String();
