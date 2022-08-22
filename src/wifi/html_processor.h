@@ -12,14 +12,15 @@ String html_processorRoot(const String& var){
     buttons += html_buttonSimple(id_SaveConfig, "SAVE", oms_SaveConfig);
     buttons += html_buttonSimple(id_Restart, "/!\\", oms_Restart);
     buttons += "</table>";
-    
+    buttons += html_doubleInput("HH MM", "pUUR", "pMIN", 2, "hdl_savetime");
+
     buttons += html_buttonLink("Wifi Management", hdlWifiPWD);
     buttons += html_buttonLink("WebSerial", hdlWebSerial);
     buttons += html_buttonLink("Firmware update", hdlUpdate);
     
-    buttons += "Build commit= " + String(AUTO_COMMITPT);
-    buttons += ", Compilation date= " + String(__DATE__);
-    buttons += ",  time= " + String(__TIME__);
+    buttons += "<p>Build commit= " + String(AUTO_COMMITPT);
+    buttons += ", Compilation date= " + String(__DATE__) ;
+    buttons += ",  time= " + String(__TIME__) + "</p>";
 
     return buttons;
   }

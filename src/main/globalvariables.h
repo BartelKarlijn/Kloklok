@@ -106,6 +106,10 @@ const char* oms_Rot = "Rotation sc";
 const uint16_t   id_Rotup = 201;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_Rotdo = 202; 
 
+const char* oms_settime = "Set time HH MM";
+const char* PARAM_HH    = "hh";             // parameter for asyncwebserver
+const char* PARAM_MM    = "mm";             // parameter for asyncwebserver
+
 const char* oms_SaveConfig = "Save Config";
 const uint16_t   id_SaveConfig = 22;
 
