@@ -61,10 +61,10 @@ void setup_AsyncWebserver(){
     Println(String(IDknop));
     switch (IDknop) {
     case id_Modedo:  //mode
-      mode = buttonChangeUp(mode, -1, "mode", COUNT_MODES);
+      mode = buttonChangeUp(mode, -1, "mode", MODEDESC_COUNT);
       break;
     case id_Modeup:
-      mode = buttonChangeUp(mode, +1, "mode", COUNT_MODES);
+      mode = buttonChangeUp(mode, +1, "mode", MODEDESC_COUNT);
       break;
     case id_namePtrdo:  //name pointer
       namePtr = buttonChangeUp(namePtr, -1, "namePtr", 4);
@@ -72,41 +72,23 @@ void setup_AsyncWebserver(){
     case id_namePtrup:
       namePtr = buttonChangeUp(namePtr, +1, "namePtr", 4);
       break;
-    case id_Rot0do:  //name Rotation 0
-      clockRotation[0] = buttonChangeUp(clockRotation[0], -1, "clockRotation[0]", 4);
+    case id_waitDelaydo:  //delay between movements
+      waitDelay = buttonChangeUp(waitDelay, -1, "waitDelay", WAITDELAYMAX);
       break;
-    case id_Rot0up:
-      clockRotation[0] = buttonChangeUp(clockRotation[0], +1, "clockRotation[0]", 4);
+    case id_waitDelayup:
+      waitDelay = buttonChangeUp(waitDelay, +1, "waitDelay", WAITDELAYMAX);
       break;
-    case id_Rot1do:  //name Rotation 1
-      clockRotation[1] = buttonChangeUp(clockRotation[1], -1, "clockRotation[0]", 4);
+    case id_Rotdo:  //name Rotation 0
+      clockRotation = buttonChangeUp(clockRotation, -1, "clockRotation", 4);
       break;
-    case id_Rot1up:
-      clockRotation[1] = buttonChangeUp(clockRotation[1], +1, "clockRotation[0]", 4);
+    case id_Rotup:
+      clockRotation = buttonChangeUp(clockRotation, +1, "clockRotation", 4);
       break;
-    case id_Rot2do:  //name Rotation 2
-      clockRotation[2] = buttonChangeUp(clockRotation[2], -1, "clockRotation[0]", 4);
+    case id_Mvmtdo:  //movement mode
+      movementMode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENTMODEDESCOUNT);
       break;
-    case id_Rot2up:
-      clockRotation[2] = buttonChangeUp(clockRotation[2], +1, "clockRotation[0]", 4);
-      break;
-    case id_Rot3do:  //name Rotation 3
-      clockRotation[3] = buttonChangeUp(clockRotation[3], -1, "clockRotation[0]", 4);
-      break;
-    case id_Rot3up:
-      clockRotation[3] = buttonChangeUp(clockRotation[3], +1, "clockRotation[0]", 4);
-      break;
-    case id_Rot4do:  //name Rotation 4
-      clockRotation[4] = buttonChangeUp(clockRotation[4], -1, "clockRotation[0]", 4);
-      break;
-    case id_Rot4up:
-      clockRotation[4] = buttonChangeUp(clockRotation[4], +1, "clockRotation[0]", 4);
-      break;
-    case id_Rot5do:  //name Rotation 5
-      clockRotation[5] = buttonChangeUp(clockRotation[5], -1, "clockRotation[0]", 4);
-      break;
-    case id_Rot5up:
-      clockRotation[5] = buttonChangeUp(clockRotation[5], +1, "clockRotation[0]", 4);
+    case id_Mvmtup:
+      movementMode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENTMODEDESCOUNT);
       break;
     //Save Config
     case id_SaveConfig:

@@ -12,6 +12,7 @@
 #include <ESPAsyncWebServer.h>
 #include <AsyncElegantOTA.h>
 #include <WebSerial.h>
+#include <time.h>
 
 // Own libraries
 // variables
@@ -60,12 +61,12 @@
 #include <ModeOperation/modeClockSetup.h>
 #include <ModeOperation/modeClockDemoSetup.h>
 #include <ModeOperation/modeDigitShowSetup.h>
-#include <ModeOperation/modeDigitTestSetup.h>
+#include <ModeOperation/modeDigitDanceSetup.h>
 #include <ModeOperation/modeSlaveSetup.h>
 #include <ModeOperation/checkStillSameMode.h>
 #include <ModeOperation/modeCheckFpsLoop.h>
 #include <ModeOperation/modeClockLoop.h>
 #include <ModeOperation/modeClockDemoLoop.h>
 #include <ModeOperation/modeDigitShowLoop.h>
-#include <ModeOperation/modeDigitTestLoop.h>
+#include <ModeOperation/modeDigitDanceLoop.h>
 #include <ModeOperation/modeSlaveLoop.h>

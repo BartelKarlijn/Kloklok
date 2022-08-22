@@ -1,4 +1,4 @@
-void modeClockDemoLoop(){
+void modeDigitDanceLoop(){
   checkStillSameMode ();
 
   uint16_t nextNr = currentNr + 1;
@@ -21,5 +21,4 @@ void modeClockDemoLoop(){
   showDigit(currentNr, false);
 
   delay(waitDelay * 1000 + 150);
-
 }

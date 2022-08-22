@@ -25,10 +25,10 @@
 
 #define TFT0_CS    33    //Chip Select pin tftx
 #define TFT1_CS    32    //Chip Select pin tftx
-#define TFT2_CS    26    //Chip Select pin tftx
-#define TFT3_CS    25    //Chip Select pin tftx
-#define TFT4_CS    13    //Chip Select pin tftx
-#define TFT5_CS    27    //Chip Select pin tftx
+#define TFT2_CS    27    //Chip Select pin tftx
+#define TFT3_CS    13    //Chip Select pin tftx
+#define TFT4_CS    25    //Chip Select pin tftx
+#define TFT5_CS    26    //Chip Select pin tftx
 
 ///////////////// TFT backlight  //////////////////////////////
 #define PWMFreq    5000
@@ -62,6 +62,12 @@
 #define COLOR_TRANSP     TFT_PINK
 #define COLOR_TEST       TFT_RED
 
+///////////////// Time  //////////////////////////////
+const char* ntpServer  = "pool.ntp.org";
+const long gmtOffset_sec = 3600;
+const int daylightOffset_sec = 3600;
+#define DELAY_CATCHUP 7000     //Give slaves time to catch up after boot
+
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
 #define NAME_MASTER "KloKlok_masterX000"
@@ -69,21 +75,31 @@
 #define NAME_SLAVE2 "KloKlok_slave_00X0" 
 #define NAME_SLAVE3 "KloKlok_slave_000X" 
 
+///////////////// movement modes  //////////////////////////////
+#define MOVEMENTMODEMIN 0   // as little movement as possible
+#define MOVEMENTMODEMAX 1   // as much movement as possible
+#define MOVEMENTMODEFUN 2   // balanced
+#define MOVEMENTMODEDESCMIN "minimum"
+#define MOVEMENTMODEDESCMAX "maximum"
+#define MOVEMENTMODEDESCFUN "balanced"
+#define MOVEMENTMODEDESCOUNT 3
+String movementModeTbl[MOVEMENTMODEDESCOUNT] = {MOVEMENTMODEDESCMIN, MOVEMENTMODEDESCMAX, MOVEMENTMODEDESCFUN };
+
 ///////////////// working modes  //////////////////////////////
-#define MODE_CLOCK         0       // Regular clock mode
-#define MODE_CLOCKDEMO     1       // 'Demo' clock by rapidly browsing nrs
-#define MODE_CHECKFPS      2       // check how many fps we can achieve
-#define MODE_DIGITSHOW     3       // Test digits one by one (no movement in between)
-#define MODE_DIGITTEST     4       // Do movement betwen digits
-#define MODE_SLAVE         5
-#define MODEDESC_CHECKFPS  "CheckPFS"
-#define MODEDESC_CLOCK     "Clock"
-#define MODEDESC_CLOCKDEMO "ClockDemo"
-#define MODEDESC_DIGITSHOW "DigitShow"
-#define MODEDESC_DIGITTEST "DigitTest" 
-#define MODEDESC_SLAVE     "Slave"
-#define COUNT_MODES 6
-String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITTEST, MODEDESC_SLAVE};
+#define MODE_CLOCK          0       // Regular clock mode
+#define MODE_CLOCKDEMO      1       // 'Demo' clock by rapidly browsing nrs
+#define MODE_CHECKFPS       2       // check how many fps we can achieve
+#define MODE_DIGITSHOW      3       // Test digits one by one (no movement in between)
+#define MODE_DIGITDANCE     4       // Do movement betwen digits
+#define MODE_SLAVE          5
+#define MODEDESC_CHECKFPS   "CheckPFS"
+#define MODEDESC_CLOCK      "Clock"
+#define MODEDESC_CLOCKDEMO  "ClockDemo"
+#define MODEDESC_DIGITSHOW  "DigitShow"
+#define MODEDESC_DIGITDANCE "DigitDance" 
+#define MODEDESC_SLAVE      "Slave"
+#define MODEDESC_COUNT 6
+String modeTbl[MODEDESC_COUNT] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITDANCE, MODEDESC_SLAVE};
 
 ///////////////// Commands  //////////////////////////////
 // Commmands are fixed lenght of 1
@@ -91,4 +107,6 @@ String modeTbl[COUNT_MODES] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHEC
 #define COMMAND_SHOWDG    3  // Show digit                                Param = digit to show
 #define COMMAND_MOVETO    4  // Move to digit                             Param = digit moving to
 #define COMMAND_SETMOD    5  // Set in specific mode                      Param = new mode
-#define REACTIONTIME   1000  // Slaves are reacting 1000s after command  
+#define REACTIONTIME    800  // Slaves are reacting 1000s after command
+#define CMD_START        '<' // char
+#define CMD_STOP         '>' // char

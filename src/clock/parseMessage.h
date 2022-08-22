@@ -1,37 +1,37 @@
 void parseMessage() {
   String cmdClockString;
-  // commands start with "hey"
+  char intToChar[3];
+
+  // commands start with 
   // structure:
-  //     hey
+  //     <         (CMD_BEGIN)
   //     command    (length 1)
   //     clocknr
   //     parameter (digit)
-  // eg "hey 3 4 8"  = clock 3 moveto 8
-  //    "hey 2 5 5"  = clock 2 setmode 5 = Slave
-  //    "hey 2 5 5"  = clock 2 setmode 4 = digitTest
+  //     >         (CMD_STOP)
+  // eg "<438>"  = clock 3 moveto 8
+  //    "<525>"  = clock 2 setmode 5 = Slave
+  //    "<524>"  = clock 2 setmode 4 = digitDance
   
 
   messageChanged = false;
-  cmdHey = serialMessage.substring(0, 4);
-  if (cmdHey == "hey "){
-    // continue parsing
-    cmdCommand = serialMessage.substring(4, 5).toInt();
-    cmdClock   = serialMessage.substring(6, 7).toInt();
-    cmdParam   = serialMessage.substring(8, 9).toInt();
-    if (cmdClock == namePtr) {
+  for (int i = 0; i < serialMessage.length(); i++) {
+    if( (serialMessage.charAt(i) == CMD_START) and (serialMessage.charAt(i+4)== CMD_STOP)) {
+      cmdClockString = serialMessage.charAt(i+2);
+      //cmdClockString = serialMessage(i+2);
+      if( cmdClockString.toInt() == namePtr ) {
+      cmdClockString = serialMessage.charAt(i+1);
+      cmdCommand = cmdClockString.toInt();
+      cmdClockString = serialMessage.charAt(i+2);
+      cmdClock   = cmdClockString.toInt();
+      cmdClockString = serialMessage.charAt(i+3);
+      cmdParam   =  cmdClockString.toInt();
       cmdAction  = true;
      
-      Print("Hey= ");
-      Print(cmdHey);
-      Print("  Clock= ");
-      Print(String(cmdClock));
-      Print("  command= ");
-      Print(String(cmdCommand));
-      Print("  param= ");
-      Println(String(cmdParam));
+      break;           // don't process message further
     }
-  } 
-  cmdHey = "";
-  serialMessage.clear();
+    }
+  }
+  serialMessage = "";
   
 }

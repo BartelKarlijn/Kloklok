@@ -1,5 +1,5 @@
 void plotNeedle(int16_t angleBack, int16_t movementBack, int16_t angleFront, int16_t MovementFront, uint16_t kloknr) {
-  uint16_t rotationOffset = rotationTbl[clockRotation[kloknr]];
+  uint16_t rotationOffset = rotationTbl[clockRotation];
   // Pull cs_pin low to write to screen
   digitalWrite( tft_cs[kloknr], LOW);
 

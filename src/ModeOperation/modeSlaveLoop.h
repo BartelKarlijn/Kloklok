@@ -4,6 +4,8 @@ void modeSlaveLoop(){
   if (messageChanged) {
     Print("Message= ");
     Println(serialMessage);
+    Print("lenght=");
+    Println(String(serialMessage.length()));
     messageChanged = false;
   }
   parseMessage();
@@ -18,12 +20,12 @@ void modeSlaveLoop(){
       }
       break;
     case COMMAND_SHOWDG:
-      showDigit(cmdParam);
+      showDigit(cmdParam, true);
       break;
     case COMMAND_MOVETO:
       calculateMovementToNr(cmdParam);
       moveNextDigit();
-      showDigit(cmdParam);              //Just to be sure that we don't leave any artefacts behind
+      showDigit(cmdParam, false);              //Just to be sure that we don't leave any artefacts behind
       break;    
     case COMMAND_SETMOD:
       mode = cmdParam;

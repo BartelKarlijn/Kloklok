@@ -38,22 +38,19 @@ uint8_t cnt;
 //////////////// LED ///////////////////////
 boolean startupError;
 
-//MovementModes
-#define MOVEMENTMODEMIN 1   // as little movement as possible
-#define MOVEMENTMODEMAX 2   // as much movement as possible
-#define MOVEMENTMODEFUN 3   // balanced
-int16_t movementMode = MOVEMENTMODEFUN;
 //////// Preferences //////////
 Preferences pref_eeprom;
 
 //////// Wifi //////////
 // Create AsyncWebServer object on port 80
 AsyncWebServer webserver(80);
+uint16_t waitDelay;       // default value, gets overwritten from eeprom
+#define  WAITDELAYMAX 60  // max value in sec
 uint8_t namePtr;  //pointer to nameTbl
 String nameTbl[] = {NAME_MASTER, NAME_SLAVE1, NAME_SLAVE2, NAME_SLAVE3};
-String incomingMessage, serialMessage;
+String incomingMessage;
+String serialMessage;
 bool   messageChanged;
-String cmdHey;
 uint8_t cmdClock, cmdCommand, cmdParam;
 bool   cmdAction;
 bool   flagWifiOn = false;
@@ -68,7 +65,11 @@ const char* PARAM_output = "output";   // voor de asyncwebserver
 
 // Clock rotation
 int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
-uint16_t clockRotation[6];
+uint16_t clockRotation;
+
+//MovementModes
+uint16_t movementMode;
+
 //Mode
 int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
 
@@ -93,29 +94,17 @@ const char* oms_namePtr = "Name mstr/slave";
 const uint16_t   id_namePtrup = 131;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_namePtrdo = 132; 
 
-const char* oms_Rot0 = "Rotation sc0";
-const uint16_t   id_Rot0up = 201;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot0do = 202; 
+const char* oms_waitDelay = "Delay between steps";
+const uint16_t   id_waitDelayup = 141;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_waitDelaydo = 142; 
 
-const char* oms_Rot1 = "Rotation sc1";
-const uint16_t   id_Rot1up = 211;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot1do = 212; 
+const char* oms_mvmt = "Movement Mode";
+const uint16_t   id_Mvmtup = 151;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Mvmtdo = 152; 
 
-const char* oms_Rot2 = "Rotation sc2";
-const uint16_t   id_Rot2up = 221;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot2do = 222; 
-
-const char* oms_Rot3 = "Rotation sc3";
-const uint16_t   id_Rot3up = 231;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot3do = 232; 
-
-const char* oms_Rot4 = "Rotation sc4";
-const uint16_t   id_Rot4up = 241;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot4do = 242; 
-
-const char* oms_Rot5 = "Rotation sc5";
-const uint16_t   id_Rot5up = 251;            // knop ID, moet uniek zijn, zie html_processor
-const uint16_t   id_Rot5do = 252; 
+const char* oms_Rot = "Rotation sc";
+const uint16_t   id_Rotup = 201;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Rotdo = 202; 
 
 const char* oms_SaveConfig = "Save Config";
 const uint16_t   id_SaveConfig = 22;

@@ -8,8 +8,8 @@
 // =======================================================================================
 void setup()   {
   setupSerial();
+  delay(1000);
   get_datafrom_eeprom (); // parameters uit eeprom halen (oa ssid/pw en PID)
-
   setupBacklight();
   // Create the Sprites
 //  needle1 = createNeedle( NEEDLE_CLEAR1 );
@@ -45,8 +45,8 @@ void loop() {
   case MODE_DIGITSHOW:
     modeDigitShowLoop();
     break;
-  case MODE_DIGITTEST:
-    modeDigitTestLoop();
+  case MODE_DIGITDANCE:
+    modeDigitDanceLoop();
     break;
   case MODE_SLAVE:
     modeSlaveLoop();
