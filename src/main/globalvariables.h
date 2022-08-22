@@ -84,6 +84,7 @@ uint8_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
 //#define hdlWifiScan   "/wifiscan"                // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlWifiSave   "/wifisave"                // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlWebSerial  "/webserial"               // Dit is niet te wijzigen, is om Serial Monitor via web te hebben
+#define hdlTimeSave   "/timesave"                // handle to submit time
 
 // knoppen
 const char* oms_mode = "Operation Mode";
@@ -106,7 +107,7 @@ const char* oms_Rot = "Rotation sc";
 const uint16_t   id_Rotup = 201;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_Rotdo = 202; 
 
-const char* oms_settime = "Set time HH MM";
+const char* oms_TimeSave = "Set time HH MM";
 const char* PARAM_HH    = "hh";             // parameter for asyncwebserver
 const char* PARAM_MM    = "mm";             // parameter for asyncwebserver
 

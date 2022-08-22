@@ -12,7 +12,7 @@ String html_processorRoot(const String& var){
     buttons += html_buttonSimple(id_SaveConfig, "SAVE", oms_SaveConfig);
     buttons += html_buttonSimple(id_Restart, "/!\\", oms_Restart);
     buttons += "</table>";
-    buttons += html_doubleInput("HH MM", "pUUR", "pMIN", 2, "hdl_savetime");
+    buttons += html_doubleInput(oms_TimeSave, PARAM_HH, PARAM_MM, 2, hdlTimeSave);
 
     buttons += html_buttonLink("Wifi Management", hdlWifiPWD);
     buttons += html_buttonLink("WebSerial", hdlWebSerial);
