@@ -48,21 +48,21 @@ void setup_AsyncWebserver(){
   webserver.on(hdlTimeSave, HTTP_GET, [](AsyncWebServerRequest *request) {
     Println("Setting Time");
     if (request->hasParam(PARAM_HH)) {
-      time_hh = request->getParam(PARAM_HH)->value();
+      timeString_hh = request->getParam(PARAM_HH)->value();
     }
     else {
-      time_hh = "00";
+      timeString_hh = "00";
     }
     if (request->hasParam(PARAM_MM)) {
-      time_mm = request->getParam(PARAM_MM)->value();
+      timeString_mm = request->getParam(PARAM_MM)->value();
     }
     else {
-      time_mm = "X";
+      timeString_mm = "X";
     }
     Print("HH:MM ");
-    Print(time_hh);
+    Print(timeString_hh);
     Print(":");
-    Println(time_mm);
+    Println(timeString_mm);
     flag_timeSetManually = true;
     
     ///save_WIFIdatato_eeprom (); 

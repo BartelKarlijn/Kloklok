@@ -3,25 +3,25 @@ void modeClockDemoLoop(){
   checkStillSameMode ();
 
   if (flag_timeSetManually == true) {
-    time_X000new = time_hh.charAt(0);
-    time_0X00new = time_hh.charAt(1);
-    time_00X0new = time_mm.charAt(0);
-    time_000Xnew = time_mm.charAt(1);
+    time_hh = timeString_hh.toInt();
+    if (time_hh > 23) {time_hh = 0;}
+    time_mm = timeString_mm.toInt();
+    if (time_mm > 59) {time_mm = 0;}
+    flag_timeSetManually = false;
   }
   else {
-   time_000Xnew = time_000Xnew + 1;
-   if (time_000Xnew > 9) {
-     time_000Xnew = 0;
-     time_00X0new = time_00X0new + 1;
-     if (time_00X0new > 5) {
-       time_0X00new = time_0X00new + 1;
-       if (time_0X00new > 9) {
-        time_0X00new = 0;
-       }
-     }
-   }
-  }
-  
+    time_mm ++;
+    if (time_mm > 59) {
+      time_mm = 0;
+      time_hh ++;
+      if (time_hh > 23) {time_hh = 0;}
+      }
+  }  
+  time_X000new = time_hh / 10;
+  time_0X00new = time_hh - (time_X000new * 10);
+  time_00X0new = time_mm / 10;
+  time_000Xnew = time_mm - (time_00X0new * 10);
+
   distributeCommand(COMMAND_MOVETO, time_0X00new, time_00X0new, time_000Xnew);
   calculateMovementToNr(time_X000new);
   moveNextDigit();
