@@ -107,6 +107,9 @@ String modeTbl[MODEDESC_COUNT] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_C
 #define COMMAND_SHOWDG    3  // Show digit                                Param = digit to show
 #define COMMAND_MOVETO    4  // Move to digit                             Param = digit moving to
 #define COMMAND_SETMOD    5  // Set in specific mode                      Param = new mode
+#define COMMAND_SETROT    6  // Set rotation
+#define COMMAND_SETMOV    7  // Set movementmode
+#define COMMAND_SETSAV    8  // Save settings
 #define REACTIONTIME    800  // Slaves are reacting 1000s after command
 #define CMD_START        '<' // char
 #define CMD_STOP         '>' // char

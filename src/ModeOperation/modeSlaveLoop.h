@@ -30,6 +30,15 @@ void modeSlaveLoop(){
     case COMMAND_SETMOD:
       mode = cmdParam;
       break;
+    case COMMAND_SETROT:
+      clockRotation = cmdParam;
+      break;
+    case COMMAND_SETMOV:
+      movementMode = cmdParam;
+      break;
+    case COMMAND_SETSAV:
+      buttonChangeConfig();
+      break;
     default:
       break;
     }
