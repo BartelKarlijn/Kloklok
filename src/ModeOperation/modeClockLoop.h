@@ -20,11 +20,11 @@ void modeClockLoop(){
     strftime(timeHour, 3, "%H", &timeinfo);
     strftime(timeFull, 40, "%A, %d %B %Y %H:%M:%S", &timeinfo);
     Print("Hour: ");
-    Println(String(timeHour));
+    Println(timeHour);
     Print("Minute: ");
-    Println(String(timeMin));
+    Println(timeMin);
     Print("FullTime");
-    Println(String(timeFull));
+    Println(timeFull);
     Println("");
 
     //Calculate new values & redraw clocks

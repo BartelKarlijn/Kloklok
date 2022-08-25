@@ -4,7 +4,7 @@ float buttonChangeStep(float var_Change, String Change_Oms) {
   Print("Changing ");
   Print(Change_Oms);
   Print(", new value ");
-  Println(String(var_Change));
+  Println(var_Change);
   return var_Change;
 }
 
@@ -17,7 +17,7 @@ uint8_t  buttonChangeUp(uint16_t var, int16_t varChange, String Change_Oms, uint
   Print("Changing ");
   Print(Change_Oms);
   Print(", new value ");
-  Println(String(var));
+  Println(var);
   return var;
 }
 

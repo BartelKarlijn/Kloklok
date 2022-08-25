@@ -19,6 +19,6 @@ void modeDigitShowLoop(){
 
   delay(waitDelay * 1000 + 150);
   Print("Showing nr: ");
-  Println(String(currentNr));
+  Println(currentNr);
   currentNr = nextNr;
 }

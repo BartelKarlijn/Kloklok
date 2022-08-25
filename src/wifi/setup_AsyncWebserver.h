@@ -9,8 +9,6 @@ void setup_AsyncWebserver(){
   webserver.on(hdlWifiPWD, HTTP_GET, [](AsyncWebServerRequest *request) {
     Print("Wifi config pagina");
     request->send_P(200, "text/html", config_html, html_processorWifi);
-//    Print("webserver running on core ");
-//    Println(String(xPortGetCoreID()));
   });
 
   // Opvangen als wifi data bewaard worden
@@ -66,7 +64,6 @@ void setup_AsyncWebserver(){
     flag_timeSetManually = true;
     
     ///save_WIFIdatato_eeprom (); 
-    //Println("Wifi SSID and PWD saved; please reboot ESP32");
     request->send_P(200, "text/html", config_html, html_processorRoot);
   });
 
@@ -85,7 +82,7 @@ void setup_AsyncWebserver(){
     }
 
     Print("knop= ");
-    Println(String(IDknop));
+    Println(IDknop);
     switch (IDknop) {
     case id_Modedo:  //mode
       mode = buttonChangeUp(mode, -1, "mode", MODEDESC_COUNT);
