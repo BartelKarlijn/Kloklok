@@ -1,7 +1,7 @@
 void readSerial(){
   if (Serial.available() > 0) {
     // read the incoming string:
-    serialMessage = Serial.readString();
+    serialMessage = Serial.readStringUntil(CMD_STOP);
     messageChanged = true;
   }
   if (flagWifiOn) {
