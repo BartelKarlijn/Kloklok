@@ -1,13 +1,13 @@
 // Configuration file
 
 ///////////////// Serial  ///////////////////////////
-// Een, beide of geen enkele van de 2 onderstaande opties kunnen gebruikt worden
-#define PRINTWEBSERIAL   //om Serial via webpagina ipadres/webserial te volgen
-#define PRINTSERIAL      //om Serial via serial connectie te volgen
+// One, both or none of the Print options below can be used
+#define PRINTWEBSERIAL   // follow print statements via web Serial.  Page adress: ipadres/webserial
+#define PRINTSERIAL      // follow prints via serial connection
 #define SERIALSPEED 115200
 
 ///////////////// Pins  //////////////////////////////
-// already used in user_setup.h:
+// already used in user_setup.h, and platformio.ini
 // Default pinmapping for SPI = MOSI gpio23, MISO gpio19, CLK gpio18, CS gpio5 (but this we're doing ourselves)
 
 /*   part below is copied from User_Setup.h
@@ -22,7 +22,6 @@
 #define SPI_FREQUENCY  40000000
 */
 #define TFT__BL    19    //Backlight
-
 #define TFT0_CS    33    //Chip Select pin tftx
 #define TFT1_CS    32    //Chip Select pin tftx
 #define TFT2_CS    27    //Chip Select pin tftx
@@ -34,8 +33,8 @@
 #define PWM_FREQ    5000
 #define PWM_CHANNEL    0
 #define PWM_RESOLUTION 8  // 8bit = 25
-#define BACKLIGHT   255  // brightness 0-255
-#define BACKL_BLINK   5  // nr of times the BL blinks at startup
+#define BACKLIGHT    255  // brightness 0-255
+#define BACKL_BLINK    5  // nr of times the BL blinks at startup
 
 ///////////////// TFT objects  //////////////////////////////
 #define SCREEN_CENTER 120                // center of screen
