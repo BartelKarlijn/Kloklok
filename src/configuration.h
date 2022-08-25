@@ -31,9 +31,9 @@
 #define TFT5_CS    26    //Chip Select pin tftx
 
 ///////////////// TFT backlight  //////////////////////////////
-#define PWMFreq    5000
-#define PWMChannel    0
-#define PWMResolution 8  // 8bit = 25
+#define PWM_FREQ    5000
+#define PWM_CHANNEL    0
+#define PWM_RESOLUTION 8  // 8bit = 25
 #define BACKLIGHT   255  // brightness 0-255
 #define BACKL_BLINK   5  // nr of times the BL blinks at startup
 
