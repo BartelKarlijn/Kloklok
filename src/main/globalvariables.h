@@ -63,6 +63,8 @@ String wifi_scan;         //Lijst met scan van wifi netwerken
 // Clock rotation
 int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
 uint16_t clockRotation;
+int16_t angleto1, angleto2, extraBack, extraFront; 
+int16_t angleBTo, angleFTo, angleBFr, angleFFr;
 
 //MovementModes
 uint16_t movementMode;
