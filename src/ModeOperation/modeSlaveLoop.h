@@ -2,7 +2,7 @@ void modeSlaveLoop(){
   checkStillSameMode ();
   readSerial();
   if (messageChanged) {
-    Print("Message= ");
+    Print("cmd= ");
     Println(serialMessage);
     messageChanged = false;
   }
