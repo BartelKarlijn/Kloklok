@@ -39,7 +39,7 @@
 ///////////////// TFT objects  //////////////////////////////
 #define SCREEN_CENTER 120                // center of screen
 #define NEEDLE_RADIUS  16                // diameter of needle
-#define NEEDLE_WIDTH  NEEDLE_RADIUS * 2   // Width of needle
+#define NEEDLE_WIDTH  1+(NEEDLE_RADIUS * 2)   // Width of needle
 #define NEEDLE_LENGTH SCREEN_CENTER // Visible length without rounded corners
 #define DIAL_WIDTH    SCREEN_CENTER * 2
 // Extra margin for the sprite width to cover the rotation from previous position
