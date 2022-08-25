@@ -4,8 +4,6 @@ void modeSlaveLoop(){
   if (messageChanged) {
     Print("Message= ");
     Println(serialMessage);
-    Print("lenght=");
-    Println(serialMessage.length());
     messageChanged = false;
   }
   parseMessage();
