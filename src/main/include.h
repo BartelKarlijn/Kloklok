@@ -44,12 +44,13 @@
 #include <tft/moveNextDigit.h>
 
 //wifi
-#include <wifi/html_buttonSimple.h>  // routine om simpele pushbutton te maken
-#include <wifi/html_buttonUpDown.h>  // routine om PID parameters up/down aan te passen
-#include <wifi/html_buttonLink.h>    // routine om knoppen met link te maken
+#include <wifi/html_buttonSimple.h>  // routine to create simpel pushbutton
+#include <wifi/html_buttonUpDown.h>  // routine to change parameter up or down
+#include <wifi/html_buttonLink.h>    // routine to create button with a link
+#include <wifi/html_doubleInput.h>   // 2 input fields + submit button
 #include <wifi/html_sendPage.h>      // send the (config) html string
-#include <wifi/html_processor.h>     // vervangt placeholder in sendPage
-#include <wifi/buttonChange.h>       // acties die gebeuren als je op knop drukt
+#include <wifi/html_processor.h>     // replaces placeholder in sendPage
+#include <wifi/buttonChange.h>       // actions happening if you ckick a button
 #include <wifi/setup_AsyncWebserver.h> 
 #include <wifi/setup_ConnectKnownWifi.h>
 #include <wifi/setup_CreateAccessPoint.h>

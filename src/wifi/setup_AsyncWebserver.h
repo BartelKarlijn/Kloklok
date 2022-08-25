@@ -44,7 +44,34 @@ void setup_AsyncWebserver(){
     request->send_P(200, "text/html", config_html, html_processorRoot);
   });
 
-  // Verwerk als er op een knop wordt gedrukt
+ // catch setting time
+  webserver.on(hdlTimeSave, HTTP_GET, [](AsyncWebServerRequest *request) {
+    Println("Setting Time");
+    if (request->hasParam(PARAM_HH)) {
+      timeString_hh = request->getParam(PARAM_HH)->value();
+    }
+    else {
+      timeString_hh = "00";
+    }
+    if (request->hasParam(PARAM_MM)) {
+      timeString_mm = request->getParam(PARAM_MM)->value();
+    }
+    else {
+      timeString_mm = "X";
+    }
+    Print("HH:MM ");
+    Print(timeString_hh);
+    Print(":");
+    Println(timeString_mm);
+    flag_timeSetManually = true;
+    
+    ///save_WIFIdatato_eeprom (); 
+    //Println("Wifi SSID and PWD saved; please reboot ESP32");
+    request->send_P(200, "text/html", config_html, html_processorRoot);
+  });
+
+
+ // Verwerk als er op een knop wordt gedrukt
   webserver.on(hdlKnop, HTTP_GET, [](AsyncWebServerRequest *request) {
     String IDknopString;
     uint16_t IDknop;
@@ -78,21 +105,26 @@ void setup_AsyncWebserver(){
     case id_waitDelayup:
       waitDelay = buttonChangeUp(waitDelay, +1, "waitDelay", WAITDELAYMAX);
       break;
-    case id_Rotdo:  //name Rotation 0
+    case id_Rotdo:  //name Rotation
       clockRotation = buttonChangeUp(clockRotation, -1, "clockRotation", 4);
+      distributeCommand(COMMAND_SETROT, clockRotation, clockRotation, clockRotation);
       break;
     case id_Rotup:
       clockRotation = buttonChangeUp(clockRotation, +1, "clockRotation", 4);
+      distributeCommand(COMMAND_SETROT, clockRotation, clockRotation, clockRotation);
       break;
     case id_Mvmtdo:  //movement mode
       movementMode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENTMODEDESCOUNT);
+      distributeCommand(COMMAND_SETMOV, movementMode, movementMode, movementMode);
       break;
     case id_Mvmtup:
       movementMode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENTMODEDESCOUNT);
+      distributeCommand(COMMAND_SETMOV, movementMode, movementMode, movementMode);
       break;
     //Save Config
     case id_SaveConfig:
       buttonChangeConfig();
+      distributeCommand(COMMAND_SETSAV, 0, 0, 0);
       break;
     //Restart
     case id_Restart:

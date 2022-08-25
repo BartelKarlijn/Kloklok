@@ -59,9 +59,6 @@ bool   flagWifiOn = false;
 String wifi_ssid ;
 String wifi_pwd  ;
 String wifi_scan;         //Lijst met scan van wifi netwerken
-const char* PARAM_ssid   = "ssid";     // voor de asyncwebserver
-const char* PARAM_pwd    = "pwd" ;     // voor de asyncwebserver
-const char* PARAM_output = "output";   // voor de asyncwebserver
 
 // Clock rotation
 int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
@@ -74,7 +71,10 @@ uint16_t movementMode;
 int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
 
 // Time
-uint8_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
+uint16_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
+String  timeString_hh, timeString_mm;
+uint16_t time_hh, time_mm;
+bool    flag_timeSetManually = false;
 
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
@@ -84,8 +84,11 @@ uint8_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
 //#define hdlWifiScan   "/wifiscan"                // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlWifiSave   "/wifisave"                // om daarna op te vangen welke knop is ingedrukt.  Best niet wijzigen, wordt vast in html_sendPage gebruikt
 #define hdlWebSerial  "/webserial"               // Dit is niet te wijzigen, is om Serial Monitor via web te hebben
+#define hdlTimeSave   "/timesave"                // handle to submit time
 
 // knoppen
+const char* PARAM_output = "output";   // voor de asyncwebserver
+
 const char* oms_mode = "Operation Mode";
 const uint16_t   id_Modeup = 121;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_Modedo = 122; 
@@ -105,6 +108,14 @@ const uint16_t   id_Mvmtdo = 152;
 const char* oms_Rot = "Rotation sc";
 const uint16_t   id_Rotup = 201;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_Rotdo = 202; 
+
+const char* oms_TimeSave = "Set time HH MM";
+const char* PARAM_HH    = "hh";             // parameter for asyncwebserver
+const char* PARAM_MM    = "mm";             // parameter for asyncwebserver
+
+const char* oms_WifiSave = "SSID / Password";
+const char* PARAM_ssid   = "ssid";     // voor de asyncwebserver
+const char* PARAM_pwd    = "pwd" ;     // voor de asyncwebserver
 
 const char* oms_SaveConfig = "Save Config";
 const uint16_t   id_SaveConfig = 22;

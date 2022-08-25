@@ -12,11 +12,16 @@ String html_processorRoot(const String& var){
     buttons += html_buttonSimple(id_SaveConfig, "SAVE", oms_SaveConfig);
     buttons += html_buttonSimple(id_Restart, "/!\\", oms_Restart);
     buttons += "</table>";
-    
+    buttons += html_doubleInput(oms_TimeSave, PARAM_HH, PARAM_MM, 2, hdlTimeSave);
+
     buttons += html_buttonLink("Wifi Management", hdlWifiPWD);
     buttons += html_buttonLink("WebSerial", hdlWebSerial);
     buttons += html_buttonLink("Firmware update", hdlUpdate);
     
+    buttons += "<p>Build commit= " + String(AUTO_COMMITPT);
+    buttons += ", Compilation date= " + String(__DATE__) ;
+    buttons += ",  time= " + String(__TIME__) + "</p>";
+
     return buttons;
   }
   return String();
@@ -29,7 +34,8 @@ String html_processorWifi(const String& var){
     buttons += "<h1>Wifi instellen</h1>";
 //    buttons += "<form action=\"/scan\" method=\"POST\"><input type=\"submit\" value=\"scan\"></form>";
     buttons += wifi_scan;
-    buttons += "</p><form method='get' action='wifisave'><label>SSID: </label><input name='ssid' length=32><input name='pwd' length=64><input type='submit'></form><br>";
+    buttons += html_doubleInput(oms_WifiSave, PARAM_ssid, PARAM_pwd, 32, hdlWifiSave);
+//    buttons += "</p><form method='get' action='wifisave'><label>SSID: </label><input name='ssid' length=32><input name='pwd' length=64><input type='submit'></form><br>";
     buttons += html_buttonSimple(id_Restart, "/!\\", oms_Restart);
     buttons += html_buttonLink("naar Root", hdlRoot);
     return buttons;
