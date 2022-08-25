@@ -9,12 +9,7 @@ TFT_eSprite needle4      = TFT_eSprite(&tft); // Sprite object for needle 4 deg
 
 TFT_eSprite needleAxis   = TFT_eSprite(&tft); // Sprite object for centre Axis
 
-///////////////// Object sizes  //////////////////////////////
-#define NEEDLE_WIDTH  NEEDLE_RADIUS * 2   // Width of needle
-#define NEEDLE_LENGTH SCREEN_CENTER // Visible length without rounded corners
-#define DIAL_WIDTH    SCREEN_CENTER * 2
-
-// Angles
+///////////////// Angles  /////////////////////////////
 uint8_t currentNr;  // What digit are we displaying?
 // Current angle
 int16_t angleBack[6];      
@@ -24,12 +19,14 @@ uint16_t  moveEvenFront[6];
 uint16_t  moveUnEvFront[6];  
 uint16_t  moveEvenBack[6];
 uint16_t  moveUnEvBack[6];
-
 // How fast is the movement
 uint16_t moveFront;
 uint16_t moveBack;
-// Backlight
-uint16_t backlight;
+// Clock rotation
+int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
+uint16_t clockRotation;
+int16_t angleto1, angleto2, extraBack, extraFront; 
+int16_t angleBTo, angleFTo, angleBFr, angleFFr;
 
 // timing
 unsigned long myTime;
@@ -37,9 +34,23 @@ uint8_t cnt;
 
 //////////////// LED ///////////////////////
 boolean startupError;
+uint16_t backlight;     // Backlight of tft
 
-//////// Preferences //////////
+//////////////// Preferences //////////////////////
 Preferences pref_eeprom;
+
+//////////////// MovementModes //////////////////////
+uint16_t movementMode;
+
+//Mode (clock/clockdemo/...)
+int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
+
+// Time
+uint16_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
+String  timeString_hh, timeString_mm;
+uint16_t time_hh, time_mm;
+bool    flag_timeSetManually = false;
+
 
 //////// Wifi //////////
 // Create AsyncWebServer object on port 80
@@ -48,35 +59,17 @@ uint16_t waitDelay;       // default value, gets overwritten from eeprom
 #define  WAITDELAYMAX 60  // max value in sec
 uint8_t namePtr;  //pointer to nameTbl
 String nameTbl[] = {NAME_MASTER, NAME_SLAVE1, NAME_SLAVE2, NAME_SLAVE3};
+bool   flagWifiOn = false;
+//DNSServer dnsServer;    //Even afgezet want voor eigen AP wellicht niet nodig
+String wifi_ssid ;
+String wifi_pwd  ;
+String wifi_scan;         //Lijst met scan van wifi netwerken
+// communication
 String incomingMessage;
 String serialMessage;
 bool   messageChanged;
 uint8_t cmdClock, cmdCommand, cmdParam;
 bool   cmdAction;
-bool   flagWifiOn = false;
-
-//DNSServer dnsServer;    //Even afgezet want voor eigen AP wellicht niet nodig
-String wifi_ssid ;
-String wifi_pwd  ;
-String wifi_scan;         //Lijst met scan van wifi netwerken
-
-// Clock rotation
-int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
-uint16_t clockRotation;
-int16_t angleto1, angleto2, extraBack, extraFront; 
-int16_t angleBTo, angleFTo, angleBFr, angleFFr;
-
-//MovementModes
-uint16_t movementMode;
-
-//Mode
-int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
-
-// Time
-uint16_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
-String  timeString_hh, timeString_mm;
-uint16_t time_hh, time_mm;
-bool    flag_timeSetManually = false;
 
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
