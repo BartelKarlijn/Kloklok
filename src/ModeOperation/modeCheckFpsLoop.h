@@ -17,11 +17,11 @@ void modeCheckFpsLoop(){
   //Serial.println(cnt);
   if ( cnt >= 90 ) {
     myTimeRef = millis() - myTime;
-    Print(String(cnt));
+    Print(cnt);
     Print(" screens in ");
-    Print(String(myTimeRef));
+    Print(myTimeRef);
     Print(" ms = ");
-    Print(String( cnt * 1000/ myTimeRef));
+    Print(cnt * 1000/ myTimeRef);
     Println("fps");
     delay(100);
     moveFront++;
