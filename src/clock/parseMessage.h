@@ -1,5 +1,5 @@
 void parseMessage() {
-  String cmdClockString;
+  String cmdString;
 
   // commands start with 
   // structure:
@@ -14,15 +14,17 @@ void parseMessage() {
   // However, readserial strips CMD_START/STOP
 
   messageChanged = false;
-  cmdClockString = serialMessage.charAt(1);
-  if( cmdClockString.toInt() == namePtr ) {
-    cmdClockString = serialMessage.charAt(0);
-    cmdCommand = cmdClockString.toInt();
-    cmdClockString = serialMessage.charAt(1);
-    cmdClock   = cmdClockString.toInt();
-    cmdClockString = serialMessage.charAt(2);
-    cmdParam   =  cmdClockString.toInt();
+  cmdString      = serialMessage.charAt(1);
+  if( cmdString.toInt() == namePtr ) {
+    cmdString  = serialMessage.charAt(0);
+    cmdCommand = cmdString.toInt();
+    cmdString  = serialMessage.charAt(1);
+    cmdClock   = cmdString.toInt();
+    cmdString  = serialMessage.charAt(2);
+    cmdParam   = cmdString.toInt();
     cmdAction  = true;
+    Print("cmd= ");
+    Println(serialMessage);
     }
   serialMessage = "";
 }

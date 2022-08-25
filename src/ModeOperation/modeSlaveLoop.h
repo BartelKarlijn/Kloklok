@@ -1,11 +1,6 @@
 void modeSlaveLoop(){
   checkStillSameMode ();
   readSerial();
-  if (messageChanged) {
-    Print("cmd= ");
-    Println(serialMessage);
-    messageChanged = false;
-  }
   parseMessage();
   if (cmdAction) {
     switch (cmdCommand)
