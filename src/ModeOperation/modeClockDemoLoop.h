@@ -22,6 +22,19 @@ void modeClockDemoLoop(){
   time_00X0new = time_mm / 10;
   time_000Xnew = time_mm - (time_00X0new * 10);
 
+  switch (randomMode) {
+    case RANDOM_OFF:
+//    do nothing, just the regular    
+      break;    
+    case RANDOM_ON:
+      distributeCommand(COMMAND_RANDOM, time_0X00new, time_00X0new, time_000Xnew);
+      calculateMovementRandom();
+      moveNextDigit();    
+      break;    
+    default:
+      Println("Impossible RandomMode");
+      break;
+  }
   distributeCommand(COMMAND_MOVETO, time_0X00new, time_00X0new, time_000Xnew);
   calculateMovementToNr(time_X000new);
   moveNextDigit();
