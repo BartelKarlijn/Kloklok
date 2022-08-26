@@ -41,6 +41,7 @@ Preferences pref_eeprom;
 
 //////////////// MovementModes //////////////////////
 uint16_t movementMode;
+uint16_t randomMode;
 
 //Mode (clock/clockdemo/...)
 int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
@@ -99,6 +100,10 @@ const uint16_t   id_waitDelaydo = 142;
 const char* oms_mvmt = "Movement Mode";
 const uint16_t   id_Mvmtup = 151;            // knop ID, moet uniek zijn, zie html_processor
 const uint16_t   id_Mvmtdo = 152; 
+
+const char* oms_rand = "Random Mode";
+const uint16_t   id_Randup = 161;            // knop ID, moet uniek zijn, zie html_processor
+const uint16_t   id_Randdo = 162; 
 
 const char* oms_Rot = "Rotation sc";
 const uint16_t   id_Rotup = 201;            // knop ID, moet uniek zijn, zie html_processor

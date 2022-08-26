@@ -86,6 +86,12 @@ const int daylightOffset_sec = 3600;
 #define MOVEMENTMODEDESCFUN "balanced"
 #define MOVEMENTMODEDESCOUNT 3
 String movementModeTbl[MOVEMENTMODEDESCOUNT] = {MOVEMENTMODEDESCMIN, MOVEMENTMODEDESCMAX, MOVEMENTMODEDESCFUN };
+#define RANDOM_OFF 0
+#define RANDOM_ON  1
+#define RANDOMDESC_OFF "normal"
+#define RANDOMDESC_ON  "random"
+#define RANDOMDESCCOUNT 2
+String randomTbl[RANDOMDESCCOUNT] = {RANDOMDESC_OFF, RANDOMDESC_ON};
 
 ///////////////// working modes  //////////////////////////////
 #define MODE_CLOCK          0       // Regular clock mode

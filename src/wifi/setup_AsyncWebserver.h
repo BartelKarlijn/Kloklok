@@ -118,6 +118,14 @@ void setup_AsyncWebserver(){
       movementMode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENTMODEDESCOUNT);
       distributeCommand(COMMAND_SETMOV, movementMode, movementMode, movementMode);
       break;
+    case id_Randdo:  //random mode
+      randomMode = buttonChangeUp(randomMode, -1, "Random mode", RANDOMDESCCOUNT);
+      //distributeCommand(COMMAND_SETRAN, randomMode, randomMode, randomMode);
+      break;
+    case id_Randup:
+      randomMode = buttonChangeUp(randomMode, +1, "Random mode", RANDOMDESCCOUNT);
+      //distributeCommand(COMMAND_SETRAN, randomMode, randomMode, randomMode);
+      break;
     //Save Config
     case id_SaveConfig:
       buttonChangeConfig();

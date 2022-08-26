@@ -16,7 +16,7 @@ void modeClockDemoLoop(){
       time_hh ++;
       if (time_hh > 23) {time_hh = 0;}
       }
-  }  
+  }
   time_X000new = time_hh / 10;
   time_0X00new = time_hh - (time_X000new * 10);
   time_00X0new = time_mm / 10;
