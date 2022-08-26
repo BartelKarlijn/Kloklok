@@ -4,7 +4,7 @@ String html_processorRoot(const String& var){
     String buttons = "";
     buttons += "<h1>" + nameTbl[namePtr] + "</h1><table>";
 
-    buttons += html_buttonUpDown(oms_mode, id_Modeup, id_Modedo, mode, modeTbl[mode]);
+    buttons += html_buttonUpDown(oms_mode, id_Modeup, id_Modedo, operationMode, modeTbl[operationMode]);
     buttons += html_buttonUpDown(oms_namePtr, id_namePtrup, id_namePtrdo, namePtr, nameTbl[namePtr]);
     buttons += html_buttonUpDown(oms_waitDelay, id_waitDelayup, id_waitDelaydo, waitDelay, String(waitDelay) ) ;
     buttons += html_buttonUpDown(oms_Rot, id_Rotup, id_Rotdo, clockRotation, String(rotationTbl[clockRotation]));

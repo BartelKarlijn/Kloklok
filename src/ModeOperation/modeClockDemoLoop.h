@@ -35,7 +35,7 @@ void modeClockDemoLoop(){
       moveNextDigit();    
       showDigit(time_X000new, false);
       moveNextDigit();
-      break;    
+      break;
     default:
       Println("Impossible RandomMode");
       break;

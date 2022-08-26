@@ -31,7 +31,7 @@ void setup()   {
 // Loop
 // =======================================================================================
 void loop() {
-  switch (mode)
+  switch (operationMode)
   {
   case MODE_CHECKFPS:
     modeCheckFpsLoop();
@@ -52,7 +52,7 @@ void loop() {
     modeSlaveLoop();
     break;
   default:
-    Println("Impossible modeOperation in loop");
+    Println("Impossible operationMode in loop");
     break;
   }
 }

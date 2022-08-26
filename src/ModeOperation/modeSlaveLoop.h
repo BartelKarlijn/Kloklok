@@ -28,7 +28,7 @@ void modeSlaveLoop(){
       showDigit(cmdParam, false);              //Just to be sure that we don't leave any artefacts behind
       break;    
     case COMMAND_SETMOD:
-      mode = cmdParam;
+      operationMode = cmdParam;
       break;
     case COMMAND_SETROT:
       clockRotation = cmdParam;

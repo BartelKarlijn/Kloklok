@@ -44,7 +44,7 @@ uint16_t movementMode;
 uint16_t randomMode;
 
 //Mode (clock/clockdemo/...)
-int8_t mode, modeOld = 99;             // On 99, checkStillSameMode gets launched
+int8_t operationMode, operationModeOld = 99;             // On 99, checkStillSameMode gets launched
 
 // Time
 uint16_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
