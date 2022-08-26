@@ -23,6 +23,9 @@ void get_datafrom_eeprom () {
   uint8_t mode_eeprom = pref_eeprom.getUInt("mode_eeprom", 0);
   Serial.print("Uit eprom uitgelezen waarde voor mode = ");
   Serial.println(mode_eeprom);
+  uint8_t random_eeprom = pref_eeprom.getUInt("random_eeprom", 0);
+  Serial.print("Uit eprom uitgelezen waarde voor random = ");
+  Serial.println(random_eeprom);
   uint8_t namePtr_eeprom = pref_eeprom.getUInt("namePtr_eeprom", 0);
   Serial.print("Uit eprom uitgelezen waarde voor namePtr = ");
   Serial.println(namePtr_eeprom);
@@ -35,6 +38,7 @@ void get_datafrom_eeprom () {
   bool flag_read = pref_eeprom.getBool("flag_read", false);
   if (flag_read) {
     mode = mode_eeprom;
+    randomMode = random_eeprom;
     namePtr = namePtr_eeprom;
     waitDelay   = waitDelay_eeprom;
     clockRotation = rot_eeprom;
@@ -43,6 +47,7 @@ void get_datafrom_eeprom () {
 
 void save_ConfigToEeprom () {
   pref_eeprom.putUInt("mode_eeprom", mode);
+  pref_eeprom.putUInt("random_eeprom", randomMode);
   pref_eeprom.putUInt("namePtr_eeprom", namePtr);
   pref_eeprom.putUInt("waitDel_eeprom", waitDelay);
   pref_eeprom.putUInt("rot0_eeprom", clockRotation);
