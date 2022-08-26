@@ -40,6 +40,7 @@
 #include <tft/plotNeedle.h>
 #include <tft/showDigit.h>
 #include <tft/calculateMovementToNr.h>
+#include <tft/calculateMovementRandom.h>
 #include <tft/moveNextDigit.h>
 
 //wifi
