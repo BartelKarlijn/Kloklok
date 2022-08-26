@@ -108,9 +108,10 @@ String modeTbl[MODEDESC_COUNT] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_C
 #define COMMAND_CLEARS    1  // Clear screen without.                     Param 0=clear axis, 1=plot axis
 #define COMMAND_SHOWDG    3  // Show digit                                Param = digit to show
 #define COMMAND_MOVETO    4  // Move to digit                             Param = digit moving to
-#define COMMAND_SETMOD    5  // Set in specific mode                      Param = new mode
-#define COMMAND_SETROT    6  // Set rotation
-#define COMMAND_SETMOV    7  // Set movementmode
-#define COMMAND_SETSAV    8  // Save settings
+#define COMMAND_RANDOM    5  // Move to random digit
+#define COMMAND_SETMOD    6  // Set in specific mode                      Param = new mode
+#define COMMAND_SETROT    7  // Set rotation
+#define COMMAND_SETMOV    8  // Set movementmode
+#define COMMAND_SETSAV    9  // Save settings
 #define CMD_START        '<' // char
 #define CMD_STOP         '>' // char

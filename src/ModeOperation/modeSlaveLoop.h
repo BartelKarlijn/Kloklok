@@ -20,6 +20,13 @@ void modeSlaveLoop(){
       moveNextDigit();
       showDigit(cmdParam, false);              //Just to be sure that we don't leave any artefacts behind
       break;    
+    case COMMAND_RANDOM:
+      calculateMovementRandom();
+      moveNextDigit();      
+      calculateMovementToNr(cmdParam);
+      moveNextDigit();
+      showDigit(cmdParam, false);              //Just to be sure that we don't leave any artefacts behind
+      break;    
     case COMMAND_SETMOD:
       mode = cmdParam;
       break;
