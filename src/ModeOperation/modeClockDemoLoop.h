@@ -33,8 +33,9 @@ void modeClockDemoLoop(){
       distributeCommand(COMMAND_RANDOM, time_0X00new, time_00X0new, time_000Xnew);
       calculateMovementRandom();
       moveNextDigit();    
-      showDigit(time_X000new, false);
+      calculateMovementToNr(time_X000new);
       moveNextDigit();
+      showDigit(time_X000new, false);
       break;
     default:
       Println("Impossible RandomMode");
