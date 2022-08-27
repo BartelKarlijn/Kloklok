@@ -7,7 +7,6 @@ TFT_eSprite needle4      = TFT_eSprite(&tft); // Sprite object for needle 4 deg
 TFT_eSprite needleAxis   = TFT_eSprite(&tft); // Sprite object for centre Axis
 
 ///////////////// Angles  /////////////////////////////
-uint8_t currentNr;  // What digit are we displaying?
 // Current angle
 int16_t angleBack[6];      
 int16_t angleFront[6];
