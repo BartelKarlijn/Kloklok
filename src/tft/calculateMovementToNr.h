@@ -38,7 +38,7 @@ void calculateMovementToNr(uint8_t nr_to) {
          rotF2B  = calculateRotation(angleFFr, angleBTo);
 
         switch (movementMode) {
-        case MOVEMENTMODEMIN:  // find the min movement as one with a difference of 0
+        case MOVEMENT_MIN:  // find the min movement as one with a difference of 0
             if (( rotB2B == 0) or ( rotF2F == 0)) {
                 mapAngles(true, 0, 0);  // min movement found
             }
@@ -46,7 +46,7 @@ void calculateMovementToNr(uint8_t nr_to) {
                 mapAngles(false, 0, 0);
             }
             break;
-        case MOVEMENTMODEMAX: // Similar to Min mode, but we add 360 to one of the 0 steps
+        case MOVEMENT_MAX: // Similar to Min mode, but we add 360 to one of the 0 steps
             if ( rotB2B == 0) {
                 mapAngles(true, 360, 0);    // Add 360 to movement found
             }
@@ -57,7 +57,7 @@ void calculateMovementToNr(uint8_t nr_to) {
                 mapAngles(false, 0, 360);
             }
             break;
-        case MOVEMENTMODEFUN: // Both dials should be moving
+        case MOVEMENT_FUN: // Both dials should be moving
             if (( rotB2F != 0) and ( rotF2B != 0)) {
                 mapAngles(false, 0, 0);    // non 0 movement found
             }

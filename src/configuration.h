@@ -51,8 +51,8 @@
 #define NEEDLE_CLEAR4 9   // area of needle to clear
 
 ///////////////// Screen Orientation  //////////////////////////////
-#define ROT_UP    0
-#define ROT_RIGHT 90
+#define ROT_UP      0
+#define ROT_RIGHT  90
 #define ROT_DOWN  180
 #define ROT_LEFT  270
 #define TFT_ORIENTATION (ROT_RIGHT / 90)  // the same for all 6 screens as we're using only 1 tft object
@@ -65,10 +65,10 @@
 #define COLOR_TEST       TFT_RED
 
 ///////////////// Time  //////////////////////////////
-const char* ntpServer  = "pool.ntp.org";
-const long gmtOffset_sec = 3600;
-const int daylightOffset_sec = 3600;
-#define DELAY_CATCHUP 7000     //Give slaves time to catch up after boot
+const char* ntpServer         = "pool.ntp.org";
+const long  gmtOffset_sec     = 3600;
+const int   daylightOffset_sec = 3600;
+#define DELAY_CATCHUP 5000     //Give slaves time to catch up after boot
 
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
@@ -78,14 +78,14 @@ const int daylightOffset_sec = 3600;
 #define NAME_SLAVE3 "KloKlok_slave_000X" 
 
 ///////////////// movement modes  //////////////////////////////
-#define MOVEMENTMODEMIN 0   // as little movement as possible
-#define MOVEMENTMODEMAX 1   // as much movement as possible
-#define MOVEMENTMODEFUN 2   // balanced
-#define MOVEMENTMODEDESCMIN "minimum"
-#define MOVEMENTMODEDESCMAX "maximum"
-#define MOVEMENTMODEDESCFUN "balanced"
-#define MOVEMENTMODEDESCOUNT 3
-String movementModeTbl[MOVEMENTMODEDESCOUNT] = {MOVEMENTMODEDESCMIN, MOVEMENTMODEDESCMAX, MOVEMENTMODEDESCFUN };
+#define MOVEMENT_MIN 0   // as little movement as possible
+#define MOVEMENT_MAX 1   // as much movement as possible
+#define MOVEMENT_FUN 2   // balanced
+#define MOVEMENT_DESC_MIN "minimum"
+#define MOVEMENT_DESC_MAX "maximum"
+#define MOVEMENT_DESC_FUN "balanced"
+#define MOVEMENT_COUNT 3
+String movementModeTbl[MOVEMENT_COUNT] = {MOVEMENT_DESC_MIN, MOVEMENT_DESC_MAX, MOVEMENT_DESC_FUN };
 #define RANDOM_OFF 0
 #define RANDOM_ON  1
 #define RANDOMDESC_OFF "normal"

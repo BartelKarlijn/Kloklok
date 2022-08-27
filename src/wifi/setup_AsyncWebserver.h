@@ -111,11 +111,11 @@ void setup_AsyncWebserver(){
       distributeCommand(COMMAND_SETROT, clockRotation, clockRotation, clockRotation);
       break;
     case id_Mvmtdo:  //movement mode
-      movementMode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENTMODEDESCOUNT);
+      movementMode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENT_COUNT);
       distributeCommand(COMMAND_SETMOV, movementMode, movementMode, movementMode);
       break;
     case id_Mvmtup:
-      movementMode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENTMODEDESCOUNT);
+      movementMode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENT_COUNT);
       distributeCommand(COMMAND_SETMOV, movementMode, movementMode, movementMode);
       break;
     case id_Randdo:  //random mode

@@ -27,14 +27,21 @@ int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
 uint16_t clockRotation;
 int16_t angleto1, angleto2, extraBack, extraFront; 
 int16_t angleBTo, angleFTo, angleBFr, angleFFr;
+// Time
+uint16_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
+String  timeString_hh, timeString_mm;
+uint16_t time_hh, time_mm;
+bool    flag_timeSetManually = false;
 
-// timing
-unsigned long myTime;
-uint8_t cnt;
 
-//////////////// LED ///////////////////////
+//////////////// OPERATION ///////////////////////
+// LED
 boolean startupError;
 uint16_t backlight;     // Backlight of tft
+
+// timers
+unsigned long myTime;
+uint8_t cnt;
 
 //////////////// Preferences //////////////////////
 Preferences pref_eeprom;
@@ -45,32 +52,26 @@ uint16_t randomMode;
 
 //Mode (clock/clockdemo/...)
 int8_t operationMode, operationModeOld = 99;             // On 99, checkStillSameMode gets launched
-
-// Time
-uint16_t time_X000, time_0X00, time_00X0, time_000X;  //one digit of the time
-String  timeString_hh, timeString_mm;
-uint16_t time_hh, time_mm;
-bool    flag_timeSetManually = false;
-
-
-//////// Wifi //////////
-// Create AsyncWebServer object on port 80
-AsyncWebServer webserver(80);
-uint16_t waitDelay;       // default value, gets overwritten from eeprom
-#define  WAITDELAYMAX 60  // max value in sec
-uint8_t namePtr;  //pointer to nameTbl
-String nameTbl[] = {NAME_MASTER, NAME_SLAVE1, NAME_SLAVE2, NAME_SLAVE3};
-bool   flagWifiOn = false;
-//DNSServer dnsServer;    //Even afgezet want voor eigen AP wellicht niet nodig
-String wifi_ssid ;
-String wifi_pwd  ;
-String wifi_scan;         //Lijst met scan van wifi netwerken
 // communication
 String incomingMessage;
 String serialMessage;
 bool   messageChanged;
 uint8_t cmdClock, cmdCommand, cmdParam;
 bool   cmdAction;
+uint16_t waitDelay;       // default value, gets overwritten from eeprom
+#define  WAITDELAYMAX 60  // max value in sec
+uint8_t namePtr;  //pointer to nameTbl
+String nameTbl[] = {NAME_MASTER, NAME_SLAVE1, NAME_SLAVE2, NAME_SLAVE3};
+bool   flagWifiOn = false;
+
+
+//////// Wifi //////////
+// Create AsyncWebServer object on port 80
+AsyncWebServer webserver(80);
+//DNSServer dnsServer;    //Even afgezet want voor eigen AP wellicht niet nodig
+String wifi_ssid ;
+String wifi_pwd  ;
+String wifi_scan;         //Lijst met scan van wifi netwerken
 
 // handles voor wifi paginas
 #define hdlRoot       "/"                        // handle voor hoofdscherm.  Hier kom je standaard op terecht
