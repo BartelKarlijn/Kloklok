@@ -1,5 +1,5 @@
 void modeDigitShowSetup(){
-  time_X000 = 0;  
+  time_X000 = OPERATION_DIGITSHOW;  
   startWifi();
   clearScreens(COLOR_TEST, false);
   Print("Give slaves time to catch up");

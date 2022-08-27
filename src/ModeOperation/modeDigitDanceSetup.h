@@ -1,5 +1,5 @@
 void modeDigitDanceSetup(){
-  time_X000 = 0;
+  time_X000 = OPERATION_DIGITDANCE;
   startWifi();
   clearScreens(COLOR_TEST, true);
   Print("Give slaves time to catch up");
