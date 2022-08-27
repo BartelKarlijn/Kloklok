@@ -29,7 +29,7 @@
 #define TFT4_CS    25    //Chip Select pin tftx
 #define TFT5_CS    26    //Chip Select pin tftx
 #define TFT_COUNT   6
-uint8_t tft_cs[TFT_COUNT] = {TFT0_CS, TFT1_CS, TFT2_CS, TFT3_CS, TFT4_CS, TFT5_CS };
+uint8_t tft_csTbl[TFT_COUNT] = {TFT0_CS, TFT1_CS, TFT2_CS, TFT3_CS, TFT4_CS, TFT5_CS };
 
 ///////////////// TFT backlight  //////////////////////////////
 #define PWM_FREQ    5000
