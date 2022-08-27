@@ -28,6 +28,8 @@
 #define TFT3_CS    13    //Chip Select pin tftx
 #define TFT4_CS    25    //Chip Select pin tftx
 #define TFT5_CS    26    //Chip Select pin tftx
+#define TFT_COUNT   6
+uint8_t tft_cs[TFT_COUNT] = {TFT0_CS, TFT1_CS, TFT2_CS, TFT3_CS, TFT4_CS, TFT5_CS };
 
 ///////////////// TFT backlight  //////////////////////////////
 #define PWM_FREQ    5000
@@ -55,6 +57,8 @@
 #define ROT_RIGHT  90
 #define ROT_DOWN  180
 #define ROT_LEFT  270
+#define ROT_COUNT   4
+int16_t rotationTbl[ROT_COUNT] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
 #define TFT_ORIENTATION (ROT_RIGHT / 90)  // the same for all 6 screens as we're using only 1 tft object
 
 ///////////////// Colors  //////////////////////////////
@@ -72,10 +76,12 @@ const int   daylightOffset_sec = 3600;
 
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
-#define NAME_MASTER "KloKlok_masterX000"
-#define NAME_SLAVE1 "KloKlok_slave_0X00" 
-#define NAME_SLAVE2 "KloKlok_slave_00X0" 
-#define NAME_SLAVE3 "KloKlok_slave_000X" 
+#define NAME_DESC_MASTER "KloKlok_masterX000"
+#define NAME_DESC_SLAVE1 "KloKlok_slave_0X00" 
+#define NAME_DESC_SLAVE2 "KloKlok_slave_00X0" 
+#define NAME_DESC_SLAVE3 "KloKlok_slave_000X" 
+#define NAME_DESC_COUNT 4
+String nameTbl[NAME_DESC_COUNT] = {NAME_DESC_MASTER, NAME_DESC_SLAVE1, NAME_DESC_SLAVE2, NAME_DESC_SLAVE3};
 
 ///////////////// movement modes  //////////////////////////////
 // Describing how much action is shown when moving from one to another digit
@@ -89,10 +95,10 @@ const int   daylightOffset_sec = 3600;
 String movementTbl[MOVEMENT_COUNT] = {MOVEMENT_DESC_MIN, MOVEMENT_DESC_MAX, MOVEMENT_DESC_FUN };
 #define RANDOM_OFF 0
 #define RANDOM_ON  1
-#define RANDOMDESC_OFF "normal"
-#define RANDOMDESC_ON  "random"
-#define RANDOMDESCCOUNT 2
-String randomTbl[RANDOMDESCCOUNT] = {RANDOMDESC_OFF, RANDOMDESC_ON};
+#define RANDOM_DESC_OFF "normal"
+#define RANDOM_DESC_ON  "random"
+#define RANDOM_DESCCOUNT 2
+String randomTbl[RANDOM_DESCCOUNT] = {RANDOM_DESC_OFF, RANDOM_DESC_ON};
 
 ///////////////// working modes  //////////////////////////////
 #define OPERATION_CLOCK          0       // Regular clock mode

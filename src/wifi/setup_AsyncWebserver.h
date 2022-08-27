@@ -119,11 +119,11 @@ void setup_AsyncWebserver(){
       distributeCommand(COMMAND_SETMOV, movementMode, movementMode, movementMode);
       break;
     case id_Randdo:  //random mode
-      randomMode = buttonChangeUp(randomMode, -1, "Random mode", RANDOMDESCCOUNT);
+      randomMode = buttonChangeUp(randomMode, -1, "Random mode", RANDOM_DESCCOUNT);
       //distributeCommand(COMMAND_SETRAN, randomMode, randomMode, randomMode);
       break;
     case id_Randup:
-      randomMode = buttonChangeUp(randomMode, +1, "Random mode", RANDOMDESCCOUNT);
+      randomMode = buttonChangeUp(randomMode, +1, "Random mode", RANDOM_DESCCOUNT);
       //distributeCommand(COMMAND_SETRAN, randomMode, randomMode, randomMode);
       break;
     //Save Config

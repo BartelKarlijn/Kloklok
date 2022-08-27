@@ -1,12 +1,9 @@
 ///////////////// TFT  //////////////////////////////
-uint8_t tft_cs[6] = {TFT0_CS, TFT1_CS, TFT2_CS, TFT3_CS, TFT4_CS, TFT5_CS };
-
 TFT_eSPI tft = TFT_eSPI();
 TFT_eSprite needle1      = TFT_eSprite(&tft); // Sprite object for needle 1 deg
 TFT_eSprite needle2      = TFT_eSprite(&tft); // Sprite object for needle 2 deg
 TFT_eSprite needle3      = TFT_eSprite(&tft); // Sprite object for needle 3 deg
 TFT_eSprite needle4      = TFT_eSprite(&tft); // Sprite object for needle 4 deg
-
 TFT_eSprite needleAxis   = TFT_eSprite(&tft); // Sprite object for centre Axis
 
 ///////////////// Angles  /////////////////////////////
@@ -23,7 +20,6 @@ uint16_t  moveUnEvBack[6];
 uint16_t moveFront;
 uint16_t moveBack;
 // Clock rotation
-int16_t rotationTbl[] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
 uint16_t clockRotation;
 int16_t angleto1, angleto2, extraBack, extraFront; 
 int16_t angleBTo, angleFTo, angleBFr, angleFFr;
@@ -57,7 +53,6 @@ bool   cmdAction;
 uint16_t waitDelay;       // default value, gets overwritten from eeprom
 #define  WAITDELAYMAX 60  // max value in sec
 uint8_t namePtr;  //pointer to nameTbl
-String nameTbl[] = {NAME_MASTER, NAME_SLAVE1, NAME_SLAVE2, NAME_SLAVE3};
 bool   flagWifiOn = false;
 
 
