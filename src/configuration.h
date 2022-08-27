@@ -65,8 +65,8 @@
 #define COLOR_TEST       TFT_RED
 
 ///////////////// Time  //////////////////////////////
-const char* ntpServer         = "pool.ntp.org";
-const long  gmtOffset_sec     = 3600;
+const char* ntpServer          = "pool.ntp.org";
+const long  gmtOffset_sec      = 3600;
 const int   daylightOffset_sec = 3600;
 #define DELAY_CATCHUP 5000     //Give slaves time to catch up after boot
 
@@ -78,6 +78,7 @@ const int   daylightOffset_sec = 3600;
 #define NAME_SLAVE3 "KloKlok_slave_000X" 
 
 ///////////////// movement modes  //////////////////////////////
+// Describing how much action is shown when moving from one to another digit
 #define MOVEMENT_MIN 0   // as little movement as possible
 #define MOVEMENT_MAX 1   // as much movement as possible
 #define MOVEMENT_FUN 2   // balanced
@@ -85,7 +86,7 @@ const int   daylightOffset_sec = 3600;
 #define MOVEMENT_DESC_MAX "maximum"
 #define MOVEMENT_DESC_FUN "balanced"
 #define MOVEMENT_COUNT 3
-String movementModeTbl[MOVEMENT_COUNT] = {MOVEMENT_DESC_MIN, MOVEMENT_DESC_MAX, MOVEMENT_DESC_FUN };
+String movementTbl[MOVEMENT_COUNT] = {MOVEMENT_DESC_MIN, MOVEMENT_DESC_MAX, MOVEMENT_DESC_FUN };
 #define RANDOM_OFF 0
 #define RANDOM_ON  1
 #define RANDOMDESC_OFF "normal"
@@ -107,7 +108,7 @@ String randomTbl[RANDOMDESCCOUNT] = {RANDOMDESC_OFF, RANDOMDESC_ON};
 #define OPERATION_DESC_DIGITDANCE "DigitDance" 
 #define OPERATION_DESC_SLAVE      "Slave"
 #define OPERATION_DESC_COUNT 6
-String modeTbl[OPERATION_DESC_COUNT] = {OPERATION_DESC_CLOCK, OPERATION_DESC_CLOCKDEMO, OPERATION_DESC_CHECKFPS, OPERATION_DESC_DIGITSHOW, OPERATION_DESC_DIGITDANCE, OPERATION_DESC_SLAVE};
+String operationTbl[OPERATION_DESC_COUNT] = {OPERATION_DESC_CLOCK, OPERATION_DESC_CLOCKDEMO, OPERATION_DESC_CHECKFPS, OPERATION_DESC_DIGITSHOW, OPERATION_DESC_DIGITDANCE, OPERATION_DESC_SLAVE};
 
 ///////////////// Commands  //////////////////////////////
 // Commmands are fixed lenght of 1
