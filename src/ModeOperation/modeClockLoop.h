@@ -30,21 +30,25 @@ void modeClockLoop(){
     //Calculate new values & redraw clocks
     time_X000new = timeHour[0] - '0';
     time_0X00new = timeHour[1] - '0';
-    
+    time_X000 = time_X000new;
+    time_0X00 = time_0X00new;
+    time_00X0 = time_00X0new;
+    time_000X = time_000Xnew;
+
     switch (randomMode) {
       case RANDOM_OFF:
-        distributeCommand(COMMAND_MOVETO, time_0X00new, time_00X0new, time_000Xnew);
-        calculateMovementToNr(time_X000new);
+        distributeCommand(COMMAND_MOVETO, time_0X00, time_00X0, time_000X);
+        calculateMovementToNr(time_X000);
         moveNextDigit();
-        showDigit(time_X000new, false);
+        showDigit(time_X000, false);
         break;    
     case RANDOM_ON:
-        distributeCommand(COMMAND_RANDOM, time_0X00new, time_00X0new, time_000Xnew);
+        distributeCommand(COMMAND_RANDOM, time_0X00, time_00X0, time_000X);
         calculateMovementRandom();
         moveNextDigit();    
-        calculateMovementToNr(time_X000new);
+        calculateMovementToNr(time_X000);
         moveNextDigit();
-        showDigit(time_X000new, false);
+        showDigit(time_X000, false);
         break;
       default:
         Println("Impossible RandomMode");

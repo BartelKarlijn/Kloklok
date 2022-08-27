@@ -1,10 +1,10 @@
 void modeClockSetup(){
   startWifi();
-  clearScreens(COLOR_TEST, true);
+  clearScreens(COLOR_TEST, false);
   Print("Give slaves time to catch up");
   delay(DELAY_CATCHUP);
-  time_X000 = 0;
-  distributeCommand(COMMAND_SHOWDG, time_X000, time_X000, time_X000);  // Showing 0 on all screens
+  time_X000 = OPERATION_CLOCK;
+  distributeCommand(COMMAND_SHOWDG, time_X000, time_X000, time_X000);
   showDigit(time_X000, true);
   Println("Showing test color with 0");
 
