@@ -9,8 +9,6 @@ void setup_AsyncWebserver(){
   webserver.on(hdlWifiPWD, HTTP_GET, [](AsyncWebServerRequest *request) {
     Print("Wifi config pagina");
     request->send_P(200, "text/html", config_html, html_processorWifi);
-//    Print("webserver running on core ");
-//    Println(String(xPortGetCoreID()));
   });
 
   // Opvangen als wifi data bewaard worden
@@ -66,7 +64,6 @@ void setup_AsyncWebserver(){
     flag_timeSetManually = true;
     
     ///save_WIFIdatato_eeprom (); 
-    //Println("Wifi SSID and PWD saved; please reboot ESP32");
     request->send_P(200, "text/html", config_html, html_processorRoot);
   });
 
@@ -85,13 +82,13 @@ void setup_AsyncWebserver(){
     }
 
     Print("knop= ");
-    Println(String(IDknop));
+    Println(IDknop);
     switch (IDknop) {
     case id_Modedo:  //mode
-      mode = buttonChangeUp(mode, -1, "mode", MODEDESC_COUNT);
+      operationMode = buttonChangeUp(operationMode, -1, "mode", OPERATION_DESC_COUNT);
       break;
     case id_Modeup:
-      mode = buttonChangeUp(mode, +1, "mode", MODEDESC_COUNT);
+      operationMode = buttonChangeUp(operationMode, +1, "mode", OPERATION_DESC_COUNT);
       break;
     case id_namePtrdo:  //name pointer
       namePtr = buttonChangeUp(namePtr, -1, "namePtr", 4);
@@ -114,12 +111,20 @@ void setup_AsyncWebserver(){
       distributeCommand(COMMAND_SETROT, clockRotation, clockRotation, clockRotation);
       break;
     case id_Mvmtdo:  //movement mode
-      movementMode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENTMODEDESCOUNT);
+      movementMode = buttonChangeUp(movementMode, -1, "Movement mode", MOVEMENT_COUNT);
       distributeCommand(COMMAND_SETMOV, movementMode, movementMode, movementMode);
       break;
     case id_Mvmtup:
-      movementMode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENTMODEDESCOUNT);
+      movementMode = buttonChangeUp(movementMode, +1, "Movement mode", MOVEMENT_COUNT);
       distributeCommand(COMMAND_SETMOV, movementMode, movementMode, movementMode);
+      break;
+    case id_Randdo:  //random mode
+      randomMode = buttonChangeUp(randomMode, -1, "Random mode", RANDOM_DESCCOUNT);
+      //distributeCommand(COMMAND_SETRAN, randomMode, randomMode, randomMode);
+      break;
+    case id_Randup:
+      randomMode = buttonChangeUp(randomMode, +1, "Random mode", RANDOM_DESCCOUNT);
+      //distributeCommand(COMMAND_SETRAN, randomMode, randomMode, randomMode);
       break;
     //Save Config
     case id_SaveConfig:

@@ -1,9 +1,9 @@
 void setupTft() {
   // Talk to all screens
   for (int i = 0; i <= 5; i++ ) {
-    pinMode( tft_cs[i], OUTPUT);   // Chip Select is active low.
+    pinMode( tft_csTbl[i], OUTPUT);   // Chip Select is active low.
     
-    digitalWrite( tft_cs[i], LOW);
+    digitalWrite( tft_csTbl[i], LOW);
   }
 
   // setup TFT, taling to all screens at same time
@@ -20,7 +20,7 @@ void setupTft() {
 
   for (int i = 0; i <= 5; i++ ) {
     // Stop talking to all screens
-    digitalWrite( tft_cs[i], HIGH);
+    digitalWrite( tft_csTbl[i], HIGH);
 
     angleBack[i]  = random(359); // random speed in range 0 to 360
     angleFront[i] = random(359); // random speed in range 0 to 360

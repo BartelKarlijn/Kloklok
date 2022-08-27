@@ -1,16 +1,27 @@
 int16_t calculateRotation(int16_t angleFrom, int16_t angleTo) {
-    int16_t rotation = (angleTo - angleFrom + 720) % 360; 
+    int16_t rotation = (angleTo - angleFrom + 720) % 360;   // have angle 0-359
     return rotation;
+}
+
+void mapAngles(bool flag_B2B, int16_t valExtraBack, int16_t valExtraFront){
+    if (flag_B2B) {
+        angleto1   = angleBTo;
+        angleto2   = angleFTo;
+    } else {
+        angleto1   = angleFTo;
+        angleto2   = angleBTo;
+    }
+    extraBack  = valExtraBack;
+    extraFront = valExtraFront;
 }
 
 void calculateMovementToNr(uint8_t nr_to) {
     // This shoudl update the even and uneven movement variables for Front and back
     // The idea is to rotate from one position (per 90deg + 225deg) to any other
     int16_t rotB2B,  rotB2F,  rotF2B,  rotF2F;
-    int16_t angleto1, angleto2, angleBTo, angleFTo, angleBFr, angleFFr;
     int16_t rot90framesBack, rot90framesFront;
     int16_t rotBEven,  rotBUneven,  rotFEven,  rotFUneven;
-    int16_t extraBack, extraFront; 
+
 
     for (int i = 0; i <= 5; i++) {
         // calculate rotation angles
@@ -27,69 +38,37 @@ void calculateMovementToNr(uint8_t nr_to) {
          rotF2B  = calculateRotation(angleFFr, angleBTo);
 
         switch (movementMode) {
-        case MOVEMENTMODEMIN:  // find the min movement as one with a difference of 0
+        case MOVEMENT_MIN:  // find the min movement as one with a difference of 0
             if (( rotB2B == 0) or ( rotF2F == 0)) {
-                // min movement found
-                angleto1   = angleBTo;
-                angleto2   = angleFTo;
-                extraBack  = 0;
-                extraFront = 0;
+                mapAngles(true, 0, 0);  // min movement found
             }
             else {
-                angleto1   = angleFTo;
-                angleto2   = angleBTo;
-                extraBack  = 0;
-                extraFront = 0;
+                mapAngles(false, 0, 0);
             }
             break;
-        case MOVEMENTMODEMAX: // Similar to Min mode, but we add 360 to one of the 0 steps
+        case MOVEMENT_MAX: // Similar to Min mode, but we add 360 to one of the 0 steps
             if ( rotB2B == 0) {
-                // Add 360 to movement found
-                angleto1   = angleBTo;
-                angleto2   = angleFTo;
-                extraBack  = 360;
-                extraFront = 0;
+                mapAngles(true, 360, 0);    // Add 360 to movement found
             }
             else if ( rotF2F == 0) {
-                // Add 360 to movement found
-                angleto1   = angleBTo;
-                angleto2   = angleFTo;
-                extraBack  = 0;
-                extraFront = 360;
+                mapAngles(true, 0, 360);    // Add 360 to movement found
             }
             else {
-                angleto1   = angleFTo;
-                angleto2   = angleBTo;
-                extraBack  = 0;
-                extraFront = 0;
+                mapAngles(false, 0, 360);
             }
             break;
-        case MOVEMENTMODEFUN: // Both dials should be moving
+        case MOVEMENT_FUN: // Both dials should be moving
             if (( rotB2F != 0) and ( rotF2B != 0)) {
-                // non 0 movement found
-                angleto1   = angleFTo;
-                angleto2   = angleBTo;
-                extraBack  = 0;
-                extraFront = 0;
+                mapAngles(false, 0, 0);    // non 0 movement found
             }
             else if ( rotB2B == 0)  {
-                angleto1   = angleBTo;
-                angleto2   = angleFTo;
-                extraBack  = 360;
-                extraFront = 0;
+                mapAngles(true, 360, 0);
             }
             else if ( rotF2F == 0) {
-                angleto1   = angleBTo;
-                angleto2   = angleFTo;
-                extraBack  = 0;
-                extraFront = 360;
-
+                mapAngles(true, 0, 360);
             }
             else {
-                angleto1   = angleBTo;
-                angleto2   = angleFTo;
-                extraBack  = 0;
-                extraFront = 0;
+                mapAngles(true, 0, 0);
             }
             break;
         default:
@@ -105,6 +84,5 @@ void calculateMovementToNr(uint8_t nr_to) {
         moveUnEvBack[i]  = (rot90framesBack + 45) / 90;   // rounded up
         moveEvenFront[i] = rot90framesFront / 90;          // rounded down as we calculate with integers
         moveUnEvFront[i] = (rot90framesFront + 45) / 90; // rounded up
-
     }
 }

@@ -8,6 +8,7 @@ void Print(String TXT){
   Serial.print(TXT);
 #endif
 }
+void Print(uint16_t i){Print(String(i));}
 
 void Println(String TXT){
 #ifdef PRINTWEBSERIAL
@@ -17,6 +18,7 @@ void Println(String TXT){
   Serial.println(TXT);
 #endif
 }
+void Println(uint16_t i){Println(String(i));}
 
 void recvMsg(uint8_t *data, size_t len){
   incomingMessage = "";

@@ -31,28 +31,28 @@ void setup()   {
 // Loop
 // =======================================================================================
 void loop() {
-  switch (mode)
+  switch (operationMode)
   {
-  case MODE_CHECKFPS:
+  case OPERATION_CHECKFPS:
     modeCheckFpsLoop();
     break;
-  case MODE_CLOCK:
+  case OPERATION_CLOCK:
     modeClockLoop();
     break;
-  case MODE_CLOCKDEMO:
+  case OPERATION_CLOCKDEMO:
     modeClockDemoLoop();
     break;
-  case MODE_DIGITSHOW:
+  case OPERATION_DIGITSHOW:
     modeDigitShowLoop();
     break;
-  case MODE_DIGITDANCE:
+  case OPERATION_DIGITDANCE:
     modeDigitDanceLoop();
     break;
-  case MODE_SLAVE:
+  case OPERATION_SLAVE:
     modeSlaveLoop();
     break;
   default:
-    Println("Impossible modeOperation in loop");
+    Println("Impossible operationMode in loop");
     break;
   }
 }

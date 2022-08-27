@@ -1,10 +1,9 @@
 void parseMessage() {
-  String cmdClockString;
-  char intToChar[3];
+  String cmdString;
 
   // commands start with 
   // structure:
-  //     <         (CMD_BEGIN)
+  //     <         (CMD_START)
   //     command    (length 1)
   //     clocknr
   //     parameter (digit)
@@ -12,26 +11,20 @@ void parseMessage() {
   // eg "<438>"  = clock 3 moveto 8
   //    "<525>"  = clock 2 setmode 5 = Slave
   //    "<524>"  = clock 2 setmode 4 = digitDance
-  
+  // However, readserial strips CMD_START/STOP
 
   messageChanged = false;
-  for (int i = 0; i < serialMessage.length(); i++) {
-    if( (serialMessage.charAt(i) == CMD_START) and (serialMessage.charAt(i+4)== CMD_STOP)) {
-      cmdClockString = serialMessage.charAt(i+2);
-      //cmdClockString = serialMessage(i+2);
-      if( cmdClockString.toInt() == namePtr ) {
-      cmdClockString = serialMessage.charAt(i+1);
-      cmdCommand = cmdClockString.toInt();
-      cmdClockString = serialMessage.charAt(i+2);
-      cmdClock   = cmdClockString.toInt();
-      cmdClockString = serialMessage.charAt(i+3);
-      cmdParam   =  cmdClockString.toInt();
-      cmdAction  = true;
-     
-      break;           // don't process message further
+  cmdString      = serialMessage.charAt(1);
+  if( cmdString.toInt() == namePtr ) {
+    cmdString  = serialMessage.charAt(0);
+    cmdCommand = cmdString.toInt();
+    cmdString  = serialMessage.charAt(1);
+    cmdClock   = cmdString.toInt();
+    cmdString  = serialMessage.charAt(2);
+    cmdParam   = cmdString.toInt();
+    cmdAction  = true;
+    Print("cmd= ");
+    Println(serialMessage);
     }
-    }
-  }
   serialMessage = "";
-  
 }

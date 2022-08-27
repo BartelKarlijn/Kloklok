@@ -1,13 +1,6 @@
 void modeSlaveLoop(){
   checkStillSameMode ();
   readSerial();
-  if (messageChanged) {
-    Print("Message= ");
-    Println(serialMessage);
-    Print("lenght=");
-    Println(String(serialMessage.length()));
-    messageChanged = false;
-  }
   parseMessage();
   if (cmdAction) {
     switch (cmdCommand)
@@ -27,8 +20,15 @@ void modeSlaveLoop(){
       moveNextDigit();
       showDigit(cmdParam, false);              //Just to be sure that we don't leave any artefacts behind
       break;    
+    case COMMAND_RANDOM:
+      calculateMovementRandom();
+      moveNextDigit();      
+      calculateMovementToNr(cmdParam);
+      moveNextDigit();
+      showDigit(cmdParam, false);              //Just to be sure that we don't leave any artefacts behind
+      break;    
     case COMMAND_SETMOD:
-      mode = cmdParam;
+      operationMode = cmdParam;
       break;
     case COMMAND_SETROT:
       clockRotation = cmdParam;

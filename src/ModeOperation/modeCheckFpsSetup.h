@@ -5,7 +5,7 @@ void modeCheckFpsSetup(){
   for (int i = 0; i <= 5; i++ ) {
     angleBack[i] = random(360);
   }
-  cnt = 0;
+  fpsCnt = 0;
   clearScreens(COLOR_BACKGROUND, true);
   myTime = millis();
   

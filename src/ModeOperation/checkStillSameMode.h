@@ -1,30 +1,35 @@
 void checkStillSameMode () {
 // check we're still on the same mode.  If not, run appropriate setup before continuing
-  if (mode != modeOld) {
-    switch (mode)
-    {
-    case MODE_CHECKFPS:
-      modeCheckFpsSetup();
-      break;
-    case MODE_CLOCK:
-      modeClockSetup();
-      break;
-    case MODE_CLOCKDEMO:
-      modeClockDemoSetup();
-      break;
-    case MODE_DIGITSHOW:
-      modeDigitShowSetup();
-      break;
-    case MODE_DIGITDANCE:
-      modeDigitDanceSetup();
-      break;
-    case MODE_SLAVE:
-      modeSlaveSetup();
-      break;
-    default:
-      Println("Impossible mode in setup");
-      break;
-  }
-  modeOld = mode;
+  if (operationMode != operationModeOld) {
+    // cooldown period
+    operationModeOld = operationMode;
+    delay(DELAY_COOLDOWN);
+    if (operationMode != operationModeOld) {
+      // not changed in cooldown period
+      switch (operationMode)
+      {
+      case OPERATION_CHECKFPS:
+        modeCheckFpsSetup();
+        break;
+      case OPERATION_CLOCK:
+        modeClockSetup();
+        break;
+      case OPERATION_CLOCKDEMO:
+        modeClockDemoSetup();
+        break;
+      case OPERATION_DIGITSHOW:
+        modeDigitShowSetup();
+        break;
+      case OPERATION_DIGITDANCE:
+        modeDigitDanceSetup();
+        break;
+      case OPERATION_SLAVE:
+        modeSlaveSetup();
+        break;
+      default:
+        Println("Impossible operationMode in setup");
+        break;
+      }
+    }
   }
 }
