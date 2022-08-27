@@ -35,13 +35,11 @@ bool    flag_timeSetManually = false;
 
 
 //////////////// OPERATION ///////////////////////
-// LED
-boolean startupError;
-uint16_t backlight;     // Backlight of tft
+uint16_t backlight;     // Backlight level of tft (not yet used)
 
 // timers
 unsigned long myTime;
-uint8_t cnt;
+uint8_t fpsCnt;
 
 //////////////// Preferences //////////////////////
 Preferences pref_eeprom;

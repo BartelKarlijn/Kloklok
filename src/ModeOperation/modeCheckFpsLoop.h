@@ -13,15 +13,15 @@ void modeCheckFpsLoop(){
   delay(1);
 
   // timing
-  cnt++;
-  //Serial.println(cnt);
-  if ( cnt >= 90 ) {
+  fpsCnt++;
+  //Serial.println(fpsCnt);
+  if ( fpsCnt >= 90 ) {
     myTimeRef = millis() - myTime;
-    Print(cnt);
+    Print(fpsCnt);
     Print(" screens in ");
     Print(myTimeRef);
     Print(" ms = ");
-    Print(cnt * 1000/ myTimeRef);
+    Print(fpsCnt * 1000/ myTimeRef);
     Println("fps");
     delay(100);
     moveFront++;
@@ -32,7 +32,7 @@ void modeCheckFpsLoop(){
       if (moveBack >= 5) { moveBack = 1;}
     }
     myTime = millis();
-    cnt = 0;
+    fpsCnt = 0;
   }
 
 }
