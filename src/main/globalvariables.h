@@ -35,21 +35,19 @@ bool    flag_timeSetManually = false;
 
 
 //////////////// OPERATION ///////////////////////
+Preferences pref_eeprom;           // to store & read parameters from eprom
 uint16_t backlight;     // Backlight level of tft (not yet used)
 
-// timers
+// timers for calculating fps
 unsigned long myTime;
-uint8_t fpsCnt;
-
-//////////////// Preferences //////////////////////
-Preferences pref_eeprom;
+uint8_t       fpsCnt;
 
 //////////////// MovementModes //////////////////////
 uint16_t movementMode;
 uint16_t randomMode;
 
 //Mode (clock/clockdemo/...)
-int8_t operationMode, operationModeOld = 99;             // On 99, checkStillSameMode gets launched
+int8_t operationMode, operationModeOld = 99;             // we set old to 99 to trigger checkStillSameMode
 // communication
 String incomingMessage;
 String serialMessage;
