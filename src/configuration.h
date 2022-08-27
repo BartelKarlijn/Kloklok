@@ -72,7 +72,8 @@ int16_t rotationTbl[ROT_COUNT] = {ROT_UP, ROT_RIGHT, ROT_DOWN, ROT_LEFT};
 const char* ntpServer          = "pool.ntp.org";
 const long  gmtOffset_sec      = 3600;
 const int   daylightOffset_sec = 3600;
-#define DELAY_CATCHUP 5000     //Give slaves time to catch up after boot
+#define DELAY_CATCHUP  5000     // Give slaves time to catch up after boot
+#define DELAY_COOLDOWN 2000     // Waiting time between 2 mode Operation changes
 
 ///////////////// wifi  //////////////////////////////
 // names below are used as AccessPoint name and calls from master
