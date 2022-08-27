@@ -94,20 +94,20 @@ String movementModeTbl[MOVEMENT_COUNT] = {MOVEMENT_DESC_MIN, MOVEMENT_DESC_MAX, 
 String randomTbl[RANDOMDESCCOUNT] = {RANDOMDESC_OFF, RANDOMDESC_ON};
 
 ///////////////// working modes  //////////////////////////////
-#define MODE_CLOCK          0       // Regular clock mode
-#define MODE_CLOCKDEMO      1       // 'Demo' clock by rapidly browsing nrs
-#define MODE_CHECKFPS       2       // check how many fps we can achieve
-#define MODE_DIGITSHOW      3       // Test digits one by one (no movement in between)
-#define MODE_DIGITDANCE     4       // Do movement betwen digits
-#define MODE_SLAVE          5
-#define MODEDESC_CHECKFPS   "CheckPFS"
-#define MODEDESC_CLOCK      "Clock"
-#define MODEDESC_CLOCKDEMO  "ClockDemo"
-#define MODEDESC_DIGITSHOW  "DigitShow"
-#define MODEDESC_DIGITDANCE "DigitDance" 
-#define MODEDESC_SLAVE      "Slave"
-#define MODEDESC_COUNT 6
-String modeTbl[MODEDESC_COUNT] = {MODEDESC_CLOCK, MODEDESC_CLOCKDEMO, MODEDESC_CHECKFPS, MODEDESC_DIGITSHOW, MODEDESC_DIGITDANCE, MODEDESC_SLAVE};
+#define OPERATION_CLOCK          0       // Regular clock mode
+#define OPERATION_CLOCKDEMO      1       // 'Demo' clock by rapidly browsing nrs
+#define OPERATION_CHECKFPS       2       // check how many fps we can achieve
+#define OPERATION_DIGITSHOW      3       // Test digits one by one (no movement in between)
+#define OPERATION_DIGITDANCE     4       // Do movement betwen digits
+#define OPERATION_SLAVE          5
+#define OPERATION_DESC_CHECKFPS   "CheckPFS"
+#define OPERATION_DESC_CLOCK      "Clock"
+#define OPERATION_DESC_CLOCKDEMO  "ClockDemo"
+#define OPERATION_DESC_DIGITSHOW  "DigitShow"
+#define OPERATION_DESC_DIGITDANCE "DigitDance" 
+#define OPERATION_DESC_SLAVE      "Slave"
+#define OPERATION_DESC_COUNT 6
+String modeTbl[OPERATION_DESC_COUNT] = {OPERATION_DESC_CLOCK, OPERATION_DESC_CLOCKDEMO, OPERATION_DESC_CHECKFPS, OPERATION_DESC_DIGITSHOW, OPERATION_DESC_DIGITDANCE, OPERATION_DESC_SLAVE};
 
 ///////////////// Commands  //////////////////////////////
 // Commmands are fixed lenght of 1

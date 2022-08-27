@@ -85,10 +85,10 @@ void setup_AsyncWebserver(){
     Println(IDknop);
     switch (IDknop) {
     case id_Modedo:  //mode
-      operationMode = buttonChangeUp(operationMode, -1, "mode", MODEDESC_COUNT);
+      operationMode = buttonChangeUp(operationMode, -1, "mode", OPERATION_DESC_COUNT);
       break;
     case id_Modeup:
-      operationMode = buttonChangeUp(operationMode, +1, "mode", MODEDESC_COUNT);
+      operationMode = buttonChangeUp(operationMode, +1, "mode", OPERATION_DESC_COUNT);
       break;
     case id_namePtrdo:  //name pointer
       namePtr = buttonChangeUp(namePtr, -1, "namePtr", 4);

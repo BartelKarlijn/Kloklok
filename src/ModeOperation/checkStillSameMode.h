@@ -3,22 +3,22 @@ void checkStillSameMode () {
   if (operationMode != operationModeOld) {
     switch (operationMode)
     {
-    case MODE_CHECKFPS:
+    case OPERATION_CHECKFPS:
       modeCheckFpsSetup();
       break;
-    case MODE_CLOCK:
+    case OPERATION_CLOCK:
       modeClockSetup();
       break;
-    case MODE_CLOCKDEMO:
+    case OPERATION_CLOCKDEMO:
       modeClockDemoSetup();
       break;
-    case MODE_DIGITSHOW:
+    case OPERATION_DIGITSHOW:
       modeDigitShowSetup();
       break;
-    case MODE_DIGITDANCE:
+    case OPERATION_DIGITDANCE:
       modeDigitDanceSetup();
       break;
-    case MODE_SLAVE:
+    case OPERATION_SLAVE:
       modeSlaveSetup();
       break;
     default:
